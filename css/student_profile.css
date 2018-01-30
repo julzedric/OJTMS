@@ -1,0 +1,35 @@
+/*Student Profile*/
+/*body{
+	background-color: #f1f1f1!important;
+}*/
+#student_container{
+	margin-top: 10px;
+}
+
+#student_profile_right{
+	background-color: #f1f1f1;
+	margin-top: -40px;
+}
+
+#active_color a{
+	color: #427BFF;
+}
+
+#active_color a:hover{
+	color: #8FB0FF;
+}
+
+#student_table{
+	background-color: #f1f1f1;
+	margin-top: 10px;
+}
+
+#student_profile_img{
+	width: 75%;
+	margin-top: 50px;
+	margin-left: 18px;
+}
+
+#student_requirements{
+	margin-top: 10px;
+}
