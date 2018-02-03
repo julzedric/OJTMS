@@ -3,6 +3,9 @@
     $title = 'Edit Announcement';
     require_once('../connection.php');
     include('../includes/header.php');
+    if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
+        header("location: ../index.php");
+    }
 
     if($_GET['id']) {
       $id = $_GET['id'];

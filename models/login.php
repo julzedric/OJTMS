@@ -8,9 +8,7 @@
 
 require_once '../connection.php';
 
-$error = '';
-
-
+    $error = '';
     $username = $_POST['uname'];
     $password = sha1($_POST['password']);
 
@@ -24,6 +22,7 @@ $error = '';
     if($rows = mysqli_num_rows($query)){
         if($rows == 1){
             $_SESSION['username'] = $username;
+            $_SESSION['is_admin'] = $row['is_admin'];
             if ($row['is_admin'] == 1){
                 header("location: ../admin/index.php");
             }else{

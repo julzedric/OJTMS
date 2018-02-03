@@ -1,8 +1,9 @@
 <?php
+
     $title = 'Admin';
     require_once('../connection.php');
     include('../includes/header.php');
-    if (!isset($_SESSION['username']) || $_SESSION['username'] != 'admin'){
+    if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
         header("location: ../index.php");
     }
 ?>

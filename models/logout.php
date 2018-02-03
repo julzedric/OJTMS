@@ -6,5 +6,10 @@
  * Time: 6:23 PM
  */
 
-session_destroy();
-header("location: ../index.php ");
+session_start();
+if(session_destroy()) // Destroying All Sessions
+{
+    header("location: ../index.php ");
+
+}
+?>

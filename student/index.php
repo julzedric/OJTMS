@@ -2,6 +2,9 @@
     $title = 'OJTMS';
     require_once('../connection.php');
     include('../includes/header.php');
+    if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '0'){
+        header("location: ../index.php");
+    }
 ?>
 <div class="wrapper">
 
