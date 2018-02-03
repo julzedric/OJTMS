@@ -46,7 +46,6 @@
         </tfoot>
       </table>
 
-      <button class="btn btn-primary">Add new Student</button>
     </div>
     <!-- /.content -->
   </div>

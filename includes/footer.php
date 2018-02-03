@@ -36,7 +36,10 @@
             'info'        : true,
             'autoWidth'   : false
         })
-
+        $('#step1').DataTable()
+        $('#step2').DataTable()
+        $('#step3').DataTable()
+        $('#step4').DataTable()
         $('#requirements-request').DataTable()
         $('#registration-request').DataTable({
             'paging'      : true,

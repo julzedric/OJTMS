@@ -26,22 +26,22 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active">
+            <li class="<?php if ($title == 'OJT Master List') {echo 'active'; }else{ echo ''; } ?>">
                 <a href="ojt-master-list.php">
                     <i class="fa fa-users"></i> <span>OJT Master List</span>
                 </a>
             </li>
-            <li>
-                <a href="course-group.php">
-                    <i class="fa fa-home"></i> <span>Course Group</span>
+            <li class="<?php if ($title == 'Document Request') {echo 'active'; }else{ echo ''; } ?>">
+                <a href="document-request.php">
+                    <i class="fa fa-home"></i> <span>Document Request</span>
                 </a>
             </li>
-            <li>
+            <li class="<?php if ($title == 'Steps Requirement') {echo 'active'; }else{ echo ''; } ?>">
                 <a href="step-requirement.php">
                     <i class="fa fa-folder-open-o"></i> <span>Steps Requirement</span>
                 </a>
             </li>
-            <li>
+            <li class="<?php if ($title == 'Announcement List') {echo 'active'; }else{ echo ''; } ?>">
                 <a href="announcement-list.php">
                     <i class="fa fa-table"></i> <span>Announcement List</span>
                 </a>

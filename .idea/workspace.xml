@@ -4,7 +4,14 @@
     <bookmark url="file://$PROJECT_DIR$/models/login.php" line="11" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="758eb279-1c58-4f57-b552-b777cc7382b0" name="Default" comment="" />
+    <list default="true" id="758eb279-1c58-4f57-b552-b777cc7382b0" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/admin/course-group.php" afterPath="$PROJECT_DIR$/admin/document-request.php" />
+      <change beforePath="$PROJECT_DIR$/admin/ojt-master-list.php" afterPath="$PROJECT_DIR$/admin/ojt-master-list.php" />
+      <change beforePath="$PROJECT_DIR$/admin/step-requirement.php" afterPath="$PROJECT_DIR$/admin/step-requirement.php" />
+      <change beforePath="$PROJECT_DIR$/includes/admin_sidebar.php" afterPath="$PROJECT_DIR$/includes/admin_sidebar.php" />
+      <change beforePath="$PROJECT_DIR$/includes/footer.php" afterPath="$PROJECT_DIR$/includes/footer.php" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -14,44 +21,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="167">
-              <caret line="208" column="35" lean-forward="true" selection-start-line="208" selection-start-column="35" selection-end-line="208" selection-end-column="35" />
-              <folding>
-                <element signature="e#9217#9224#1#HTML" expanded="true" />
-                <element signature="e#15132#15139#1#HTML" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="logout.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/models/logout.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="connection.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/connection.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
-              <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="step-requirement.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="step-requirement.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/admin/step-requirement.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="425">
-              <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
+            <state relative-caret-position="102">
+              <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/footer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="280">
+              <caret line="41" column="17" lean-forward="false" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ojt-master-list.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/ojt-master-list.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="566">
+              <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminLTE.css" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/dist/css/AdminLTE.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="150">
+              <caret line="739" column="39" lean-forward="true" selection-start-line="739" selection-start-column="39" selection-end-line="739" selection-end-column="39" />
               <folding />
             </state>
           </provider>
@@ -99,11 +103,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="checkUser.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="checkUser.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/checkUser.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+            <state relative-caret-position="68">
+              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
               <folding>
                 <marker date="1517669996197" expanded="true" signature="175:240" ph="SELECT * FRO... ojt_users" />
               </folding>
@@ -111,11 +115,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/admin/index.php">
+      <file leaf-file-name="admin_sidebar.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/includes/admin_sidebar.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-374">
-              <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="442">
+              <caret line="38" column="61" lean-forward="false" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="document-request.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/admin/document-request.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="549">
+              <caret line="50" column="14" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="50" selection-end-column="14" />
               <folding />
             </state>
           </provider>
@@ -138,6 +152,8 @@
       <find>query</find>
       <find>form</find>
       <find>sign out</find>
+      <find>add_user</find>
+      <find>nav-tabs</find>
     </findStrings>
     <dirStrings>
       <dir>C:\wamp64\www\OJTMS</dir>
@@ -152,8 +168,6 @@
       <list>
         <option value="$PROJECT_DIR$/add_user.php" />
         <option value="$PROJECT_DIR$/includes/students_sidebar.php" />
-        <option value="$PROJECT_DIR$/includes/admin_sidebar.php" />
-        <option value="$PROJECT_DIR$/includes/footer.php" />
         <option value="$PROJECT_DIR$/includes/header.php" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/admin/query/update_announcement.php" />
@@ -166,8 +180,6 @@
         <option value="$PROJECT_DIR$/admin/course-group.php" />
         <option value="$PROJECT_DIR$/admin/edit_announcement.php" />
         <option value="$PROJECT_DIR$/admin/manage-student.php" />
-        <option value="$PROJECT_DIR$/admin/ojt-master-list.php" />
-        <option value="$PROJECT_DIR$/admin/step-requirement.php" />
         <option value="$PROJECT_DIR$/includes/admin_subheader.php" />
         <option value="$PROJECT_DIR$/models/logout.php" />
         <option value="$PROJECT_DIR$/connection.php" />
@@ -176,6 +188,11 @@
         <option value="$PROJECT_DIR$/admin/query/create.php" />
         <option value="$PROJECT_DIR$/models/login.php" />
         <option value="$PROJECT_DIR$/models/register.php" />
+        <option value="$PROJECT_DIR$/admin/document-request.php" />
+        <option value="$PROJECT_DIR$/includes/admin_sidebar.php" />
+        <option value="$PROJECT_DIR$/admin/ojt-master-list.php" />
+        <option value="$PROJECT_DIR$/includes/footer.php" />
+        <option value="$PROJECT_DIR$/admin/step-requirement.php" />
       </list>
     </option>
   </component>
@@ -191,7 +208,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="537" />
     <option name="width" value="836" />
     <option name="height" value="735" />
@@ -259,6 +276,34 @@
             <path>
               <item name="OJTMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="OJTMS" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="OJTMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OJTMS" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dist" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="OJTMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OJTMS" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dist" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="OJTMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OJTMS" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="dist" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="css" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="AdminLTE.css" type="620a8d5e:NestingTreeNode" />
+            </path>
+            <path>
+              <item name="OJTMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OJTMS" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="includes" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="OJTMS" type="b2602c69:ProjectViewProjectNode" />
+              <item name="OJTMS" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="models" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
@@ -305,10 +350,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19644000" />
+    <option name="totallyTimeSpent" value="21538000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -345,21 +390,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/student/profile.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="69" lean-forward="true" selection-start-line="4" selection-start-column="41" selection-end-line="4" selection-end-column="69" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/course-group.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="69" lean-forward="false" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/edit_announcement.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -532,13 +562,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/includes/footer.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="70" lean-forward="false" selection-start-line="14" selection-start-column="70" selection-end-line="14" selection-end-column="70" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/add_user.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -573,20 +596,6 @@
           <folding>
             <marker date="1517652908640" expanded="true" signature="194:334" ph="UPDATE ojt_announcements... " />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/students_sidebar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="51" lean-forward="false" selection-start-line="25" selection-start-column="51" selection-end-line="25" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/includes/admin_sidebar.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="243">
-          <caret line="31" column="20" lean-forward="true" selection-start-line="31" selection-start-column="20" selection-end-line="31" selection-end-column="20" />
         </state>
       </provider>
     </entry>
@@ -639,14 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/course-group.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="69" lean-forward="false" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/admin/edit_announcement.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -658,14 +659,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/admin/manage-student.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="69" lean-forward="false" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/ojt-master-list.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="68">
           <caret line="4" column="69" lean-forward="false" selection-start-line="4" selection-start-column="69" selection-end-line="4" selection-end-column="69" />
@@ -711,14 +704,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/admin/step-requirement.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="25" column="25" lean-forward="true" selection-start-line="25" selection-start-column="25" selection-end-line="25" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -739,20 +724,6 @@
             <marker date="1517658865511" expanded="true" signature="4212:4996" ph="..." />
             <marker date="1517658865511" expanded="false" signature="4495:4514" ph="..." />
             <marker date="1517658865511" expanded="true" signature="4515:4950" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/admin/query/create.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="17" column="29" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="17" selection-end-column="29" />
-          <folding>
-            <marker date="1517659657729" expanded="true" signature="172:296" ph="INSERT INTO ojt_announcements... " />
-            <marker date="1517659657729" expanded="true" signature="374:630" ph="..." />
-            <marker date="1517659657729" expanded="true" signature="479:603" ph="{...}" />
-            <marker date="1517659657729" expanded="true" signature="693:952" ph="..." />
-            <marker date="1517659657729" expanded="true" signature="801:925" ph="{...}" />
           </folding>
         </state>
       </provider>
@@ -781,11 +752,89 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/checkUser.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+        <state relative-caret-position="68">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
           <folding>
             <marker date="1517669996197" expanded="true" signature="175:240" ph="SELECT * FRO... ojt_users" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/students_sidebar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="95" lean-forward="true" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="95" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/css/AdminLTE.min.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="175">
+          <caret line="6" column="51265" lean-forward="false" selection-start-line="6" selection-start-column="51257" selection-end-line="6" selection-end-column="51265" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/query/create.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="29" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="17" selection-end-column="29" />
+          <folding>
+            <marker date="1517659657729" expanded="true" signature="172:296" ph="INSERT INTO ojt_announcements... " />
+            <marker date="1517659657729" expanded="true" signature="374:630" ph="..." />
+            <marker date="1517659657729" expanded="true" signature="479:603" ph="{...}" />
+            <marker date="1517659657729" expanded="true" signature="693:952" ph="..." />
+            <marker date="1517659657729" expanded="true" signature="801:925" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/admin_sidebar.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="38" column="61" lean-forward="false" selection-start-line="38" selection-start-column="61" selection-end-line="38" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/document-request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="50" column="14" lean-forward="true" selection-start-line="28" selection-start-column="6" selection-end-line="50" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/dist/css/AdminLTE.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="739" column="39" lean-forward="true" selection-start-line="739" selection-start-column="39" selection-end-line="739" selection-end-column="39" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/ojt-master-list.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="566">
+          <caret line="47" column="0" lean-forward="false" selection-start-line="47" selection-start-column="0" selection-end-line="47" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/includes/footer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="41" column="17" lean-forward="false" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/admin/step-requirement.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="36" column="36" lean-forward="false" selection-start-line="36" selection-start-column="36" selection-end-line="36" selection-end-column="36" />
+          <folding />
         </state>
       </provider>
     </entry>
