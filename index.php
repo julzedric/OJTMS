@@ -22,7 +22,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/agency.css" rel="stylesheet">
-
+    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.ico">
       <script src='https://www.google.com/recaptcha/api.js'></script>
 
   </head>
@@ -330,7 +330,7 @@
           <div class="modal-body">
             <div class="container">
             
-            <form>
+            <form method="POST" action="models/login.php">
               <div class="row">
                 <div class="form-group col-lg-12">
                   <label for="uname" class="control-label" oi>USERNAME</label>
@@ -338,23 +338,23 @@
                 </div>
                 <div class="form-group col-lg-12">
                   <label for="pword" class="control-label" oi>PASSWORD</label>
-                  <input type="password" class="form-control" name="pword" id="pword" required="">
+                  <input type="password" class="form-control" name="password" id="password" required="">
                   <br>
                   <a href="#">Forgot Password?</a>
                 </div>               
-              </div>   
+              </div>
+                <div class="modal-footer">
+                    <div class="col-lg-12">
+                        <div class="pull-right">
+                            <button class="btn btn-primary">Login</button>
+                            <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                        </div>
+                    </div>
+                </div>
             </form>
             
             </div>      
           </div>
-              <div class="modal-footer">
-                <div class="col-lg-12">
-                  <div class="pull-right">
-                    <button class="btn btn-primary">Login</button>
-                    <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
-                  </div>
-                </div>
-              </div>
         </div>
       </div>
     </div>

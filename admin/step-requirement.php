@@ -1,5 +1,5 @@
 <?php
-    $title = 'Profile';
+    $title = 'Step Requirements';
     require_once('../connection.php');
     include('../includes/header.php');
 ?>
