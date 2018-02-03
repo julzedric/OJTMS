@@ -31,7 +31,9 @@
         </div> -->
         <div class="box box-primary">
             <div class="box-header with-border" onclick="$('.collapse').toggle();">
-                <h3 class="box-title">Add new Announcement</h3>
+                <h3 class="box-title">
+                    <button type="button" class="btn btn-primary">Add new Announcement</button>
+                </h3>
             </div>
 
             <div class="box-body padding-20 collapse" style="display:none">

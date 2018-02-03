@@ -34,7 +34,11 @@ require_once '../connection.php';
 
     }else{
 
-        echo "<script type='text/javascript'>alert('Invalid Username/Password.');</script>";
-        header("location: ../index.php");
+        echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Username or Password is incorrect please try again.\");
+                    if(conf == true){
+                        window.location.href = 'http://localhost/ojtms/index.php';
+                    }
+                  </script>";
 
     }

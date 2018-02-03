@@ -6,7 +6,7 @@
 		$course = $_POST['course'];
 		$semester = $_POST['semester'];
 		$username = $_POST['username'];
-		$password = $_POST['password'];
+		$password = sha1($_POST['password']);
 		$lastname = $_POST['lastname'];
 		$firstname = $_POST['firstname'];
 		$middlename = $_POST['middlename'];
@@ -19,7 +19,8 @@
 		$city = $_POST['city'];
 		$province = $_POST['province'];
 		$created_at = date('Y-m-d');
-
+//        print_r($_POST['password']);
+//        exit;
 		$sql = "INSERT INTO ojt_users (student_id,course,semester,username,password,lastname,firstname,middlename,suffix,email,birthdate,gender,street,barangay,city,province,created_at)
 		values ('".$student_id."','".$course."','".$semester."','".$username."','".$password."','".$lastname."','".$firstname."','".$middlename."','".$suffix."','".$email."','".$birthdate."','".$gender."','".$street."','".$barangay."','".$city."','".$province."','".$created_at."')";
 

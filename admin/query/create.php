@@ -10,13 +10,20 @@
 		values ('".$title."','".$announcement."','".$created_at."')";
 
 		if($conn->query($sql) == TRUE) {
-			echo "<script type='text/javascript'>alert('New Record successfully created.');</script>";
-			header("Location: ../announcement-list.php");
+			echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Successfully Created.\");
+                    if(conf == true){
+                        window.location.href = 'http://localhost/ojtms/admin/announcement-list.php';
+                    }
+                  </script>";
 		} else {
-			echo "<script type='text/javascript'>alert('Error. Please try again.');</script>";
-			header("Location: ../announcement-list.php");
+            echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Error. Please try again.\");
+                    if(conf == true){
+                        window.location.href = 'http://localhost/ojtms/admin/announcement-list.php';
+                    }
+                  </script>";
 		}
 
 		$conn->close();
 	}
-?>
