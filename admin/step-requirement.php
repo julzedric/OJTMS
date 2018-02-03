@@ -1,24 +1,8 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>OJTMS | OJT Master List</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../bower_components/font-awesome/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
-  <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
-  <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  
-
-  <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
-</head>
-<body class="hold-transition skin-blue sidebar-mini">
+<?php
+    $title = 'Profile';
+    require_once('../connection.php');
+    include('../includes/header.php');
+?>
 <div class="wrapper">
 
   <header class="main-header">
@@ -332,97 +316,35 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Administrator
-        <small>Homepage</small>
+        Step Requirements
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#">Step Requirements</a></li>
       </ol>
     </section>
 
     <!-- Main content -->
     <div class="box-body">
-    <h3>Requirments Request</h3>
      <table id="requirements-request" class="table table-bordered table-striped">
         <thead>
         <tr>
-          <th>Date Submitted</th>
-          <th>Requirements</th>
-          <th>Submitted By</th>
-          <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>Jan 20, 2018</td>
-          <td>Application Letter</td>
-          <td>Asisa Jam</td>
-          <td>
-          <button class="btn btn-primary btn-xs">Preview</button>
-          <button class="btn btn-success btn-xs">Approve</button>
-          <button class="btn btn-danger btn-xs">Disapprove</button>
-          </td>
-        </tr>
-        <tr>
-          <td>Jan 19, 2018</td>
-          <td>Application Letter</td>
-          <td>Jhulie Ann</td>
-          <td>
-          <button class="btn btn-primary btn-xs">Preview</button>
-          <button class="btn btn-success btn-xs">Approve</button>
-          <button class="btn btn-danger btn-xs">Disapprove</button>
-          </td>
-        </tr>
-        </tfoot>
-      </table>
-      <hr>
-      <h3>Registration Request</h3>
-      <table id="registration-request" class="table table-bordered table-striped">
-        <thead>
-        <tr>
           <th>Date</th>
-          <th>Name</th>
           <th>Action</th>
         </tr>
         </thead>
         <tbody>
         <tr>
-          <td>Jan 20, 2018</td>
-          <td>Walid Jam</td>
+          <td>Recommendation Letter</td>
           <td>
-          <button class="btn btn-success btn-xs">Approve</button>
+          <button class="btn btn-primary btn-xs">Preview</button>
+          <button class="btn btn-success btn-xs">Download</button>
           </td>
         </tr>
         </tfoot>
       </table>
+      <button class="btn btn-primary">Add new Requirement</button>
     </div>
     <!-- /.content -->
   </div>
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-  </footer>
-</div>
-<script src="../bower_components/jquery/dist/jquery.min.js"></script>
-<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-<script src="../dist/js/adminlte.min.js"></script>
-<script src="../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
-<script src="../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
-<script>
-  $(function () {
-    $('#requirements-request').DataTable()
-    $('#registration-request').DataTable({
-      'paging'      : true,
-      'lengthChange': true,
-      'searching'   : true,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-  })
-</script>
-</body>
-</html>
+<?php include('../includes/footer.php')?>

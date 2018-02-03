@@ -1,21 +1,20 @@
 <?php
-    $title = 'My Documents';
+    $title = 'Downloadable Forms';
     require_once('../connection.php');
     include('../includes/header.php');
 ?>
-
 <div class="wrapper">
 
     <?php include('../includes/students_subheader.php');?>
   <!-- Left side column. contains the logo and sidebar -->
     <?php include('../includes/students_sidebar.php');?>
-  <!-- Content Wrapper. Contains page content -->
+    <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         OJTMS Student 
-        <small>Documents</small>
+        <small>Forms</small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -29,7 +28,7 @@
         <div class="col-xs-8">
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">My Documents</h3>
+              <h3 class="box-title">Downloadable Forms</h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
@@ -42,24 +41,24 @@
                 </thead>
                 <tbody>
                 <tr>
-                  <td>Resume</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
+                  <td>Intial Requirments</td>
+                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
                 </tr>
                 <tr>
-                  <td>Application Letter</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
+                  <td>Student Trainee Evaluation</td>
+                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
                 </tr>
                 <tr>
-                  <td>Registration Form</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
+                  <td>Waiver</td>
+                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
                 </tr>
                 <tr>
-                  <td>Notarized Waiver</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
+                  <td>Medical Certificate</td>
+                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
                 </tr>
                 <tr>
                   <td>Recommendation Letter</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
+                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
                 </tr>
                 </tfoot>
               </table>
@@ -94,28 +93,36 @@
               </div>
             <!-- /.box-header -->
               <div class="box-body">
+                <strong><i class="fa fa-book margin-r-5"></i> Initial Checking of Requriements</strong>
 
-                <?php
-                            $sql = "SELECT * FROM ojt_announcements";
-                            $result = $conn->query($sql);
+                <p class="text-muted">
+                  B.S. in Computer Science from the University of Tennessee at Knoxville
+                </p>
 
-                            if($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc())
-                                {
-                                    echo '
-                                        <strong><i class="fa fa-book margin-r-5"></i>'.$row['title'].'</strong>
+                <hr>
 
-                                        <p class="text-muted">
-                                          '.$row['announcements'].'
-                                        </p>
+                <strong><i class="fa fa-map-marker margin-r-5"></i> Location</strong>
 
-                                        <hr>
+                <p class="text-muted">Malibu, California</p>
 
-                                        ';
-                                }
+                <hr>
 
-                            }
-                        ?>
+                <strong><i class="fa fa-pencil margin-r-5"></i> Skills</strong>
+
+                <p>
+                  <span class="label label-danger">UI Design</span>
+                  <span class="label label-success">Coding</span>
+                  <span class="label label-info">Javascript</span>
+                  <span class="label label-warning">PHP</span>
+                  <span class="label label-primary">Node.js</span>
+                </p>
+
+                <hr>
+
+                <strong><i class="fa fa-file-text-o margin-r-5"></i> Notes</strong>
+
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam fermentum enim neque.</p>
+              </div>
             <!-- /.box-body -->
             </div>
           <!--End Announcement-->
