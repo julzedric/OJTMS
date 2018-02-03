@@ -10,6 +10,8 @@ $dbname = "ojtms";
 
 $conn = mysqli_connect($localhost,$username,$password,$dbname);
 
+session_start();
+
 //check connection
 
 if($conn->connect_error)

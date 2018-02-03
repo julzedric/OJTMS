@@ -5,8 +5,9 @@
 ?>
 <div class="wrapper">
 
-    <?php include('../includes/admin_sidebar.php') ?>
     <?php include('../includes/admin_subheader.php') ?>
+    <?php include('../includes/admin_sidebar.php') ?>
+
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->

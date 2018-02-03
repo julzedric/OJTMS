@@ -5,8 +5,9 @@
 ?>
 <div class="wrapper">
 
-    <?php include('../includes/admin_sidebar.php') ?>
     <?php include('../includes/admin_subheader.php') ?>
+    <?php include('../includes/admin_sidebar.php') ?>
+
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -97,7 +98,7 @@
                                             <td>".$row['title']."</td>
                                             <td>".$row['announcements']."</td>
                                             <td style='text-align: center;'>
-                                            <a href='query/edit_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-primary' title='Edit'><i class='fa fa-pencil'></i></button></a>
+                                            <a href='edit_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-primary' title='Edit'><i class='fa fa-pencil'></i></button></a>
                                             <a href='query/remove.php?id=".$row['id']."'><button type='button' class='btn btn-danger' title='Remove'><i class='fa fa-trash'></i></button></a>
                                             </td>
                                         </tr>";

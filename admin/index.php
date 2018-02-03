@@ -2,18 +2,21 @@
     $title = 'Admin';
     require_once('../connection.php');
     include('../includes/header.php');
+    if (!isset($_SESSION['username']) || $_SESSION['username'] != 'admin'){
+        header("location: ../index.php");
+    }
 ?>
 <div class="wrapper">
 
-    <?php include('../includes/admin_sidebar.php') ?>
     <?php include('../includes/admin_subheader.php') ?>
+    <?php include('../includes/admin_sidebar.php') ?>
 
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
         Administrator
-        <small>Homepage</small>
+        <small>Homepage <?php echo 'session name '.$_SESSION['username']; ?></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>

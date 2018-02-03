@@ -20,10 +20,11 @@ $error = '';
            WHERE username = '".$username."'
            AND password = '".$password."'           
     ");
-
+    $row = mysqli_fetch_assoc($query);
     if($rows = mysqli_num_rows($query)){
         if($rows == 1){
-            if ($rows['is_admin'] == 0){
+            $_SESSION['username'] = $username;
+            if ($row['is_admin'] == 1){
                 header("location: ../admin/index.php");
             }else{
                 header("location: ../student/index.php");
