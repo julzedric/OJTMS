@@ -16,4 +16,6 @@ $results = array();
 while ($row = mysqli_fetch_assoc($query)){
     $results[] = $row;
 }
-echo json_encode($results);
+foreach ($results as $result){
+    echo json_encode($result);
+}

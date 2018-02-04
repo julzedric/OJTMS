@@ -207,7 +207,7 @@
       <div class="modal-dialog">
         
         <div class="modal-content">
-          <form action="models/add_user.php" role="form" method="POST" enctype="multipart/form-data">
+          <form action="models/register.php" role="form" method="POST" enctype="multipart/form-data">
             <div class="modal-header">
               <h4>Registration</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -215,8 +215,7 @@
 
             <div class="modal-body">
               <div class="container">
-              
-              
+                <div id="register-alert"></div>
                 <div class="row">
                 
                 <div class="form-group col-lg-5">
@@ -228,13 +227,6 @@
                     <select class="form-control" name="course" id="Course" >
                       <option value="1">BSIM</option>
                       <option value="2">BSAIT</option>
-                    </select>
-                </div>
-                <div class="form-group col-lg-2"> 
-                  <label for="semester" class="control-label">SEMESTER</label>
-                    <select class="form-control" name="semester" id="semester" >
-                      <option value="1">FIRST</option>
-                      <option value="2">SECOND</option>
                     </select>
                 </div>
                 <div class="form-group col-lg-4">
@@ -308,7 +300,7 @@
             <div class="modal-footer">
                   <div class="col-lg-12">
                     <div class="pull-right">
-                      <button type="submit" class="btn btn-primary">Register</button>
+                      <button type="submit" class="btn btn-primary" id="btn_register">Register</button>
                       <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
                     </div>
                   </div>
@@ -373,7 +365,34 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/agency.min.js"></script>
-
+    <script>
+       //  var alert_container = $('#register-alert');
+       //  var recaptcha = $('#g-recaptcha-response').val();
+       //  var password = $('#reg-pword').val();
+       //  var confirm_password = $('#regcon-pword').val();
+       //
+       // $('#btn_register').click(function () {
+       //     if(recaptcha == ''){
+       //         error_alert(['Captcha is required!']);
+       //         alert('captcha');
+       //     }
+       //     if(password != confirm_password){
+       //         error_alert(['Password do not match!']);
+       //         alert('not match')
+       //     }
+       // });
+       //     $.ajax({
+       //         url:'models/register.php',
+       //         type: 'GET',
+       //         success: function (data) {
+       //          console.log(data);
+       //         }
+       //     });
+       //  var error_alert = function (message) {
+       //      alert_container.text(message);
+       //      return false;
+       //  }
+    </script>
   </body>
 
 </html>
