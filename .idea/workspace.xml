@@ -1,13 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a7e7a7d2-41a2-4ce0-81c9-bf8c9e9544ed" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/models/add_user.php" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/login.php" afterPath="$PROJECT_DIR$/models/login.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/models/register.php" afterPath="$PROJECT_DIR$/models/register.php" />
-    </list>
+    <list default="true" id="a7e7a7d2-41a2-4ce0-81c9-bf8c9e9544ed" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,11 +23,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="login.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="login.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/login.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="96">
-              <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+            <state relative-caret-position="288">
+              <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
               <folding>
                 <marker date="1518101288187" expanded="true" signature="270:391" ph="SELECT * FRO... ojt_users" />
                 <marker date="1518101288187" expanded="true" signature="733:988" ph="..." />
@@ -45,11 +39,41 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="index.php" pinned="false" current-in-tab="false">
+        <entry file="file://$USER_HOME$/Downloads/Compressed/send-email-from-localhost-php/send-email-from-localhost-php/index.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="456">
+              <caret line="19" column="37" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="mailer.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/mailer.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="class.smtp.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/PHPMailer/class.smtp.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="13">
+              <caret line="254" column="8" lean-forward="false" selection-start-line="254" selection-start-column="8" selection-end-line="254" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="register.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/models/register.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="380">
-              <caret line="32" column="34" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="32" selection-end-column="34" />
+              <caret line="32" column="34" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="32" selection-end-column="34" />
               <folding>
                 <marker date="1518100514274" expanded="true" signature="764:829" ph="SELECT `user... ojt_users" />
                 <marker date="1518100514274" expanded="true" signature="1150:1241" ph="..." />
@@ -77,7 +101,7 @@
         <entry file="file://$PROJECT_DIR$/student/my-documents.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="48">
-              <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="38" />
+              <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="38" />
               <folding>
                 <marker date="1517909994133" expanded="true" signature="3773:3804" ph="SELECT * FRO... ojt_announcements" />
                 <marker date="1517909994133" expanded="true" signature="4242:4355" ph="..." />
@@ -104,6 +128,9 @@
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/models/register.php" />
         <option value="$PROJECT_DIR$/models/login.php" />
+        <option value="$USER_HOME$/Downloads/Compressed/send-email-from-localhost-php/send-email-from-localhost-php/index.php" />
+        <option value="$PROJECT_DIR$/mailer.php" />
+        <option value="$PROJECT_DIR$/PHPMailer/class.smtp.php" />
       </list>
     </option>
   </component>
@@ -183,12 +210,7 @@
             <path>
               <item name="OJTMS" type="b2602c69:ProjectViewProjectNode" />
               <item name="OJTMS" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="models" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="OJTMS" type="b2602c69:ProjectViewProjectNode" />
-              <item name="OJTMS" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="student" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="PHPMailer" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -229,12 +251,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1518097955299</updated>
-      <workItem from="1518097956988" duration="3325000" />
+      <workItem from="1518097956988" duration="4872000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3325000" />
+    <option name="totallyTimeSpent" value="4872000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -274,7 +296,7 @@
     <entry file="file://$PROJECT_DIR$/student/my-documents.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
-          <caret line="2" column="38" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="38" />
+          <caret line="2" column="38" lean-forward="false" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="38" />
           <folding>
             <marker date="1517909994133" expanded="true" signature="3773:3804" ph="SELECT * FRO... ojt_announcements" />
             <marker date="1517909994133" expanded="true" signature="4242:4355" ph="..." />
@@ -317,7 +339,7 @@
     <entry file="file://$PROJECT_DIR$/models/register.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
-          <caret line="32" column="34" lean-forward="true" selection-start-line="28" selection-start-column="4" selection-end-line="32" selection-end-column="34" />
+          <caret line="32" column="34" lean-forward="false" selection-start-line="28" selection-start-column="4" selection-end-line="32" selection-end-column="34" />
           <folding>
             <marker date="1518100514274" expanded="true" signature="764:829" ph="SELECT `user... ojt_users" />
             <marker date="1518100514274" expanded="true" signature="1150:1241" ph="..." />
@@ -342,8 +364,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/login.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="96">
-          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state relative-caret-position="288">
+          <caret line="26" column="46" lean-forward="false" selection-start-line="26" selection-start-column="46" selection-end-line="26" selection-end-column="46" />
           <folding>
             <marker date="1518101288187" expanded="true" signature="270:391" ph="SELECT * FRO... ojt_users" />
             <marker date="1518101288187" expanded="true" signature="733:988" ph="..." />
@@ -351,6 +373,30 @@
             <marker date="1518101288187" expanded="true" signature="1326:1594" ph="..." />
             <marker date="1518101288187" expanded="true" signature="1461:1567" ph="{...}" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/Compressed/send-email-from-localhost-php/send-email-from-localhost-php/index.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" column="37" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mailer.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="39" column="0" lean-forward="true" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PHPMailer/class.smtp.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="13">
+          <caret line="254" column="8" lean-forward="false" selection-start-line="254" selection-start-column="8" selection-end-line="254" selection-end-column="8" />
+          <folding />
         </state>
       </provider>
     </entry>
