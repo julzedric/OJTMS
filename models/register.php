@@ -1,5 +1,6 @@
 <?php
 require_once('../connection.php');
+require_once ('../mailer.php');
 
 if($_POST) {
     $error = [];
@@ -81,15 +82,19 @@ if($_POST) {
     }
     $enc_password = sha1($password);
     /*******************VALIDATION ENDS****************************/
+    $ojtmsURI = explode('/', $_SERVER['REQUEST_URI']);
+    $ojtms = 'localhost/'.$ojtmsURI[1];
+    $link = $ojtms .'/verify/'.$email;
+    sendEmail($email, $username, $link);
     $sql = "INSERT INTO ojt_users(
-                student_id, course, semester, username, password, 
+                student_id, course, username, password, 
                 lastname, firstname, middlename, suffix, email, 
                 birthdate, gender, street, barangay, city, province, 
                 created_at )
                 VALUES (
-                '".$student_id."', '".$course."', '".$semester."', '".$username."', 
-                '".$enc_password."', '".$lastname."', '".$firstname."', '".$middlename."', 
-                '".$suffix."', '".$email."', '".$birthdate."', '".$gender."', '".$street."',
+                '".$student_id."', '".$course."', '".$username."', '".$enc_password."',
+                '".$lastname."', '".$firstname."', '".$middlename."', '".$suffix."', '".$email."', 
+                '".$birthdate."', '".$gender."', '".$street."',
                 '".$barangay."', '".$city."', '".$province."', '".$created_at."' 
             )";
 
@@ -97,7 +102,7 @@ if($_POST) {
         echo "<script type='text/javascript'> 
                     var conf= confirm(\"Success ! Please verify your email to continue.\");
                     if(conf == true){
-                        window.history.back();
+                         window.history.back();
                     }
                     </script>";
     } else {

@@ -246,7 +246,7 @@
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="reg-pword" class="control-label" oi>PASSWORD</label>
-                  <input type="password" class="form-control" name="reg-pword" id="reg-pword" required="">
+                  <input type="password" pattern=".{8,}"   required title="8 minimum characters" class="form-control" name="reg-pword" id="reg-pword" required="">
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="regcon-pword" class="control-label" oi>CONFIRM PASSWORD</label>

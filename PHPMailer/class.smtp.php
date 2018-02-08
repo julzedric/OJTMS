@@ -252,7 +252,7 @@ class SMTP
         if(count($options)==0){
             $options["ssl"]=array("verify_peer"=>false,"verify_peer_name"=>false,"allow_self_signed"=>true);
         }
-        
+
         if (is_null($streamok)) {
             $streamok = function_exists('stream_socket_client');
         }

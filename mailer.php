@@ -7,33 +7,41 @@
  */
 require 'PHPMailer/PHPMailerAutoload.php';
 
-$mail = new PHPMailer;
+function sendEmail ($email, $username, $link) {
 
-$mail->isSMTP();                                   // Set mailer to use SMTP
-$mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
-$mail->SMTPAuth = true;                            // Enable SMTP authentication
-$mail->Username = 'crenshawdevelopmentteam@gmail.com';          // SMTP username
-$mail->Password = 'blcakwuilpmmhfnc'; // SMTP password
-$mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;                                 // TCP port to connect to
+    $mail = new PHPMailer;
 
-$mail->setFrom('crenshawdevelopmentteam@gmail.com', 'Crenshaw Development Team');
-$mail->addReplyTo('crenshawdevelopmentteam@gmail.com', 'Crenshaw Development Team');
-$mail->addAddress('juliuscedricjomena@gmail.com');   // Add a recipient
+    $mail->isSMTP();                                   // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                            // Enable SMTP authentication
+    $mail->Username = 'crenshawdevelopmentteam@gmail.com';          // SMTP username
+    $mail->Password = 'blcakwuilpmmhfnc'; // SMTP password
+    $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                 // TCP port to connect to
+
+    $mail->setFrom('crenshawdevelopmentteam@gmail.com', 'Crenshaw Development Team');
+    $mail->addReplyTo('crenshawdevelopmentteam@gmail.com', 'Crenshaw Development Team');
+    $mail->addAddress($email);   // Add a recipient
 //$mail->addCC('cc@example.com');
 //$mail->addBCC('bcc@example.com');
 
-$mail->isHTML(true);  // Set email format to HTML
+    $mail->isHTML(true);  // Set email format to HTML
 
-$bodyContent = '<h1>How to Send Email using PHP in Localhost by CodexWorld</h1>';
-$bodyContent .= '<p>This is the HTML email sent from localhost using PHP script by <b>CodexWorld</b></p>';
+//    $bodyContent = '<h1>OJT Management System</h1>';
+    $bodyContent = '<p>Hi '.$username.'. Thank you for signing up! Please click <a href="'.$link.'">here</a> to activate your account !</p>';
 
-$mail->Subject = 'Email from Localhost by CodexWorld';
-$mail->Body    = $bodyContent;
+    $mail->Subject = 'Email from OJT Management System';
+    $mail->Body    = $bodyContent;
 
-if(!$mail->send()) {
-    echo 'Message could not be sent.';
-    echo 'Mailer Error: ' . $mail->ErrorInfo;
-} else {
-    echo 'Message has been sent';
+    if(!$mail->send()) {
+        echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Error. Couldn't Establish connection. Please try again..\");
+                    if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
+        exit;
+        //echo 'Mailer Error: ' . $mail->ErrorInfo;
+    }
+
 }
