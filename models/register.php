@@ -7,8 +7,9 @@ if($_POST) {
     $course = $_POST['course'];
     $username = $_POST['username'];
     $password = $_POST['reg-pword'];
-    $lastname = $_POST['regcon-pword'];
+    $confirm_password = $_POST['regcon-pword'];
     $firstname = $_POST['firstname'];
+    $lastname = $_POST['lastname'];
     $middlename = $_POST['middlename'];
     $suffix = $_POST['suffix'];
     $email = $_POST['email'];
@@ -19,6 +20,7 @@ if($_POST) {
     $city = $_POST['city'];
     $province = $_POST['province'];
     $created_at = date('Y-m-d');
+    $captcha = $_POST['g-recaptcha-response'];
 
     $query = mysqli_query($conn, "
            SELECT  `username`,`email`,`student_id`
@@ -29,20 +31,83 @@ if($_POST) {
         $results[] = $row;
     }
     foreach ($results as $result){
+        /*******************VALIDATION****************************/
+
         if ($result['username'] == $username){
-            echo json_encode('username Already taken');
+            echo "<script type='text/javascript'> 
+                    var conf = confirm(\"Username Already taken.\");
+                   if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
+            exit;
+        }
+        if ($result['email'] == $email){
+            echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Email Already taken.\");
+                    if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
+            exit;
+        }
+        if ($result['username'] == $username){
+            echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Username Already taken.\");
+                    if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
+            exit;
+        }
+        if ($password != $confirm_password){
+            echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Password do not match.\");
+                    if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
+            exit;
+        }
+        if ($captcha == ''){
+            echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Captcha is required.\");
+                    if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
             exit;
         }
     }
-    $sql = "INSERT INTO ojt_users (student_id,course,semester,username,password,lastname,firstname,middlename,suffix,email,birthdate,gender,street,barangay,city,province,created_at)
-		values ('".$student_id."','".$course."','".$semester."','".$username."','".$password."','".$lastname."','".$firstname."','".$middlename."','".$suffix."','".$email."','".$birthdate."','".$gender."','".$street."','".$barangay."','".$city."','".$province."','".$created_at."')";
+    $enc_password = sha1($password);
+    /*******************VALIDATION ENDS****************************/
+    $sql = "INSERT INTO ojt_users(
+                student_id, course, semester, username, password, 
+                lastname, firstname, middlename, suffix, email, 
+                birthdate, gender, street, barangay, city, province, 
+                created_at )
+                VALUES (
+                '".$student_id."', '".$course."', '".$semester."', '".$username."', 
+                '".$enc_password."', '".$lastname."', '".$firstname."', '".$middlename."', 
+                '".$suffix."', '".$email."', '".$birthdate."', '".$gender."', '".$street."',
+                '".$barangay."', '".$city."', '".$province."', '".$created_at."' 
+            )";
 
     if($conn->query($sql) == TRUE) {
-        echo "<script type='text/javascript'>alert('New Record successfully created.');</script>";
-        header("Location: ../index.php");
+        echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Success ! Please verify your email to continue.\");
+                    if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
     } else {
-        echo "<script type='text/javascript'>alert('Error. Please try again.');</script>";
-        header("Location: ../index.php");
+        echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Error. Please try again..\");
+                    if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
+        exit;
     }
 
     $conn->close();

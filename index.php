@@ -1,3 +1,11 @@
+<?php
+ require_once('connection.php');
+ if (isset($_SESSION['username']) && $_SESSION['is_admin'] == 0){
+     header("location: student/index.php");
+ }elseif (isset($_SESSION['username']) && $_SESSION['is_admin'] == 1){
+     header("location: admin/index.php");
+ }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -28,7 +36,6 @@
   </head>
 
   <body id="page-top">
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
       <div class="container">
@@ -207,7 +214,7 @@
       <div class="modal-dialog">
         
         <div class="modal-content">
-          <form action="models/register.php" role="form" method="POST" enctype="multipart/form-data">
+          <form action="models/register.php" method="POST" enctype="multipart/form-data">
             <div class="modal-header">
               <h4>Registration</h4>
               <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -221,6 +228,8 @@
                 <div class="form-group col-lg-5">
                   <label for="studentid" class="control-label">STUDENT ID</label>
                   <input type="text" class="form-control" name="student_id" id="studentid" placeholder="00000-0000" maxlength="10" required="">
+                    <?php if(isset($_POST['student_id'])) {
+                        echo htmlentities ($_POST['student_id']); }?>
                 </div>
                 <div class="form-group col-lg-5">
                   <label for="course" class="control-label" >COURSE</label>
@@ -232,6 +241,8 @@
                 <div class="form-group col-lg-4">
                   <label for="username" class="control-label" oi>USERNAME</label>
                   <input type="text" class="form-control" name="username" id="username" required="">
+                    <?php if(isset($_POST['username'])) {
+                        echo htmlentities ($_POST['username']); }?>
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="reg-pword" class="control-label" oi>PASSWORD</label>
@@ -248,10 +259,14 @@
                 <div class="form-group col-lg-3">
                   <label for="firstname" class="control-label" >FIRST NAME</label>
                   <input type="text" class="form-control" name="firstname" id="firstname" required="">
+                    <?php if(isset($_POST['firstname'])) {
+                        echo htmlentities ($_POST['firstname']); }?>
                 </div>
                 <div class="form-group col-lg-3">
                   <label for="middlename" class="control-label" >MIDDLE NAME</label>
                   <input type="text" class="form-control" name="middlename" id="middlename">
+                    <?php if(isset($_POST['middlename'])) {
+                        echo htmlentities ($_POST['middlename']); }?>
                 </div>
                 <div class="form-group col-lg-3">
                   <label for="suffix" class="control-label" >SUFFIX</label>
@@ -260,10 +275,14 @@
                 <div class="form-group col-lg-5">
                   <label for="email" class="control-label">EMAIL</label>
                   <input type="email" class="form-control" name="email" id="email" required="">
+                    <?php if(isset($_POST['email'])) {
+                        echo htmlentities ($_POST['email']); }?>
                 </div>
                 <div class="form-group col-lg-5">
                   <label for="birthdate" class="control-label">BIRTH DATE</label>
                   <input type="date" class="form-control" name="birthdate" id="birthdate" required="">
+                    <?php if(isset($_POST['birthdate'])) {
+                        echo htmlentities ($_POST['birthdate']); }?>
                 </div>
                 <div class="form-group col-lg-2"> 
                   <label for="gender" class="control-label">GENDER</label>
@@ -271,22 +290,32 @@
                       <option value="MALE">MALE</option>
                       <option value="FEMALE">FEMALE</option>
                     </select>
+                    <?php if(isset($_POST['gender'])) {
+                        echo htmlentities ($_POST['gender']); }?>
                 </div>
                 <div class="form-group col-lg-12">
                   <label for="street" class="control-label">STREET</label>
                   <input type="text" class="form-control" placeholder="Block No. / House No. / Street" name="street" id="street">
+                    <?php if(isset($_POST['street'])) {
+                        echo htmlentities ($_POST['street']); }?>
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="barangay" class="control-label">BARANGAY</label>
                   <input type="text" class="form-control" name="barangay" id="barangay">
+                    <?php if(isset($_POST['barangay'])) {
+                        echo htmlentities ($_POST['barangay']); }?>
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="city" class="control-label">CITY</label>
                   <input type="text" class="form-control" name="city" id="city">
+                    <?php if(isset($_POST['city'])) {
+                        echo htmlentities ($_POST['city']); }?>
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="province" class="control-label">PROVINCE</label>
                   <input type="text" class="form-control" name="province" id="province">
+                    <?php if(isset($_POST['province'])) {
+                        echo htmlentities ($_POST['province']); }?>
                 </div>
 
                 <div class="form-group col-lg-4">
@@ -365,34 +394,6 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/agency.min.js"></script>
-    <script>
-       //  var alert_container = $('#register-alert');
-       //  var recaptcha = $('#g-recaptcha-response').val();
-       //  var password = $('#reg-pword').val();
-       //  var confirm_password = $('#regcon-pword').val();
-       //
-       // $('#btn_register').click(function () {
-       //     if(recaptcha == ''){
-       //         error_alert(['Captcha is required!']);
-       //         alert('captcha');
-       //     }
-       //     if(password != confirm_password){
-       //         error_alert(['Password do not match!']);
-       //         alert('not match')
-       //     }
-       // });
-       //     $.ajax({
-       //         url:'models/register.php',
-       //         type: 'GET',
-       //         success: function (data) {
-       //          console.log(data);
-       //         }
-       //     });
-       //  var error_alert = function (message) {
-       //      alert_container.text(message);
-       //      return false;
-       //  }
-    </script>
   </body>
 
 </html>
