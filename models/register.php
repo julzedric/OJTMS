@@ -81,18 +81,19 @@ if($_POST) {
         }
     }
     $enc_password = sha1($password);
+    $token = md5(uniqid(rand(), true));
     /*******************VALIDATION ENDS****************************/
     $ojtmsURI = explode('/', $_SERVER['REQUEST_URI']);
     $ojtms = 'localhost/'.$ojtmsURI[1];
-    $link = $ojtms .'/verify/'.$email;
+    $link = $ojtms .'/verify.php?'.'token='.$token;
     sendEmail($email, $username, $link);
     $sql = "INSERT INTO ojt_users(
-                student_id, course, username, password, 
+                student_id, course, username, password, token,
                 lastname, firstname, middlename, suffix, email, 
                 birthdate, gender, street, barangay, city, province, 
                 created_at )
                 VALUES (
-                '".$student_id."', '".$course."', '".$username."', '".$enc_password."',
+                '".$student_id."', '".$course."', '".$username."', '".$enc_password."','".$token."',
                 '".$lastname."', '".$firstname."', '".$middlename."', '".$suffix."', '".$email."', 
                 '".$birthdate."', '".$gender."', '".$street."',
                 '".$barangay."', '".$city."', '".$province."', '".$created_at."' 

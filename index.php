@@ -240,7 +240,7 @@
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="username" class="control-label" oi>USERNAME</label>
-                  <input type="text" class="form-control" name="username" id="username" required="">
+                  <input type="text" pattern=".{5,}"   required title="5 minimum characters"  class="form-control" name="username" id="username" required="">
                     <?php if(isset($_POST['username'])) {
                         echo htmlentities ($_POST['username']); }?>
                 </div>
