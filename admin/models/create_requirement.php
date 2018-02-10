@@ -5,7 +5,8 @@
 		$name = $_POST['name'];
 		$created_at = date('Y-m-d');
 		$description = $_POST['description'];
-		$is_downloadable = $_POST['downloadable'];
+		$type = $_POST['type'];
+		$step = $_POST['step'];
 
 		$target_dir = "../../assets/uploads/requirements/";
 		$file = $_FILES['file']['name'];
@@ -28,8 +29,8 @@
 
 		if($uploadOk == 1) {
 			if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$filename)) {
-				$sql = "INSERT INTO ojt_requirements_list (name,file,description,created_at,is_downloadable)
-				values ('".$name."','".$filename."','".$description."','".$created_at."','".$is_downloadable."')";
+				$sql = "INSERT INTO ojt_requirements_list (name,file,description,created_at,type,step)
+				values ('".$name."','".$filename."','".$description."','".$created_at."','".$type."','".$step."')";
 
 				if($conn->query($sql) == TRUE) {
 					echo "<script type='text/javascript'> 

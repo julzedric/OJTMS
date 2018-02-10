@@ -5,7 +5,7 @@
 		$id = $_POST['id'];
 		$name = $_POST['name'];
 		$description = $_POST['description'];
-		$is_downloadable = $_POST['downloadable'];
+		$type = $_POST['type'];
 		$updated_at = date('Y-m-d');
 
 		$target_dir = "../../assets/uploads/requirements/";
@@ -30,7 +30,7 @@
 		if($uploadOk == 1) {
 			if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$filename)) {
 				$sql = "UPDATE ojt_requirements_list SET name =  '".$name."', 
-				description = '".$description."', file = '".$filename."', is_downloadable = '".$is_downloadable."',
+				description = '".$description."', file = '".$filename."', type = '".$type."',
 				updated_at = '".$updated_at."' where id = '".$id."' ";
 
 				if($conn->query($sql) === TRUE) {
