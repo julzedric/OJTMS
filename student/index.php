@@ -48,7 +48,7 @@
                   <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="box-body">
                       <!-- List -->
-                      <form>
+                      <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
                         <?php
                             $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 1";
                             $result = $conn->query($sql);
@@ -57,6 +57,7 @@
                                 while($row = $result->fetch_assoc())
                                 {
                                   echo'
+                                    <input type="hidden" name="requirement_id" value="'.$row['id'].'">
                                     <ul>
                                       <li>'
                                         .$row['name'];
@@ -89,7 +90,7 @@
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="box-body">
                       <!-- List -->
-                      <form>
+                      <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
                           <?php
                                 $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 2";
                                 $result = $conn->query($sql);
@@ -98,11 +99,12 @@
                                     while($row = $result->fetch_assoc())
                                     {
                                       echo'
+                                        <input type="hidden" name="requirement_id" value="'.$row['id'].'">
                                         <ul>
                                           <li>'
                                             .$row['name'];
                                           if($row['is_online'] == 1){
-                                            echo '<input type="file" name="name" class="pull-right">';
+                                            echo '<input type="file" name="name'.$row['id'].'" class="pull-right">';
                                           }
                                       echo '</li>
                                         </ul>';
@@ -130,7 +132,7 @@
                   <div id="collapseThree" class="panel-collapse collapse">
                     <div class="box-body">
                       <!-- List -->
-                      <form>
+                      <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
                         <?php
                               $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 3";
                               $result = $conn->query($sql);
@@ -139,6 +141,7 @@
                                   while($row = $result->fetch_assoc())
                                   {
                                     echo'
+                                      <input type="hidden" name="requirement_id" value="'.$row['id'].'">
                                       <ul>
                                         <li>'
                                           .$row['name'];
@@ -171,7 +174,7 @@
                   <div id="collapseFour" class="panel-collapse collapse">
                     <div class="box-body">
                       <!-- List -->
-                      <form>
+                      <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
                         <?php
                             $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 4";
                             $result = $conn->query($sql);
@@ -180,6 +183,7 @@
                                 while($row = $result->fetch_assoc())
                                 {
                                   echo'
+                                    <input type="hidden" name="requirement_id" value="'.$row['id'].'">
                                     <ul>
                                       <li>'
                                         .$row['name'];
