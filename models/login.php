@@ -21,24 +21,30 @@ require_once '../connection.php';
     $row = mysqli_fetch_assoc($query);
     if($rows = mysqli_num_rows($query)){
         if($rows == 1){
-            $_SESSION['username'] = $username;
-            $_SESSION['is_admin'] = $row['is_admin'];
             if ($row['is_admin'] == 1){
                 header("location: ../admin/index.php");
             }else{
-                header("location: ../student/index.php");
+                if($row['is_validated'] == 0){
+                    echo "<script type='text/javascript'> 
+                    var conf= confirm(\"Please confirm your email to continue.\");
+                    if(conf == true){
+                        window.location.href = 'http://localhost/ojtms/index.php';
+                    }
+                  </script>";
+                    exit;
+                }else{
+                    header("location: ../student/index.php");
+                }
             }
+            $_SESSION['username'] = $username;
+            $_SESSION['is_admin'] = $row['is_admin'];
         }
-
     mysqli_close($conn);
-
     }else{
-
         echo "<script type='text/javascript'> 
                     var conf= confirm(\"Username or Password is incorrect please try again.\");
                     if(conf == true){
                         window.location.href = 'http://localhost/ojtms/index.php';
                     }
                   </script>";
-
     }
