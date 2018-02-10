@@ -3,7 +3,15 @@
   <component name="ChangeListManager">
     <list default="true" id="a7e7a7d2-41a2-4ce0-81c9-bf8c9e9544ed" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
+=======
       <change beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
+<<<<<<< HEAD
+=======
+      <change beforePath="$PROJECT_DIR$/models/register.php" afterPath="$PROJECT_DIR$/models/register.php" />
+      <change beforePath="$PROJECT_DIR$/verify.php" afterPath="$PROJECT_DIR$/verify.php" />
+>>>>>>> 22f0d9b9c15240b41c3f7cea87f4f960c75007ee
+>>>>>>> ff58c9c1d5d4b412bc115333581f65be3ea7b2f1
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -139,9 +147,15 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds" extendedState="6">
+<<<<<<< HEAD
+    <option name="x" value="537" />
+    <option name="width" value="836" />
+    <option name="height" value="735" />
+=======
     <option name="x" value="676" />
     <option name="width" value="697" />
     <option name="height" value="745" />
+>>>>>>> 22f0d9b9c15240b41c3f7cea87f4f960c75007ee
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -243,11 +257,22 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="16284000" />
+=======
+<<<<<<< HEAD
+    <option name="totallyTimeSpent" value="22104000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+=======
+    <option name="totallyTimeSpent" value="14977000" />
+>>>>>>> ff58c9c1d5d4b412bc115333581f65be3ea7b2f1
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
+>>>>>>> 22f0d9b9c15240b41c3f7cea87f4f960c75007ee
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17935579" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
