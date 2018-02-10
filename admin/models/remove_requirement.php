@@ -10,14 +10,14 @@
 				echo "<script type='text/javascript'> 
 						var conf= confirm(\"Successfully Remove.\");
 						if(conf == true){
-							window.location.href = 'http://localhost/ojtms/admin/step-requirement.php';
+							window.location.href = 'http://localhost/ojtms/admin/requirements.php';
 						}
 					</script>";
 			} else {
 				echo "<script type='text/javascript'> 
 						var conf= confirm(\"Error deleting record.\");
 						if(conf == true){
-							window.location.href = 'http://localhost/ojtms/admin/step-requirement.php';
+							window.location.href = 'http://localhost/ojtms/admin/requirements.php';
 						}
 					</script>";
 			}
