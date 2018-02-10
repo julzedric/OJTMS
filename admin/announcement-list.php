@@ -27,7 +27,7 @@
     <!-- Main content -->
     <div class="box-body">
         <div class="margin-bottom-20">
-            <button class="btn btn-primary" onclick="view_form();">Add new Announcement</button>
+            <button class="btn btn-primary" onclick="view_form();">Add New Announcement</button>
         </div>
 
         <div class="box box-primary collapse" style="display: hidden;"> 

@@ -26,7 +26,7 @@
     <!-- Main content -->
     <div class="box-body">
         <div class="margin-bottom-20">
-            <button class="btn btn-primary" onclick="view_form();">Add new Requirement</button>
+            <button class="btn btn-primary" onclick="view_form();">Add New Requirement</button>
         </div>
 
         <div class="box box-primary collapse" style="display: hidden;"> 
@@ -123,7 +123,7 @@
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT * FROM ojt_requirements_list";
+                            $sql = "SELECT * FROM ojt_requirements_list ORDER BY id DESC";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
