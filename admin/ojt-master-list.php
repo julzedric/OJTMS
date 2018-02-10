@@ -78,8 +78,8 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php
-                            $sql = "SELECT * FROM ojt_users";
+                        <!-- <?php
+                            $sql = "SELECT id , concat(firstname,) FROM ojt_users";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
@@ -88,14 +88,14 @@
                                     echo "
                                         <tr>
                                             <td>".$row['student_id']."</td>
-                                            <td>".$row['firstname'];if(isset($row['middlename'])){" "$row['middlename']} echo " ".$row['lastname']."</td>
+                                            <td>".$row['firstname'].;if(isset($row['middlename'])){" ".$row['middlename'].} echo " ".$row['lastname']."</td>
                                             <td>".$row['file']."</td>
                                     
                                         </tr>";
                                 }
 
                             }
-                        ?>
+                        ?> -->
                         <!-- <tr>
                             <td>2013-000E1-00</td>
                             <td>Walid Jamarin</td>
