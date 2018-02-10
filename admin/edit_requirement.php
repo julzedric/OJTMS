@@ -165,12 +165,12 @@
         }
     }
 
-    $(function () {
+    // $(function () {
         
-        var value = $("#type").val();
-        alert(value);
-        show_step(value);
+    //     var value = $("#type").val();
+    //     alert(value);
+    //     show_step(value);
 
-    })
+    // })
 </script>
 <?php include('../includes/footer.php')?>
