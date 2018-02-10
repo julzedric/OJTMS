@@ -72,14 +72,14 @@
                         <tr>
                             <th>Student ID</th>
                             <th>Name</th>
-                            <th>Course and Section</th>
+                            <th>Course</th>
                             <th>Email Adress</th>
                             <th style='text-align: center;'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <!-- <?php
-                            $sql = "SELECT id , concat(firstname,) FROM ojt_users";
+                        <?php
+                            $sql = "SELECT user_id, concat(firstname, ' ',IFNULL(middlename, ' '),' ',lastname ) as name, student_id, course, email from ojt_users";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
@@ -88,14 +88,17 @@
                                     echo "
                                         <tr>
                                             <td>".$row['student_id']."</td>
-                                            <td>".$row['firstname'].;if(isset($row['middlename'])){" ".$row['middlename'].} echo " ".$row['lastname']."</td>
-                                            <td>".$row['file']."</td>
-                                    
+                                            <td>".$row['name']."</td>
+                                            <td>".$row['course']."</td>
+                                            <td>".$row['email']."</td>
+                                            <td>
+                                                <a href='#student_info' data-toggle='modal'><button type='button' class='btn btn-info btn-sm' title='View Profile'><i class='fa fa-eye'></i></button></a>
+                                                <a href='#'><button type='button' class='btn btn-success btn-sm' title='Send Message'><i class='fa fa-envelope'></i></button></a></td>
                                         </tr>";
                                 }
 
                             }
-                        ?> -->
+                        ?>
                         <!-- <tr>
                             <td>2013-000E1-00</td>
                             <td>Walid Jamarin</td>
