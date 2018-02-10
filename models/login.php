@@ -38,6 +38,7 @@ require_once '../connection.php';
             }
             $_SESSION['username'] = $username;
             $_SESSION['is_admin'] = $row['is_admin'];
+            $_SESSION['stud_id'] = $row['student_id'];
         }
     mysqli_close($conn);
     }else{

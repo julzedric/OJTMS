@@ -48,7 +48,8 @@
                   <div id="collapseOne" class="panel-collapse collapse in">
                     <div class="box-body">
                       <!-- List -->
-                      <?php
+                      <form>
+                        <?php
                             $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 1";
                             $result = $conn->query($sql);
 
@@ -57,15 +58,23 @@
                                 {
                                   echo'
                                     <ul>
-                                      <li>'.$row['name'].'</li>
-                                    </ul>
-                                  ';
+                                      <li>'
+                                        .$row['name'];
+                                      if($row['is_online'] == 1){
+                                        echo '<input type="file" name="name" class="pull-right">';
+                                      }
+                                  echo '</li>
+                                    </ul>';
                                 }
+                                echo '<br>
+                                          <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
+                                          <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
                               }
                             else{
                                 echo "No records found.";
                               }
-                       ?>
+                        ?>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -80,24 +89,33 @@
                   <div id="collapseTwo" class="panel-collapse collapse">
                     <div class="box-body">
                       <!-- List -->
-                      <?php
-                            $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 2";
-                            $result = $conn->query($sql);
+                      <form>
+                          <?php
+                                $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 2";
+                                $result = $conn->query($sql);
 
-                            if($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc())
-                                {
-                                  echo'
-                                    <ul>
-                                      <li>'.$row['name'].'</li>
-                                    </ul>
-                                  ';
-                                }
-                              }
-                            else{
-                                echo "No records found.";
-                              }
-                       ?>
+                                if($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc())
+                                    {
+                                      echo'
+                                        <ul>
+                                          <li>'
+                                            .$row['name'];
+                                          if($row['is_online'] == 1){
+                                            echo '<input type="file" name="name" class="pull-right">';
+                                          }
+                                      echo '</li>
+                                        </ul>';
+                                    }
+                                    echo '<br>
+                                          <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
+                                          <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
+                                  }
+                                else{
+                                    echo "No records found.";
+                                  }
+                           ?>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -112,24 +130,33 @@
                   <div id="collapseThree" class="panel-collapse collapse">
                     <div class="box-body">
                       <!-- List -->
-                      <?php
-                            $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 3";
-                            $result = $conn->query($sql);
+                      <form>
+                        <?php
+                              $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 3";
+                              $result = $conn->query($sql);
 
-                            if($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc())
-                                {
-                                  echo'
-                                    <ul>
-                                      <li>'.$row['name'].'</li>
-                                    </ul>
-                                  ';
+                              if($result->num_rows > 0) {
+                                  while($row = $result->fetch_assoc())
+                                  {
+                                    echo'
+                                      <ul>
+                                        <li>'
+                                          .$row['name'];
+                                        if($row['is_online'] == 1){
+                                          echo '<input type="file" name="name" class="pull-right">';
+                                        }
+                                    echo '</li>
+                                      </ul>';
+                                  }
+                                  echo '<br>
+                                          <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
+                                          <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
                                 }
-                              }
-                            else{
-                                echo "No records found.";
-                              }
-                       ?>
+                              else{
+                                  echo "No records found.";
+                                }
+                         ?>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -144,7 +171,8 @@
                   <div id="collapseFour" class="panel-collapse collapse">
                     <div class="box-body">
                       <!-- List -->
-                      <?php
+                      <form>
+                        <?php
                             $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 4";
                             $result = $conn->query($sql);
 
@@ -153,63 +181,27 @@
                                 {
                                   echo'
                                     <ul>
-                                      <li>'.$row['name'].'</li>
-                                    </ul>
-                                  ';
+                                      <li>'
+                                        .$row['name'];
+                                      if($row['is_online'] == 1){
+                                        echo '<input type="file" name="name" class="pull-right">';
+                                      }
+                                  echo '</li>
+                                    </ul>';
                                 }
+                                echo '<br>
+                                          <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
+                                          <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
                               }
                             else{
                                 echo "No records found.";
                               }
-                       ?>
+                        ?>
+                      </form>    
                     </div>
                   </div>
                 </div>
               </div>
-              <table id="example2" class="table table-bordered table-hover">
-                <thead>
-                <tr>
-                  <th>Document Name</th>
-                  <th>Date</th>
-                  <th>Status</th>
-                  <th>Action</th>             
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                  <td>Resume</td>
-                  <td>January 19, 2018</td>
-                  <td><span class="label label-success">Approved</span></td>
-                  <td> </td>
-                </tr>
-                <tr>
-                  <td>Application Letter</td>
-                  <td>January 19, 2018</td>
-                  <td><span class="label label-danger">Pending</span></td>
-                  <td>
-                    <button type="button" class="btn btn-block btn-primary btn-xs">Submit</button>
-                  </td>
-                </tr>
-                <tr>
-                  <td>Registration Form</td>
-                  <td>January 19, 2018</td>
-                  <td><span class="label label-danger">Pending</span></td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs">Submit</button></td>
-                </tr>
-                <tr>
-                  <td>Notarized Waiver</td>
-                  <td>January 19, 2018</td>
-                  <td><span class="label label-danger">Pending</span></td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs">Submit</button></td>
-                </tr>
-                <tr>
-                  <td>Recommendation Letter</td>
-                  <td>January 19, 2018</td>
-                  <td><span class="label label-danger">Pending</span></td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs">Submit</button></td>
-                </tr>
-                </tfoot>
-              </table>
             </div>
             <!-- /.box-body -->
           </div>
