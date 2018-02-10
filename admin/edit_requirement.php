@@ -1,5 +1,5 @@
 <?php
-    $title = 'Steps Requirement';
+    $title = 'Requirements';
     require_once('../connection.php');
     include('../includes/header.php');
     if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
@@ -26,11 +26,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Step Requirements
+        Requirements
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li><a href="#">Step Requirements</a></li>
+        <li><a href="#">Requirements</a></li>
       </ol>
     </section>
 
@@ -139,7 +139,7 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div id="message"></div> 
                             <div id="actionButtons" class="pull-right">
-                                <button type="reset" id="btn_cancel" onclick="clearfield()" class="btn btn-squared btn-default btn-o">
+                                <button type="reset" id="btn_cancel" onclick="cancel()" class="btn btn-squared btn-default btn-o">
                                     Cancel
                                 </button>
                                 <button type="submit" class="btn btn-squared btn-primary" id="btnSubmit">
@@ -163,6 +163,10 @@
             $("#steps").hide();
             $("#step").val('');
         }
+    }
+
+    function cancel() {
+        window.location.href = 'http://localhost/ojtms/admin/requirements.php';
     }
 
     // $(function () {
