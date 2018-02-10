@@ -27,6 +27,9 @@
 <script>
     $(function () {
 
+        var value = $("#type").val();
+        show_step(value);
+
         $('#example1').DataTable()
         $('#example2').DataTable({
             'paging'      : true,

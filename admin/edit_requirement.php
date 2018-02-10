@@ -87,8 +87,15 @@
                         </div>
                         <div class="col-md-6">  
                             <select class="form-control" id="type" name="type" onchange="show_step($(this).val())">
-                                <option value="0">Downloadable</option>
-                                <option value="1">Steps Requirement</option>
+                                <?php 
+                                    if($data['type'] == 0){
+                                        echo "<option value='0' selected='true'>Downloadable</option>
+                                            <option value='1'>Steps Requirement</option>";
+                                    } else {
+                                        echo "<option value='0'>Downloadable</option>
+                                            <option value='1' selected='true'>Steps Requirement</option>";
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -98,11 +105,33 @@
                         </div>
                         <div class="col-md-6">  
                             <select class="form-control" id="step" name="step">
-                                <option value="">--Select--</option>
-                                <option value="1">Step 1</option>
-                                <option value="2">Step 2</option>
-                                <option value="3">Step 3</option>
-                                <option value="4">Step 4</option>
+                                <?php 
+                                    if($data['step'] == 1){
+                                        echo "<option value='>--Select--</option>
+                                            <option value='1' selected='true'>Step 1</option>
+                                            <option value='2'>Step 2</option>
+                                            <option value='3'>Step 3</option>
+                                            <option value='4'>Step 4</option>";
+                                    } elseif($data['step'] == 2) {
+                                        echo "<option value='>--Select--</option>
+                                            <option value='1'>Step 1</option>
+                                            <option value='2' selected='true'>Step 2</option>
+                                            <option value='3'>Step 3</option>
+                                            <option value='4'>Step 4</option>";
+                                    } elseif($data['step'] == 3){
+                                        echo "<option value='>--Select--</option>
+                                            <option value='1'>Step 1</option>
+                                            <option value='2'>Step 2</option>
+                                            <option value='3' selected='true'>Step 3</option>
+                                            <option value='4'>Step 4</option>";
+                                    } elseif($data['step'] == 4){
+                                        echo "<option value='>--Select--</option>
+                                            <option value='1'>Step 1</option>
+                                            <option value='2'>Step 2</option>
+                                            <option value='3'>Step 3</option>
+                                            <option value='4' selected='true'>Step 4</option>";
+                                    }
+                                ?>
                             </select>
                         </div>
                     </div>
@@ -135,5 +164,13 @@
             $("#step").val('');
         }
     }
+
+    $(function () {
+        
+        var value = $("#type").val();
+        alert(value);
+        show_step(value);
+
+    })
 </script>
 <?php include('../includes/footer.php')?>
