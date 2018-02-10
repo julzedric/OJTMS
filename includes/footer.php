@@ -41,6 +41,7 @@
         $('#step3').DataTable()
         $('#step4').DataTable()
         $('#requirements-request').DataTable()
+        $('#masterlist').DataTable()
         $('#registration-request').DataTable({
             'paging'      : true,
             'lengthChange': true,

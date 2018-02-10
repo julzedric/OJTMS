@@ -27,7 +27,7 @@
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">MAIN NAVIGATION</li>
             <li class="<?php if ($title == 'OJT Master List') {echo 'active'; }else{ echo ''; } ?>">
-                <a href="ojt-master-list.php">
+                <a href="index.php">
                     <i class="fa fa-users"></i> <span>OJT Master List</span>
                 </a>
             </li>
