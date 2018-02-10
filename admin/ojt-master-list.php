@@ -78,7 +78,25 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                        <?php
+                            $sql = "SELECT * FROM ojt_users";
+                            $result = $conn->query($sql);
+
+                            if($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc())
+                                {
+                                    echo "
+                                        <tr>
+                                            <td>".$row['student_id']."</td>
+                                            <td>".$row['firstname'];if(isset($row['middlename'])){" "$row['middlename']} echo " ".$row['lastname']."</td>
+                                            <td>".$row['file']."</td>
+                                    
+                                        </tr>";
+                                }
+
+                            }
+                        ?>
+                        <!-- <tr>
                             <td>2013-000E1-00</td>
                             <td>Walid Jamarin</td>
                             <td>Bachelor of Science in Information Technology</td>
@@ -87,7 +105,7 @@
                                 <a href='#student_info' data-toggle="modal"><button type='button' class='btn btn-info btn-sm' title='View Profile'><i class='fa fa-eye'></i></button></a>
                                 <a href='#'><button type='button' class='btn btn-success btn-sm' title='Send Message'><i class='fa fa-envelope'></i></button></a>
                             </td>
-                        </tr>
+                        </tr> -->
                     </tbody>
                 </table>
             </div>
