@@ -223,41 +223,42 @@
             <div class="modal-body">
               <div class="container">
                 <div id="register-alert"></div>
+                  <p>Required Fields <span style="color:red">(*)</span></p>
                 <div class="row">
                 
                 <div class="form-group col-lg-5">
-                  <label for="studentid" class="control-label">STUDENT ID</label>
+                  <label for="studentid" class="control-label">STUDENT ID <span style="color:red">*</span></label>
                   <input type="text" class="form-control" name="student_id" id="studentid" placeholder="00000-0000" maxlength="10" required="">
                     <?php if(isset($_POST['student_id'])) {
                         echo htmlentities ($_POST['student_id']); }?>
                 </div>
                 <div class="form-group col-lg-5">
-                  <label for="course" class="control-label" >COURSE</label>
+                  <label for="course" class="control-label" >COURSE <span style="color:red">*</span></label>
                     <select class="form-control" name="course" id="Course" >
                       <option value="1">BSIM</option>
                       <option value="2">BSAIT</option>
                     </select>
                 </div>
                 <div class="form-group col-lg-4">
-                  <label for="username" class="control-label" oi>USERNAME</label>
+                  <label for="username" class="control-label" oi>USERNAME <span style="color:red">*</span></label>
                   <input type="text" pattern=".{5,}"   required title="5 minimum characters"  class="form-control" name="username" id="username" required="">
                     <?php if(isset($_POST['username'])) {
                         echo htmlentities ($_POST['username']); }?>
                 </div>
                 <div class="form-group col-lg-4">
-                  <label for="reg-pword" class="control-label" oi>PASSWORD</label>
+                  <label for="reg-pword" class="control-label" oi>PASSWORD <span style="color:red">*</span></label>
                   <input type="password" pattern=".{8,}"   required title="8 minimum characters" class="form-control" name="reg-pword" id="reg-pword" required="">
                 </div>
                 <div class="form-group col-lg-4">
-                  <label for="regcon-pword" class="control-label" oi>CONFIRM PASSWORD</label>
+                  <label for="regcon-pword" class="control-label" oi>CONFIRM PASSWORD <span style="color:red">*</span></label>
                   <input type="password" class="form-control" name="regcon-pword" id="regcon-pword" required="">
                 </div>
                 <div class="form-group col-lg-3">
-                  <label for="lastname" class="control-label" oi>LAST NAME</label>
+                  <label for="lastname" class="control-label" oi>LAST NAME <span style="color:red">*</span></label>
                   <input type="text" class="form-control" name="lastname" id="lastname" required="">
                 </div>
                 <div class="form-group col-lg-3">
-                  <label for="firstname" class="control-label" >FIRST NAME</label>
+                  <label for="firstname" class="control-label" >FIRST NAME <span style="color:red">*</span></label>
                   <input type="text" class="form-control" name="firstname" id="firstname" required="">
                     <?php if(isset($_POST['firstname'])) {
                         echo htmlentities ($_POST['firstname']); }?>
@@ -273,19 +274,19 @@
                   <input type="text" class="form-control" name="suffix" id="suffix">
                 </div>
                 <div class="form-group col-lg-5">
-                  <label for="email" class="control-label">EMAIL</label>
+                  <label for="email" class="control-label">EMAIL <span style="color:red">*</span></label>
                   <input type="email" class="form-control" name="email" id="email" required="">
                     <?php if(isset($_POST['email'])) {
                         echo htmlentities ($_POST['email']); }?>
                 </div>
                 <div class="form-group col-lg-5">
-                  <label for="birthdate" class="control-label">BIRTH DATE</label>
+                  <label for="birthdate" class="control-label">BIRTH DATE <span style="color:red">*</span></label>
                   <input type="date" class="form-control" name="birthdate" id="birthdate" required="">
                     <?php if(isset($_POST['birthdate'])) {
                         echo htmlentities ($_POST['birthdate']); }?>
                 </div>
                 <div class="form-group col-lg-2"> 
-                  <label for="gender" class="control-label">GENDER</label>
+                  <label for="gender" class="control-label">GENDER <span style="color:red">*</span></label>
                     <select class="form-control" name="gender" id="gender" >
                       <option value="MALE">MALE</option>
                       <option value="FEMALE">FEMALE</option>
