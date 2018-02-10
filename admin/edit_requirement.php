@@ -1,6 +1,5 @@
 <?php
-
-    $title = 'Edit Announcement';
+    $title = 'Steps Requirement';
     require_once('../connection.php');
     include('../includes/header.php');
     if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
@@ -10,7 +9,7 @@
     if($_GET['id']) {
       $id = $_GET['id'];
 
-      $sql = "SELECT * FROM  ojt_announcements WHERE id = '".$id."'";
+      $sql = "SELECT * FROM  ojt_requirements_list WHERE id = '".$id."'";
       $result = $conn->query($sql);
 
       $data = $result->fetch_assoc();
@@ -18,7 +17,6 @@
       $conn->close();
     }
 ?>
-
 <div class="wrapper">
 
     <?php include('../includes/admin_subheader.php') ?>
@@ -28,7 +26,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Announcements
+        Step Requirements
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -38,33 +36,54 @@
 
     <!-- Main content -->
     <div class="box-body">
-        <!-- <div class="margin-bottom-20">
-            <button class="btn btn-primary" onclick="$('.collapse').toggle();">Add new Announcement</button>
-        </div> -->
         <div class="box box-primary">
-            <div class="box-header with-border">
-                <h3 class="box-title">Edit Announcement</h3>
+            <div class="box-header with-border" >
+                <h3 class="box-title">Edit Requirement</h3>
             </div>
 
             <div class="box-body padding-20">
-                <form action="models/update_announcement.php" class="form-horizontal row-border" role="form" method="POST" id="ojtmsForm" enctype="multipart/form-data">
-                    <input type="hidden" name="act" id="act" value="edit">
+                <form action="models/update_requirement.php" class="form-horizontal row-border" role="form" method="POST" id="ojtmsForm" enctype="multipart/form-data">
+                    <input type="hidden" name="act" id="act" value="Edit">
                     <input type="hidden" name="id" id="id" value="<?php echo $data['id']?>">
 
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>Title:</label>
+                            <label>Name:</label>
                         </div>
                         <div class="col-md-6">
-                            <textarea name="title" id="title" class="form-control" rows="3"><?php echo $data['title']?></textarea>
+                            <input type="text" id="name" name="name" class="form-control" value="<?php echo $data['name']?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>Announcement:</label>
+                            <label>Description:</label>
                         </div>
                         <div class="col-md-6">
-                            <textarea name="announcement" id="announcement" class="form-control" rows="7"><?php echo $data['announcements']?></textarea>
+                            <textarea id="description" name="description" class="form-control"><?php echo $data['description']?></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>File:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" id="file" name="file" class="form-control" value="<?php echo $data['file']?>">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <div class="col-md-2">
+                            <label>Downloadable?</label>
+                        </div>
+                        <div class="col-md-6"> 
+                            <?php
+                              if ($data['is_downloadable'] == 0) {
+                                echo '<input type="radio" id="yes" name="downloadable" value="0" checked="true"> Yes&nbsp;
+                                      <input type="radio" id="no" name="downloadable" value="1"> No';
+                              } elseif($data['is_downloadable'] == 1) {
+                                echo '<input type="radio" id="yes" name="downloadable" value="0"> Yes&nbsp;
+                                      <input type="radio" id="no" name="downloadable" value="1" checked="true"> No';
+                              }
+                            ?>
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">
@@ -86,5 +105,4 @@
     </div>
     <!-- /.content -->
   </div>
-
 <?php include('../includes/footer.php')?>

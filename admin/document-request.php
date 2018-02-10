@@ -26,30 +26,101 @@
 
     <!-- Main content -->
     <div class="box-body">
-      <table id="example2" class="table table-bordered table-hover">
-        <thead>
-        <tr>
-          <th>School Year (SY)</th>
-          <th>Semester</th>
-          <th>Group Name</th>
-          <th>Remarks</th>
-          <th>Action</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-          <td>SY: 2016 - 2017</td>
-          <td>1st Semester</td>
-          <td>Vtas 7th Element</td>
-          <td>BSIT Group 1</td>
-          <td>
-          <button class="btn btn-primary btn-xs"><a href="manage-student.html" style="color:#fff;">Manage</button>
-          <button class="btn btn-danger btn-xs"><i class="fa fa-remove"></i></button>
-          </td>
-        </tr>
-        </tfoot>
-      </table>
-      <button class="btn btn-primary">Add new Group</button>
+      <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Application Letter</a></li>
+                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Monthly Report</a></li>
+                <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">DTR</a></li>
+                <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">Final Evaluation</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <table id="step1" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Walid A. Jamarin</td>
+                            <td>
+                                <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_2">
+                    <table id="step2" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Walid A. Jamarin</td>
+                            <td>
+                                <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_3">
+                    <table id="step3" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Walid A. Jamarin</td>
+                            <td>
+                                <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="tab_4">
+                    <table id="step4" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>Walid A. Jamarin</td>
+                            <td>
+                                <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                            </td>
+                        </tr>
+                        </tfoot>
+                    </table>
+                </div>
+                <!-- /.tab-pane -->
+            </div>
+            <!-- /.tab-content -->
+        </div>
     </div>
     <!-- /.content -->
   </div>

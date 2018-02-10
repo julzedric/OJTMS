@@ -26,18 +26,17 @@
 
     <!-- Main content -->
     <div class="box-body">
-        <!-- <div class="margin-bottom-20">
-            <button class="btn btn-primary" onclick="$('.collapse').toggle();">Add new Announcement</button>
-        </div> -->
-        <div class="box box-primary">
-            <div class="box-header with-border" onclick="$('.collapse').toggle();">
-                <h3 class="box-title">
-                    <button type="button" class="btn btn-primary">Add new Announcement</button>
-                </h3>
+        <div class="margin-bottom-20">
+            <button class="btn btn-primary" onclick="view_form();">Add new Announcement</button>
+        </div>
+
+        <div class="box box-primary collapse" style="display: hidden;"> 
+             <div class="box-header with-border">
+                <h3 class="box-title">Add Announcement Form</h3>
             </div>
 
-            <div class="box-body padding-20 collapse" style="display:none">
-                <form action="query/create.php" class="form-horizontal row-border" role="form" method="POST" id="ojtmsForm" enctype="multipart/form-data">
+            <div class="box-body padding-20">
+                <form action="models/create_announcement.php" class="form-horizontal row-border" role="form" method="POST" id="ojtmsForm" enctype="multipart/form-data">
                     <input type="hidden" name="act" id="act">
                     <input type="hidden" name="id" id="id">
 
@@ -103,8 +102,8 @@
                                             <td>".$row['title']."</td>
                                             <td>".$row['announcements']."</td>
                                             <td style='text-align: center;'>
-                                            <a href='edit_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-primary' title='Edit'><i class='fa fa-pencil'></i></button></a>
-                                            <a href='query/remove.php?id=".$row['id']."'><button type='button' class='btn btn-danger' title='Remove'><i class='fa fa-trash'></i></button></a>
+                                            <a href='edit_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-primary btn-sm' title='Edit'><i class='fa fa-pencil'></i></button></a>
+                                            <a href='models/remove_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-danger btn-sm' title='Remove'><i class='fa fa-trash'></i></button></a>
                                             </td>
                                         </tr>";
                                 }
@@ -119,4 +118,22 @@
     </div>
     <!-- /.content -->
   </div>
+
+<script>
+    function view_form() {
+        $(".collapse").slideDown();
+    }
+
+    function clearfield() {
+        $("#title").val("");
+        $("#announcement").val("");
+        $(".collapse").slideUp();
+    }
+    function delete_(id){
+        var conf= confirm("Are you sure?");
+        if(conf == true){
+            window.location.href = 'http://localhost/OJTMS/admin/models/remove-requirement.php?id='+id;
+        }
+    } 
+</script>
 <?php include('../includes/footer.php')?>
