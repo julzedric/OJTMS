@@ -4,10 +4,10 @@
         <!-- Sidebar user panel -->
         <div class="user-panel">
             <div class="pull-left image">
-                <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                <img src="../img/ICS_desktop.png" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>OJTMS Administrator</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
@@ -36,9 +36,9 @@
                     <i class="fa fa-home"></i> <span>Document Request</span>
                 </a>
             </li>
-            <li class="<?php if ($title == 'Steps Requirement') {echo 'active'; }else{ echo ''; } ?>">
-                <a href="step-requirement.php">
-                    <i class="fa fa-folder-open-o"></i> <span>Steps Requirement</span>
+            <li class="<?php if ($title == 'Requirements') {echo 'active'; }else{ echo ''; } ?>">
+                <a href="requirements.php">
+                    <i class="fa fa-folder-open-o"></i> <span>Requirements</span>
                 </a>
             </li>
             <li class="<?php if ($title == 'Announcement List') {echo 'active'; }else{ echo ''; } ?>">

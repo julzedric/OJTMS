@@ -1,5 +1,5 @@
 <?php
-    $title = 'Steps Requirement';
+    $title = 'Requirements';
     require_once('../connection.php');
     include('../includes/header.php');
     if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
