@@ -72,16 +72,20 @@
                     </div>
                      <div class="form-group">
                         <div class="col-md-2">
-                            <label>Downloadable?</label>
+                            <label>Type</label>
                         </div>
-                        <div class="col-md-6"> 
+                        <div class="col-md-6">
+                            <select class="form-control" id="type" name="type">
+                                <option value="0">Downloadable</option>
+                                <option value="1">Steps Requirement</option>
+                            </select>
                             <?php
-                              if ($data['is_downloadable'] == 0) {
-                                echo '<input type="radio" id="yes" name="downloadable" value="0" checked="true"> Yes&nbsp;
-                                      <input type="radio" id="no" name="downloadable" value="1"> No';
-                              } elseif($data['is_downloadable'] == 1) {
-                                echo '<input type="radio" id="yes" name="downloadable" value="0"> Yes&nbsp;
-                                      <input type="radio" id="no" name="downloadable" value="1" checked="true"> No';
+                              if ($data['type'] == 0) {
+                                echo '<option value="0" selected="true">Downloadable</option>
+                                        <option value="1">Steps Requirement</option>';
+                              } elseif($data['type'] == 1) {
+                                echo '<option value="0">Downloadable</option>
+                                        <option value="1" selected="true">Steps Requirement</option>';
                               }
                             ?>
                         </div>

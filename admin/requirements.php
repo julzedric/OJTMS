@@ -62,13 +62,29 @@
                             <input type="file" id="file" name="file" class="form-control">
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <div class="col-md-2">
-                            <label>Downloadable?</label>
+                            <label>Type</label>
                         </div>
                         <div class="col-md-6">  
-                            <input type="radio" id="yes" name="downloadable" value="0"> Yes&nbsp;
-                            <input type="radio" id="no" name="downloadable" value="1"> No
+                            <select class="form-control" id="type" name="type" onchange="show_step($(this).val())">
+                                <option value="0">Downloadable</option>
+                                <option value="1">Steps Requirement</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" id="steps" style="display: none;">
+                        <div class="col-md-2">
+                            <label>Steps</label>
+                        </div>
+                        <div class="col-md-6">  
+                            <select class="form-control" id="step" name="step">
+                                <option value="">--Select--</option>
+                                <option value="1">Step 1</option>
+                                <option value="2">Step 2</option>
+                                <option value="3">Step 3</option>
+                                <option value="4">Step 4</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">
@@ -100,7 +116,7 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>File Name</th>
-                            <th style='width: 15%'>Downloadble?</th>
+                            <th style='width: 15%'>Type</th>
                             <th style='text-align: center;'>Action</th>
                         </tr>
                     </thead>
@@ -118,11 +134,11 @@
                                             <td>".$row['description']."</td>
                                             <td>".$row['file']."</td>
                                             <td>";
-                                                if($row['is_downloadable'] == 0)
+                                                if($row['type'] == 0)
                                                 {
-                                                    echo "Yes";
+                                                    echo "Downloadble";
                                                 }else{
-                                                    echo "No";
+                                                    echo "Steps Requirement";
                                                 }
                                     echo    "</td>
                                             <td style='text-align: center;'>
@@ -179,6 +195,15 @@
             }
 
         });
-    } 
+    }
+
+    function show_step(value){
+        if (value == 1) {
+            $("#steps").show();
+        } else {
+            $("#steps").hide();
+            $("#step").val('');
+        }
+    }
 </script>
 <?php include('../includes/footer.php')?>
