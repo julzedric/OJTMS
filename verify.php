@@ -16,30 +16,32 @@ $query = mysqli_query($conn, "
 while ($row = mysqli_fetch_assoc($query)){
     $results[] = $row;
 }
-foreach ($results as $student){
-    if ($student['token'] == $tokenFromEmail ){
-        $email = $student['email'];
+if (isset($results)){
+    foreach ($results as $student){
+        if ($student['token'] == $tokenFromEmail ){
+            $email = $student['email'];
             $query = mysqli_query($conn, "
                 UPDATE ojt_users
                 SET  is_validated = '1', token = ''
                 WHERE email = '".$email."' 
         ");
-        $conn->close();
-        echo "<script type='text/javascript'> 
+            $conn->close();
+            echo "<script type='text/javascript'> 
                     var conf= confirm(\"Success ! You may now Login to your Account..\");
                     if(conf == true){
                         window.location.href = 'http://localhost/ojtms/index.php';
                     }
                     </script>";
-        exit;
-    }else{
-        echo "<script type='text/javascript'> 
+            exit;
+        }
+    }
+}else{
+    echo "<script type='text/javascript'> 
                     var conf= confirm(\"Error ! Email/Token Mismatch!\");
                     if(conf == true){
                         window.location.href = 'http://localhost/ojtms/index.php';
                     }
                     </script>";
-        exit;
-    }
-
+    exit;
 }
+
