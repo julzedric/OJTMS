@@ -32,9 +32,31 @@
         <div class="col-xs-12">
            <div class="box box-widget widget-user">
               <!-- Add the bg color to the header using any of the bg-* classes -->
+              <?php
+                require_once('../connection.php');
+
+                $query = mysqli_query($conn, "
+                           SELECT  * from ojt_users where `username` = '".$_SESSION['username']."'        
+                    ");
+                $results = array();
+                while ($row = mysqli_fetch_assoc($query)){
+                    $results[] = $row;
+                }
+                foreach ($results as $result){
+                    //echo json_encode($result);
+                }
+              ?>
               <div class="widget-user-header bg-aqua-active">
-                <h3 class="widget-user-username">Alexander Pierce</h3>
-                <h5 class="widget-user-desc">Founder &amp; CEO</h5>
+                <h3 class="widget-user-username"><?php echo $result['firstname'] ." ".$result['middlename']." ".$result['lastname']; ?></h3>
+                <h5 class="widget-user-desc">
+                  <?php 
+                    if($result['course'] == 1){
+                      echo "BSIM";
+                    }else{
+                      echo "BSAIT";
+                    }
+                  ?>
+                </h5>
               </div>
               <div class="widget-user-image">
                 <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
@@ -83,21 +105,21 @@
                     <dl class="dl-horizontal">
                       <div class="col-xs-6">
                         <dt>Name</dt>
-                        <dd>Alexander Pierce</dd>
+                        <dd><?php echo $result['firstname']." ".$result['lastname']; ?></dd>
                         <dt>Student ID</dt>
-                        <dd>11314-4527</dd>
+                        <dd><?php echo $result['student_id']; ?></dd>
                         <dt>Email</dt>
-                        <dd>gueylaurdtibe@gmail.com</dd>
+                        <dd><?php echo $result['email']; ?></dd>
                         <dt>Contact Number</dt>
-                        <dd>Felis euismod semper eget lacinia</dd>
+                        <dd><?php echo $result['contact_number']; ?></dd>
                       </div>
                       <div class="col-xs-6">
                         <dt>Gender</dt>
-                        <dd>Male</dd>
+                        <dd><?php echo $result['gender']; ?></dd>
                         <dt>Birthdate</dt>
-                        <dd>January 01, 1997</dd>
+                        <dd><?php echo $result['birthdate']; ?></dd>
                         <dt>Address</dt>
-                        <dd>#123 Kawawati Street Taguig City</dd>
+                        <dd><?php echo $result['street']." ".$result['barangay']." ".$result['city']." ".$result['province']; ?></dd>
                         
                       </div>                
                     </dl>
@@ -105,7 +127,7 @@
 
                   <hr>
 
-                  <strong><i class="fa fa-book margin-r-5"></i> Personal Information</strong>
+                  <!-- <strong><i class="fa fa-book margin-r-5"></i> Personal Information</strong>
 
                   <div class="col-xs-12">
                     <dl class="dl-horizontal">
@@ -129,7 +151,7 @@
                         
                       </div>                
                     </dl>
-                  </div>
+                  </div> -->
 
               </div>
               <!-- /.box-body -->
