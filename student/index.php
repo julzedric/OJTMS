@@ -49,7 +49,7 @@
                     <div class="box-body">
                       <!-- List -->
                       <?php
-                            $sql = "SELECT * FROM ojt_requirements";
+                            $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 1";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
@@ -81,7 +81,7 @@
                     <div class="box-body">
                       <!-- List -->
                       <?php
-                            $sql = "SELECT * FROM ojt_requirements";
+                            $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 2";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
@@ -113,7 +113,7 @@
                     <div class="box-body">
                       <!-- List -->
                       <?php
-                            $sql = "SELECT * FROM ojt_requirements";
+                            $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 3";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
@@ -145,7 +145,7 @@
                     <div class="box-body">
                       <!-- List -->
                       <?php
-                            $sql = "SELECT * FROM ojt_requirements";
+                            $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 4";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
