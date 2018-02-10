@@ -67,27 +67,43 @@
                             <label>File:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="file" id="file" name="file" class="form-control" value="<?php echo $data['file']?>">
+                            <?php 
+                                $ext = pathinfo(strtolower($data['file']),PATHINFO_EXTENSION);
+
+                                if($ext == 'jpg' || $ext == 'png' || $ext == 'jpeg'){
+                                    echo "<img src='../assets/uploads/requirements/".$data['file']."?>' class='margin-bottom-5' style='width: 120px; height: 100px;' alt='File'>";
+                                    echo "<input type='hidden' id='old_file' name='old_file' value='".$data['file']."'>";
+                                } elseif ($ext == 'pdf') {
+                                    echo "<input type='text' id='old_file' name='old_file' value='".$data['file']."' class='form-control margin-bottom-5' disabled>";
+                                }
+
+                            ?>
+                            <input type="file" id="file" name="file" class="form-control">
                         </div>
                     </div>
-                     <div class="form-group">
+                    <div class="form-group">
                         <div class="col-md-2">
                             <label>Type</label>
                         </div>
-                        <div class="col-md-6">
-                            <select class="form-control" id="type" name="type">
+                        <div class="col-md-6">  
+                            <select class="form-control" id="type" name="type" onchange="show_step($(this).val())">
                                 <option value="0">Downloadable</option>
                                 <option value="1">Steps Requirement</option>
                             </select>
-                            <?php
-                              if ($data['type'] == 0) {
-                                echo '<option value="0" selected="true">Downloadable</option>
-                                        <option value="1">Steps Requirement</option>';
-                              } elseif($data['type'] == 1) {
-                                echo '<option value="0">Downloadable</option>
-                                        <option value="1" selected="true">Steps Requirement</option>';
-                              }
-                            ?>
+                        </div>
+                    </div>
+                    <div class="form-group" id="steps" style="display: none;">
+                        <div class="col-md-2">
+                            <label>Steps</label>
+                        </div>
+                        <div class="col-md-6">  
+                            <select class="form-control" id="step" name="step">
+                                <option value="">--Select--</option>
+                                <option value="1">Step 1</option>
+                                <option value="2">Step 2</option>
+                                <option value="3">Step 3</option>
+                                <option value="4">Step 4</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">
@@ -109,4 +125,15 @@
     </div>
     <!-- /.content -->
   </div>
+
+<script>
+    function show_step(value){
+        if (value == 1) {
+            $("#steps").show();
+        } else {
+            $("#steps").hide();
+            $("#step").val('');
+        }
+    }
+</script>
 <?php include('../includes/footer.php')?>

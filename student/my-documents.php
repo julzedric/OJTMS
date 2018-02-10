@@ -44,26 +44,28 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Resume</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
-                </tr>
-                <tr>
-                  <td>Application Letter</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
-                </tr>
-                <tr>
-                  <td>Registration Form</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
-                </tr>
-                <tr>
-                  <td>Notarized Waiver</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
-                </tr>
-                <tr>
-                  <td>Recommendation Letter</td>
-                  <td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
-                </tr>
+                <!-- List -->
+                <?php
+                $sql = "SELECT * FROM ojt_student_requirements WHERE stud_id = '".$_SESSION['stud_id']."' ";
+                $result = $conn->query($sql);
+
+                if($result->num_rows > 0) {
+                    while($row = $result->fetch_assoc())
+                    {
+                        echo'<tr>
+                                 <td>'.$row['name'].'</td>';
+                                 '<td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
+                             </tr>
+                                  ';
+                    }
+                }
+                else{
+                    echo '<tr>
+                               <td> No Records Found. </td>
+                               <td></td>
+                          </tr>';
+                }
+                ?>
                 </tfoot>
               </table>
             </div>
@@ -71,60 +73,9 @@
           </div>
           <!-- /.box -->
         </div>
-        <div class="col-xs-4">
-          <div class="info-box bg-aqua">
-            <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Requirements Summary</span>
-              <span class="info-box-number">(1 out of 5) completed.</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 20%"></div>
-              </div>
-                  <span class="progress-description">
-                    20%
-                  </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-
-          <!--Announcement-->
-            <div class="box box-danger">
-              <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-bullhorn margin-r-5"></i> Announcement</h3>
-              </div>
-            <!-- /.box-header -->
-              <div class="box-body">
-
-                <?php
-                            $sql = "SELECT * FROM ojt_announcements";
-                            $result = $conn->query($sql);
-
-                            if($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc())
-                                {
-                                    echo '
-                                        <strong><i class="fa fa-book margin-r-5"></i>'.$row['title'].'</strong>
-
-                                        <p class="text-muted">
-                                          '.$row['announcements'].'
-                                        </p>
-
-                                        <hr>
-
-                                        ';
-                                }
-
-                            }
-                        ?>
-            <!-- /.box-body -->
-            </div>
-          <!--End Announcement-->
-
-        </div>
-      </div>
+        <?php
+            include "../includes/student_right_sidebar.php";
+        ?>
     </section>
     <!-- /.content -->
   </div>
