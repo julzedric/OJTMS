@@ -79,7 +79,8 @@
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT user_id, concat(firstname, ' ',IFNULL(middlename, ' '),' ',lastname ) as name, student_id, course, email from ojt_users";
+                            $sql = "SELECT user_id, concat(firstname, ' ',IFNULL(middlename, ' '),' ',lastname ) 
+                                    as name, student_id, course, email from ojt_users where is_admin = 0";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
