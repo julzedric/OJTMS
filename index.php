@@ -30,7 +30,7 @@
 
     <!-- Custom styles for this template -->
     <link href="css/agency.css" rel="stylesheet">
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.ico">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/favicon.ico">
       <script src='https://www.google.com/recaptcha/api.js'></script>
 
   </head>
