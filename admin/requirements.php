@@ -117,7 +117,8 @@
                             <th>Description</th>
                             <th>File Name</th>
                             <th style='width: 15%'>Type</th>
-                            <th style='text-align: center;'>Action</th>
+                            <th style='width: 15%'>Step</th>
+                            <th style='width: 20%; text-align: center;'>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -141,11 +142,41 @@
                                                     echo "Steps Requirement";
                                                 }
                                     echo    "</td>
-                                            <td style='text-align: center;'>
-                                                <a href='../assets/uploads/requirements/".$row['file']."' target='_new'><button type='button' class='btn btn-info btn-sm' title='View'><i class='fa fa-eye'></i></button></a>
-                                                <a href='edit_requirement.php?id=".$row['id']."'><button type='button' class='btn btn-primary btn-sm' title='Edit'><i class='fa fa-pencil'></i></button></a>
-                                                <a href='models/remove_requirement.php?id=".$row['id']."'><button type='button' class='btn btn-danger btn-sm' title='Remove'><i class='fa fa-trash'></i></button>
-                                                <a href=''><button type='button' class='btn btn-success btn-sm' title='Download'><i class='fa fa-download'></i></button></a>
+                                            <td>";
+                                                if($row['type'] == 1){
+                                                    if($row['step'] == 1){
+                                                        echo "Step 1";
+                                                    } elseif($row['step'] == 2){
+                                                        echo "Step 2";
+                                                    } elseif($row['step'] == 3){
+                                                        echo "Step 3";
+                                                    }  elseif($row['step'] == 4 ){
+                                                        echo "Step 4 ";
+                                                    }
+                                                }
+
+                                    echo    "</td>
+                                            <td style='width:20%; text-align: center;'>
+                                                <a href='../assets/uploads/requirements/".$row['file']."' target='_new'>
+                                                    <button type='button' class='btn btn-info btn-sm' title='View'>
+                                                        <i class='fa fa-eye'></i>
+                                                    </button>
+                                                </a>
+                                                <a href='edit_requirement.php?id=".$row['id']."'>
+                                                    <button type='button' class='btn btn-primary btn-sm' title='Edit'>
+                                                        <i class='fa fa-pencil'></i>
+                                                    </button>
+                                                </a>
+                                                <a href='models/remove_requirement.php?id=".$row['id']."'>
+                                                    <button type='button' class='btn btn-danger btn-sm' title='Remove'>
+                                                    <i class='fa fa-trash'></i>
+                                                    </button>
+                                                </a>
+                                                <a href=''>
+                                                    <button type='button' class='btn btn-success btn-sm' title='Download'>
+                                                    <i class='fa fa-download'></i>
+                                                    </button>
+                                                </a>
                                             </td>
                                         </tr>";
                                 }

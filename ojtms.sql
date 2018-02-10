@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2018 at 11:17 AM
+-- Generation Time: Feb 10, 2018 at 06:23 PM
 -- Server version: 5.6.26
 -- PHP Version: 5.6.12
 
@@ -148,15 +148,21 @@ CREATE TABLE IF NOT EXISTS `ojt_requirements_list` (
   `file` varchar(100) NOT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
-  `is_downloadable` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+  `type` int(11) NOT NULL,
+  `step` int(11) DEFAULT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_requirements_list`
 --
 
-INSERT INTO `ojt_requirements_list` (`id`, `name`, `description`, `file`, `created_at`, `updated_at`, `is_downloadable`) VALUES
-(2, 'test3', 'test3', '24126594_896111943887045_1329009679069609984_n.jpg', '2018-02-10', '2018-02-10', 0);
+INSERT INTO `ojt_requirements_list` (`id`, `name`, `description`, `file`, `created_at`, `updated_at`, `type`, `step`) VALUES
+(2, 'test3', 'test3', '24126594_896111943887045_1329009679069609984_n.jpg', '2018-02-10', '2018-02-10', 0, 0),
+(4, 'test', 'test', 'ics_logo.png', '2018-02-10', '0000-00-00', 1, 2),
+(5, 'test4', 'test4', 'image_gallery_(2).jpg', '2018-02-10', '0000-00-00', 0, 1),
+(6, 'test5', 'test5', 'FutureTech-HighAltitude-AirbusDefenseAndSpace.jpg', '2018-02-10', '0000-00-00', 0, 4),
+(7, 'test6', 'test6', 'FutureTech_UbiquitousDrones_DeutschePostDHL.jpg', '2018-02-10', '0000-00-00', 0, 0),
+(8, 'Waivers', 'waivers', 'Online_Shopping_-_Print_order.pdf', '2018-02-10', '2018-02-10', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -166,13 +172,15 @@ INSERT INTO `ojt_requirements_list` (`id`, `name`, `description`, `file`, `creat
 
 CREATE TABLE IF NOT EXISTS `ojt_student_requirements` (
   `id` int(11) NOT NULL,
-  `stud_id` int(11) NOT NULL,
+  `requirement_id` int(11) NOT NULL,
+  `stud_id` varchar(50) NOT NULL,
   `name` varchar(50) NOT NULL,
   `link` varchar(50) NOT NULL,
   `type` varchar(50) NOT NULL,
   `status` varchar(50) NOT NULL,
   `created_at` date NOT NULL,
-  `updated_at` date NOT NULL
+  `updated_at` date NOT NULL,
+  `is_online` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -192,10 +200,10 @@ CREATE TABLE IF NOT EXISTS `ojt_stud_ojt_status` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ojt_subject_offered`
+-- Table structure for table `ojt_total_hours`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_subject_offered` (
+CREATE TABLE IF NOT EXISTS `ojt_total_hours` (
   `id` int(11) NOT NULL,
   `school_year` varchar(50) NOT NULL,
   `semester` int(11) NOT NULL,
@@ -219,7 +227,6 @@ CREATE TABLE IF NOT EXISTS `ojt_users` (
   `suffix` varchar(20) DEFAULT NULL,
   `student_id` varchar(50) NOT NULL,
   `course` varchar(50) NOT NULL,
-  `semester` int(11) NOT NULL,
   `username` varchar(30) NOT NULL,
   `password` varchar(500) NOT NULL,
   `email` varchar(50) NOT NULL,
@@ -242,10 +249,10 @@ CREATE TABLE IF NOT EXISTS `ojt_users` (
 -- Dumping data for table `ojt_users`
 --
 
-INSERT INTO `ojt_users` (`user_id`, `lastname`, `firstname`, `middlename`, `suffix`, `student_id`, `course`, `semester`, `username`, `password`, `email`, `contact_number`, `gender`, `birthdate`, `street`, `barangay`, `city`, `province`, `profile_picture`, `created_at`, `updated_at`, `is_validated`, `is_admin`, `token`) VALUES
-(1, '', '', NULL, NULL, '', '', 0, 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin@ojtms.com', 0, '', '0000-00-00', '', '', '', '', '', '0000-00-00', '0000-00-00', 0, 1, ''),
-(2, 'Jamarin', 'Walid', 'A', NULL, '2017-000E1-TG-0', 'BSIT', 0, 'walid', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'walidilaw@gmail.com', 0, '', '0000-00-00', '', '', '', '', '', '0000-00-00', '0000-00-00', 0, 0, ''),
-(3, 'Dela Cruz', 'Juan', '', '', '2017-00440', '1', 0, 'juanluna', '9ea9839ac9edafdaf7d93ba440ae4fc76a93667f', 'cronnelbrian@gmail.com', 0, 'MALE', '2018-02-10', '', '', '', '', '', '2018-02-10', '0000-00-00', 1, 0, '');
+INSERT INTO `ojt_users` (`user_id`, `lastname`, `firstname`, `middlename`, `suffix`, `student_id`, `course`, `username`, `password`, `email`, `contact_number`, `gender`, `birthdate`, `street`, `barangay`, `city`, `province`, `profile_picture`, `created_at`, `updated_at`, `is_validated`, `is_admin`, `token`) VALUES
+(1, '', '', NULL, NULL, '', '', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin@ojtms.com', 0, '', '0000-00-00', '', '', '', '', '', '0000-00-00', '0000-00-00', 0, 1, ''),
+(2, 'Jamarin', 'Walid', 'A', NULL, '2017-000E1-TG-0', 'BSIT', 'walid', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'walidilaw@gmail.com', 0, '', '0000-00-00', '', '', '', '', '', '0000-00-00', '0000-00-00', 0, 0, ''),
+(3, 'Dela Cruz', 'Juan', '', '', '2017-00440', '1', 'juanluna', '9ea9839ac9edafdaf7d93ba440ae4fc76a93667f', 'cronnelbrian@gmail.com', 0, 'MALE', '2018-02-10', '', '', '', '', '', '2018-02-10', '0000-00-00', 1, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -312,9 +319,9 @@ ALTER TABLE `ojt_stud_ojt_status`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ojt_subject_offered`
+-- Indexes for table `ojt_total_hours`
 --
-ALTER TABLE `ojt_subject_offered`
+ALTER TABLE `ojt_total_hours`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -366,7 +373,7 @@ ALTER TABLE `ojt_monthly_report`
 -- AUTO_INCREMENT for table `ojt_requirements_list`
 --
 ALTER TABLE `ojt_requirements_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `ojt_student_requirements`
 --
@@ -378,9 +385,9 @@ ALTER TABLE `ojt_student_requirements`
 ALTER TABLE `ojt_stud_ojt_status`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT for table `ojt_subject_offered`
+-- AUTO_INCREMENT for table `ojt_total_hours`
 --
-ALTER TABLE `ojt_subject_offered`
+ALTER TABLE `ojt_total_hours`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `ojt_users`
