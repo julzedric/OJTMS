@@ -58,11 +58,12 @@
                                 {
                                   echo'
                                     <input type="hidden" name="requirement_id" value="'.$row['id'].'">
+                                    <input type="hidden" name="step" value="1">
                                     <ul>
                                       <li>'
                                         .$row['name'];
                                       if($row['is_online'] == 1){
-                                        echo '<input type="file" name="name" class="pull-right">';
+                                        echo '<input type="file" name="name'.$row['id'].'" class="pull-right">';
                                       }
                                   echo '</li>
                                     </ul>';
@@ -100,6 +101,7 @@
                                     {
                                       echo'
                                         <input type="hidden" name="requirement_id" value="'.$row['id'].'">
+                                        <input type="hidden" name="step" value="2">
                                         <ul>
                                           <li>'
                                             .$row['name'];
@@ -142,6 +144,7 @@
                                   {
                                     echo'
                                       <input type="hidden" name="requirement_id" value="'.$row['id'].'">
+                                      <input type="hidden" name="step" value="3">
                                       <ul>
                                         <li>'
                                           .$row['name'];
@@ -184,6 +187,7 @@
                                 {
                                   echo'
                                     <input type="hidden" name="requirement_id" value="'.$row['id'].'">
+                                    <input type="hidden" name="step" value="4">
                                     <ul>
                                       <li>'
                                         .$row['name'];

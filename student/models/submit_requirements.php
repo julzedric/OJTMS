@@ -1,6 +1,7 @@
 <?php
 	require_once('../../connection.php');
-	$sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 2";
+	
+	$sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = '".$_POST['step']."' ";
         $result = $conn->query($sql);
 
             if($result->num_rows > 0) 
