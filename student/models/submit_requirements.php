@@ -1,7 +1,7 @@
 <?php
 	require_once('../../connection.php');
 	
-	$sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = '".$_POST['step']."' ";
+	$sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `is_online` = 1 AND `step` = '".$_POST['step']."'";
         $result = $conn->query($sql);
 
             if($result->num_rows > 0) 
@@ -13,11 +13,11 @@
 
 					$name = $_FILES['name'.$row['id']]['name'];
 					$created_at = date('Y-m-d');
-					$status = 0;
-
+					$status = 1;
+					$student_id = $_SESSION['stud_id'];
 					$link = "../../assets/uploads/student_requirements/";
 					$filename = str_replace(' ', '_', $name);
-					$requirement_id = $_POST['requirement_id'];
+					$requirement_id = $_POST['requirement_id'.$row['id']];
 
 					$imageFileType = pathinfo($filename,PATHINFO_EXTENSION);
 
@@ -40,8 +40,8 @@
 					{
 						if(move_uploaded_file($_FILES['name'.$row['id']]['tmp_name'], $link.$filename))
 						 {
-							$sql = "INSERT INTO ojt_student_requirements (name,created_at,link,status,requirement_id)
-							values ('".$name."','".$created_at."','".$link."','".$status."','".$requirement_id."')";
+							$sql = "INSERT INTO ojt_student_requirements (name,stud_id,created_at,link,status,requirement_id)
+							values ('".$name."','".$student_id."','".$created_at."','".$link."','".$status."','".$requirement_id."')";
 
 							if($conn->query($sql) == TRUE) 
 							{

@@ -6,6 +6,7 @@
         header("location: ../index.php");
     }
 ?>
+
 <div class="wrapper">
 
     <?php include('../includes/students_subheader.php');?>
@@ -57,7 +58,7 @@
                                 while($row = $result->fetch_assoc())
                                 {
                                   echo'
-                                    <input type="hidden" name="requirement_id" value="'.$row['id'].'">
+                                    <input type="hidden" name="requirement_id'.$row['id'].'" value="'.$row['id'].'">
                                     <input type="hidden" name="step" value="1">
                                     <ul>
                                       <li>'
@@ -100,7 +101,7 @@
                                     while($row = $result->fetch_assoc())
                                     {
                                       echo'
-                                        <input type="hidden" name="requirement_id" value="'.$row['id'].'">
+                                        <input type="hidden" name="requirement_id'.$row['id'].'" value="'.$row['id'].'">
                                         <input type="hidden" name="step" value="2">
                                         <ul>
                                           <li>'
@@ -143,7 +144,7 @@
                                   while($row = $result->fetch_assoc())
                                   {
                                     echo'
-                                      <input type="hidden" name="requirement_id" value="'.$row['id'].'">
+                                      <input type="hidden" name="requirement_id'.$row['id'].'" value="'.$row['id'].'">
                                       <input type="hidden" name="step" value="3">
                                       <ul>
                                         <li>'
@@ -186,7 +187,7 @@
                                 while($row = $result->fetch_assoc())
                                 {
                                   echo'
-                                    <input type="hidden" name="requirement_id" value="'.$row['id'].'">
+                                    <input type="hidden" name="requirement_id'.$row['id'].'" value="'.$row['id'].'">
                                     <input type="hidden" name="step" value="4">
                                     <ul>
                                       <li>'
@@ -212,69 +213,121 @@
               </div>
             </div>
             <!-- /.box-body -->
+            <div class="box">
+              <div class="box-header">
+                <h3 class="box-title">Submitted Requirements Status</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <table id="example2" class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                      <th>Requirement Name</th>
+                      <th>Document Name</th>
+                      <th>Document Status</th>
+                      <th>Action</th>            
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <!-- List -->
+                    <?php
+                    $sql = "SELECT a.name as document_name, b.name as requirement_name,a.status 
+                            FROM 
+                              ojt_student_requirements as a 
+                            INNER JOIN 
+                              ojt_requirements_list as b
+                            ON 
+                              a.requirement_id = b.id  
+                            WHERE
+                              stud_id = '".$_SESSION['stud_id']."' ";
+                    $result = $conn->query($sql);
+
+                    if($result->num_rows > 0) {
+                    
+                        while($row = $result->fetch_assoc())
+                        { 
+                          echo'<tr>
+                                     <td>'.$row['requirement_name'].'</td>
+                                     <td>'.$row['document_name'].'</td>
+                                     <td>';
+                                      if($row['status'] == 0){
+                                        echo '<span class="label label-primary" style="display: block;">None</span>';
+                                      }else if($row['status'] == 1){
+                                        echo '<span class="label label-warning" style="display: block;">Pending</span>';
+                                      }else if($row['status'] == 2){
+                                        echo '<span class="label label-success" style="display: block;">Approved</span>';
+                                      }else{
+                                        echo '<span class="label label-danger" style="display: block;">Rejected</span>';
+                                      }
+                            echo    '</td> 
+                                     <td>';
+                                     if($row['status'] != 2){
+                                      echo '<button type="button" class="btn btn-block btn-primary btn-xs" data-toggle="modal" data-target="#modal-default">Submit</button>';
+                                     }
+                            echo    '</td>
+                                 </tr>
+                                      ';
+                        }
+                    }
+                    else{
+                        echo '<tr>
+                                   <td> No Records Found. </td>
+                                   <td></td>
+                              </tr>';
+                    }
+                    ?>
+                  </tbody>
+                </table>
+
+                <!--modal-->
+                <div class="modal fade in modal-xs" id="modal-default" style="padding-right: 17px;">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">Change Document</h4>
+                      </div>
+                      <div class="modal-body" style="padding-bottom:150px;">
+                        <div class="col-lg-12">
+                          <div class="col-lg-4">
+                            <label>Requirement Name:</label>
+                          </div>
+                          <div class="col-lg-8">
+                            <input type="text" class="form-control" value="Application Letter" disabled>
+                          </div>
+                        </div>
+                        <div class="col-lg-12">
+                          <div style="padding-bottom: 10px;"></div>
+                          <div class="col-lg-4">
+                            <label>Document:</label>
+                          </div>
+                          <div class="col-lg-8">
+                            <input type="text" class="form-control" value="Wow">
+                            <br>
+                            <input type="file" class="form-control" name="name">
+                          </div>
+                        </div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                      </div>
+                    </div>
+                    <!-- /.modal-content -->
+                  </div>
+                  <!-- /.modal-dialog -->
+                </div>
+                <!--end modal-->
+
+              </div>
+            </div>
           </div>
           <!-- /.box -->
         </div>
-        <div class="col-xs-4">
-          <div class="info-box bg-aqua">
-            <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
-
-            <div class="info-box-content">
-              <span class="info-box-text">Requirements Summary</span>
-              <span class="info-box-number">(1 out of 5) completed.</span>
-
-              <div class="progress">
-                <div class="progress-bar" style="width: 20%"></div>
-              </div>
-                  <span class="progress-description">
-                    20%
-                  </span>
-            </div>
-            <!-- /.info-box-content -->
-          </div>
-          <!-- /.info-box -->
-
-          <!--Announcement-->
-          <?php
-                require_once('../connection.php');
-
-                $query = mysqli_query($conn, "
-                           SELECT  * from ojt_announcements       
-                    ");
-                $results = array();
-                while ($row = mysqli_fetch_assoc($query)){
-                    $results[] = $row;
-                }
-                ?>
-
-            <div class="box box-danger">
-              <div class="box-header with-border">
-                <h3 class="box-title"><i class="fa fa-bullhorn margin-r-5"></i> Announcement</h3>
-              </div>
-            <!-- /.box-header -->
-              <div class="box-body">
-
-                <?php 
-                  foreach ($results as $result){
-                    //echo json_encode($result);
-                echo '<strong><i class="fa fa-book margin-r-5"></i>'
-                        .$result['title'].
-                      '</strong>';
-
-                echo'<p class="text-muted">'
-                      .$result['announcements'].
-                    '</p>';
-                echo '<hr>';
-                }
-              ?>
-
-                
-              </div>
-            <!-- /.box-body -->
-            </div>
-          <!--End Announcement-->
-
-        </div>
+        <?php
+            include "../includes/student_right_sidebar.php";
+        ?>
       </div>
     </section>
     <!-- /.content -->

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 10, 2018 at 06:23 PM
--- Server version: 5.6.26
--- PHP Version: 5.6.12
+-- Generation Time: Feb 12, 2018 at 01:18 AM
+-- Server version: 5.7.14
+-- PHP Version: 7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Table structure for table `ojt_accounts`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_accounts` (
+CREATE TABLE `ojt_accounts` (
   `id` int(11) NOT NULL,
   `username` varchar(50) NOT NULL,
   `password` varchar(50) NOT NULL,
@@ -40,13 +40,13 @@ CREATE TABLE IF NOT EXISTS `ojt_accounts` (
 -- Table structure for table `ojt_announcements`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_announcements` (
+CREATE TABLE `ojt_announcements` (
   `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `announcements` varchar(500) NOT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_announcements`
@@ -65,7 +65,7 @@ INSERT INTO `ojt_announcements` (`id`, `title`, `announcements`, `created_at`, `
 -- Table structure for table `ojt_company_details`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_company_details` (
+CREATE TABLE `ojt_company_details` (
   `id` int(11) NOT NULL,
   `stud_id` int(11) NOT NULL,
   `company_name` varchar(100) NOT NULL,
@@ -83,7 +83,7 @@ CREATE TABLE IF NOT EXISTS `ojt_company_details` (
 -- Table structure for table `ojt_enrolled_students`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_enrolled_students` (
+CREATE TABLE `ojt_enrolled_students` (
   `id` int(11) NOT NULL,
   `stud_id` varchar(50) NOT NULL,
   `sy_id` int(11) NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE IF NOT EXISTS `ojt_enrolled_students` (
 -- Table structure for table `ojt_form_status`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_form_status` (
+CREATE TABLE `ojt_form_status` (
   `id` int(11) NOT NULL,
   `stud_id` varchar(50) NOT NULL,
   `form_id` int(11) NOT NULL,
@@ -113,7 +113,7 @@ CREATE TABLE IF NOT EXISTS `ojt_form_status` (
 -- Table structure for table `ojt_hours_rendered`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_hours_rendered` (
+CREATE TABLE `ojt_hours_rendered` (
   `id` int(11) NOT NULL,
   `stud_id` int(11) NOT NULL,
   `hours_rendered` int(11) NOT NULL,
@@ -127,7 +127,7 @@ CREATE TABLE IF NOT EXISTS `ojt_hours_rendered` (
 -- Table structure for table `ojt_monthly_report`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_monthly_report` (
+CREATE TABLE `ojt_monthly_report` (
   `id` int(11) NOT NULL,
   `stud_id` varchar(50) NOT NULL,
   `attachment` varchar(50) NOT NULL,
@@ -141,7 +141,7 @@ CREATE TABLE IF NOT EXISTS `ojt_monthly_report` (
 -- Table structure for table `ojt_requirements_list`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_requirements_list` (
+CREATE TABLE `ojt_requirements_list` (
   `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(100) NOT NULL,
@@ -149,20 +149,24 @@ CREATE TABLE IF NOT EXISTS `ojt_requirements_list` (
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
   `type` int(11) NOT NULL,
-  `step` int(11) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `step` int(11) DEFAULT NULL,
+  `is_online` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_requirements_list`
 --
 
-INSERT INTO `ojt_requirements_list` (`id`, `name`, `description`, `file`, `created_at`, `updated_at`, `type`, `step`) VALUES
-(2, 'test3', 'test3', '24126594_896111943887045_1329009679069609984_n.jpg', '2018-02-10', '2018-02-10', 0, 0),
-(4, 'test', 'test', 'ics_logo.png', '2018-02-10', '0000-00-00', 1, 2),
-(5, 'test4', 'test4', 'image_gallery_(2).jpg', '2018-02-10', '0000-00-00', 0, 1),
-(6, 'test5', 'test5', 'FutureTech-HighAltitude-AirbusDefenseAndSpace.jpg', '2018-02-10', '0000-00-00', 0, 4),
-(7, 'test6', 'test6', 'FutureTech_UbiquitousDrones_DeutschePostDHL.jpg', '2018-02-10', '0000-00-00', 0, 0),
-(8, 'Waivers', 'waivers', 'Online_Shopping_-_Print_order.pdf', '2018-02-10', '2018-02-10', 0, 0);
+INSERT INTO `ojt_requirements_list` (`id`, `name`, `description`, `file`, `created_at`, `updated_at`, `type`, `step`, `is_online`) VALUES
+(2, 'test3', 'test3', '24126594_896111943887045_1329009679069609984_n.jpg', '2018-02-10', '2018-02-10', 0, 0, 0),
+(4, 'test', 'test', 'ics_logo.png', '2018-02-10', '0000-00-00', 1, 2, 0),
+(5, 'test4', 'test4', 'image_gallery_(2).jpg', '2018-02-10', '0000-00-00', 0, 1, 0),
+(6, 'test5', 'test5', 'FutureTech-HighAltitude-AirbusDefenseAndSpace.jpg', '2018-02-10', '0000-00-00', 0, 4, 0),
+(7, 'test6', 'test6', 'FutureTech_UbiquitousDrones_DeutschePostDHL.jpg', '2018-02-10', '0000-00-00', 0, 0, 0),
+(8, 'Waivers', 'waivers', 'Online_Shopping_-_Print_order.pdf', '2018-02-10', '2018-02-10', 0, 0, 0),
+(9, 'Application Letter', 'Initial Requirements', '', '2018-02-12', '0000-00-00', 1, 1, 1),
+(10, 'test', 'test', '', '2018-02-12', '0000-00-00', 1, 2, 1),
+(11, 'test2', 'test2', '', '2018-02-12', '0000-00-00', 1, 2, 1);
 
 -- --------------------------------------------------------
 
@@ -170,7 +174,7 @@ INSERT INTO `ojt_requirements_list` (`id`, `name`, `description`, `file`, `creat
 -- Table structure for table `ojt_student_requirements`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_student_requirements` (
+CREATE TABLE `ojt_student_requirements` (
   `id` int(11) NOT NULL,
   `requirement_id` int(11) NOT NULL,
   `stud_id` varchar(50) NOT NULL,
@@ -183,13 +187,22 @@ CREATE TABLE IF NOT EXISTS `ojt_student_requirements` (
   `is_online` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `ojt_student_requirements`
+--
+
+INSERT INTO `ojt_student_requirements` (`id`, `requirement_id`, `stud_id`, `name`, `link`, `type`, `status`, `created_at`, `updated_at`, `is_online`) VALUES
+(1, 9, '2017-000E1-TG-0', '34946373544-646458182-ticket (2).pdf', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0),
+(2, 10, '2017-000E1-TG-0', '34946373544-646458182-ticket (2).pdf', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0),
+(3, 11, '2017-000E1-TG-0', 'AWpHNU.jpg', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0);
+
 -- --------------------------------------------------------
 
 --
 -- Table structure for table `ojt_stud_ojt_status`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_stud_ojt_status` (
+CREATE TABLE `ojt_stud_ojt_status` (
   `id` int(11) NOT NULL,
   `stud_id` int(11) NOT NULL,
   `status` varchar(50) NOT NULL,
@@ -203,7 +216,7 @@ CREATE TABLE IF NOT EXISTS `ojt_stud_ojt_status` (
 -- Table structure for table `ojt_total_hours`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_total_hours` (
+CREATE TABLE `ojt_total_hours` (
   `id` int(11) NOT NULL,
   `school_year` varchar(50) NOT NULL,
   `semester` int(11) NOT NULL,
@@ -219,7 +232,7 @@ CREATE TABLE IF NOT EXISTS `ojt_total_hours` (
 -- Table structure for table `ojt_users`
 --
 
-CREATE TABLE IF NOT EXISTS `ojt_users` (
+CREATE TABLE `ojt_users` (
   `user_id` int(11) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `firstname` varchar(50) NOT NULL,
@@ -243,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `ojt_users` (
   `is_validated` int(11) NOT NULL,
   `is_admin` int(11) NOT NULL DEFAULT '0',
   `token` varchar(100) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_users`
@@ -343,7 +356,7 @@ ALTER TABLE `ojt_accounts`
 -- AUTO_INCREMENT for table `ojt_announcements`
 --
 ALTER TABLE `ojt_announcements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT for table `ojt_company_details`
 --
@@ -373,12 +386,12 @@ ALTER TABLE `ojt_monthly_report`
 -- AUTO_INCREMENT for table `ojt_requirements_list`
 --
 ALTER TABLE `ojt_requirements_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `ojt_student_requirements`
 --
 ALTER TABLE `ojt_student_requirements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `ojt_stud_ojt_status`
 --
@@ -393,7 +406,7 @@ ALTER TABLE `ojt_total_hours`
 -- AUTO_INCREMENT for table `ojt_users`
 --
 ALTER TABLE `ojt_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
