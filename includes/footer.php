@@ -21,11 +21,13 @@
 <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="../bower_components/Chart.js/Chart.js"></script>
+<script src="../bower_components/sweetalert/sweet-alert.min.js"></script>
 <script src="../dist/js/pages/dashboard2.js"></script>
 <script src="../dist/js/demo.js"></script>
 
 <script>
     $(function () {
+        load_dataTable();
 
         var value = $("#type").val();
         show_step(value);
@@ -44,7 +46,7 @@
         $('#step3').DataTable()
         $('#step4').DataTable()
         $('#requirements-request').DataTable()
-        $('#masterlist').DataTable()
+        // $('#masterlist').DataTable()
         $('#registration-request').DataTable({
             'paging'      : true,
             'lengthChange': true,
@@ -53,6 +55,7 @@
             'info'        : true,
             'autoWidth'   : false
         })
+
     })
 </script>
 </body>

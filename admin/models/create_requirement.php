@@ -7,6 +7,7 @@
 		$description = $_POST['description'];
 		$type = $_POST['type'];
 		$step = $_POST['step'];
+		$is_online = $_POST['mode'];
 
 		$target_dir = "../../assets/uploads/requirements/";
 		$file = $_FILES['file']['name'];
@@ -29,8 +30,8 @@
 
 		if($uploadOk == 1) {
 			if($filename == '') {
-				$sql = "INSERT INTO ojt_requirements_list (name,description,created_at,type,step)
-				values ('".$name."','".$description."','".$created_at."','".$type."','".$step."')";
+				$sql = "INSERT INTO ojt_requirements_list (name,description,created_at,type,step,is_online)
+				values ('".$name."','".$description."','".$created_at."','".$type."','".$step."','".$is_online."')";
 
 				if($conn->query($sql) == TRUE) {
 					echo "<script type='text/javascript'> 

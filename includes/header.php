@@ -10,6 +10,8 @@
   <link rel="stylesheet" href="../bower_components/Ionicons/css/ionicons.min.css">
   <link rel="stylesheet" href="../bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css">
   <link rel="stylesheet" href="../bower_components/jvectormap/jquery-jvectormap.css">
+  <link rel="stylesheet" href="../bower_components/sweetalert/sweet-alert.css">
+  <link rel="stylesheet" href="../bower_components/sweetalert/ie9.css">
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../dist/css/CustomCss.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">

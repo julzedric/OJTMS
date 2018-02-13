@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.6.5.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 12, 2018 at 01:18 AM
--- Server version: 5.7.14
--- PHP Version: 7.0.10
+-- Generation Time: Feb 13, 2018 at 11:23 AM
+-- Server version: 10.1.21-MariaDB
+-- PHP Version: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -166,7 +166,9 @@ INSERT INTO `ojt_requirements_list` (`id`, `name`, `description`, `file`, `creat
 (8, 'Waivers', 'waivers', 'Online_Shopping_-_Print_order.pdf', '2018-02-10', '2018-02-10', 0, 0, 0),
 (9, 'Application Letter', 'Initial Requirements', '', '2018-02-12', '0000-00-00', 1, 1, 1),
 (10, 'test', 'test', '', '2018-02-12', '0000-00-00', 1, 2, 1),
-(11, 'test2', 'test2', '', '2018-02-12', '0000-00-00', 1, 2, 1);
+(11, 'test2', 'test2', '', '2018-02-12', '0000-00-00', 1, 2, 1),
+(12, 'test7', 'test7', '', '2018-02-12', '0000-00-00', 0, 0, 1),
+(13, 'test8', 'test8', '', '2018-02-12', '2018-02-12', 1, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -184,17 +186,18 @@ CREATE TABLE `ojt_student_requirements` (
   `status` varchar(50) NOT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
-  `is_online` int(11) NOT NULL
+  `is_online` int(11) NOT NULL,
+  `is_complete` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_student_requirements`
 --
 
-INSERT INTO `ojt_student_requirements` (`id`, `requirement_id`, `stud_id`, `name`, `link`, `type`, `status`, `created_at`, `updated_at`, `is_online`) VALUES
-(1, 9, '2017-000E1-TG-0', '34946373544-646458182-ticket (2).pdf', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0),
-(2, 10, '2017-000E1-TG-0', '34946373544-646458182-ticket (2).pdf', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0),
-(3, 11, '2017-000E1-TG-0', 'AWpHNU.jpg', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0);
+INSERT INTO `ojt_student_requirements` (`id`, `requirement_id`, `stud_id`, `name`, `link`, `type`, `status`, `created_at`, `updated_at`, `is_online`, `is_complete`) VALUES
+(1, 9, '2017-000E1-TG-0', '34946373544-646458182-ticket (2).pdf', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0, 0),
+(2, 10, '2017-000E1-TG-0', '34946373544-646458182-ticket (2).pdf', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0, 0),
+(3, 11, '2017-000E1-TG-0', 'AWpHNU.jpg', '../../assets/uploads/student_requirements/', '', '1', '2018-02-12', '0000-00-00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -243,17 +246,17 @@ CREATE TABLE `ojt_users` (
   `username` varchar(30) NOT NULL,
   `password` varchar(500) NOT NULL,
   `email` varchar(50) NOT NULL,
-  `contact_number` int(11) NOT NULL,
+  `contact_number` int(20) DEFAULT NULL,
   `gender` varchar(20) NOT NULL,
-  `birthdate` date NOT NULL,
-  `street` varchar(50) NOT NULL,
-  `barangay` varchar(50) NOT NULL,
-  `city` varchar(50) NOT NULL,
-  `province` varchar(50) NOT NULL,
-  `profile_picture` varchar(100) NOT NULL,
+  `birthdate` date DEFAULT NULL,
+  `street` varchar(50) DEFAULT NULL,
+  `barangay` varchar(50) DEFAULT NULL,
+  `city` varchar(50) DEFAULT NULL,
+  `province` varchar(50) DEFAULT NULL,
+  `profile_picture` varchar(100) DEFAULT NULL,
   `created_at` date NOT NULL,
-  `updated_at` date NOT NULL,
-  `is_validated` int(11) NOT NULL,
+  `updated_at` date DEFAULT NULL,
+  `is_validated` int(11) DEFAULT NULL,
   `is_admin` int(11) NOT NULL DEFAULT '0',
   `token` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -265,7 +268,8 @@ CREATE TABLE `ojt_users` (
 INSERT INTO `ojt_users` (`user_id`, `lastname`, `firstname`, `middlename`, `suffix`, `student_id`, `course`, `username`, `password`, `email`, `contact_number`, `gender`, `birthdate`, `street`, `barangay`, `city`, `province`, `profile_picture`, `created_at`, `updated_at`, `is_validated`, `is_admin`, `token`) VALUES
 (1, '', '', NULL, NULL, '', '', 'admin', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'admin@ojtms.com', 0, '', '0000-00-00', '', '', '', '', '', '0000-00-00', '0000-00-00', 0, 1, ''),
 (2, 'Jamarin', 'Walid', 'A', NULL, '2017-000E1-TG-0', 'BSIT', 'walid', '7c4a8d09ca3762af61e59520943dc26494f8941b', 'walidilaw@gmail.com', 0, '', '0000-00-00', '', '', '', '', '', '0000-00-00', '0000-00-00', 0, 0, ''),
-(3, 'Dela Cruz', 'Juan', '', '', '2017-00440', '1', 'juanluna', '9ea9839ac9edafdaf7d93ba440ae4fc76a93667f', 'cronnelbrian@gmail.com', 0, 'MALE', '2018-02-10', '', '', '', '', '', '2018-02-10', '0000-00-00', 1, 0, '');
+(3, 'Dela Cruz', 'Juan', '', '', '2017-00440', 'BSAIT', 'juanluna', '9ea9839ac9edafdaf7d93ba440ae4fc76a93667f', 'cronnelbrian@gmail.com', 0, 'MALE', '2018-02-10', '', '', '', '', '', '2018-02-10', '0000-00-00', 1, 0, ''),
+(4, 'Penduco', 'Pedro', NULL, NULL, '2017-00440', 'BSIM', 'pedro', '4410d99cefe57ec2c2cdbd3f1d5cf862bb4fb6f8', 'pedro@mail.com', 0, 'MALE', '2018-02-11', '', '', '', '', '', '2018-02-13', '0000-00-00', 0, 0, '');
 
 --
 -- Indexes for dumped tables
@@ -386,7 +390,7 @@ ALTER TABLE `ojt_monthly_report`
 -- AUTO_INCREMENT for table `ojt_requirements_list`
 --
 ALTER TABLE `ojt_requirements_list`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 --
 -- AUTO_INCREMENT for table `ojt_student_requirements`
 --
@@ -406,7 +410,7 @@ ALTER TABLE `ojt_total_hours`
 -- AUTO_INCREMENT for table `ojt_users`
 --
 ALTER TABLE `ojt_users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

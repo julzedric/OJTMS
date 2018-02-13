@@ -64,10 +64,11 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>Type</label>
+                            <label>Type:</label>
                         </div>
                         <div class="col-md-6">  
                             <select class="form-control" id="type" name="type" onchange="show_step($(this).val())">
+                                <option value="">--Select--</option>
                                 <option value="0">Downloadable</option>
                                 <option value="1">Steps Requirement</option>
                             </select>
@@ -75,7 +76,7 @@
                     </div>
                     <div class="form-group" id="steps" style="display: none;">
                         <div class="col-md-2">
-                            <label>Steps</label>
+                            <label>Steps:</label>
                         </div>
                         <div class="col-md-6">  
                             <select class="form-control" id="step" name="step">
@@ -85,6 +86,15 @@
                                 <option value="3">Step 3</option>
                                 <option value="4">Step 4</option>
                             </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>Submission Mode:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="radio" name="mode" id="personal" value="0"> Personal&emsp;
+                            <input type="radio" name="mode" id="online" value="1"> Online
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">
@@ -116,8 +126,9 @@
                             <th>Name</th>
                             <th>Description</th>
                             <th>File Name</th>
-                            <th style='width: 15%'>Type</th>
-                            <th style='width: 15%'>Step</th>
+                            <th style='width: 10%'>Type</th>
+                            <th style='width: 10%'>Step</th>
+                            <th style='width: 10%'>Mode</th>
                             <th style='width: 20%; text-align: center;'>Action</th>
                         </tr>
                     </thead>
@@ -154,30 +165,58 @@
                                                         echo "Step 4 ";
                                                     }
                                                 }
-
                                     echo    "</td>
-                                            <td style='width:20%; text-align: center;'>
-                                                <a href='../assets/uploads/requirements/".$row['file']."' target='_new'>
-                                                    <button type='button' class='btn btn-info btn-sm' title='View'>
+                                            <td>";
+                                                if($row['is_online'] == 0)
+                                                {
+                                                    echo "Personal";
+                                                }else{
+                                                    echo "Online";
+                                                }
+                                    echo    "</td>
+                                            <td style='width:20%; text-align: center;'>";
+                                            $file = "../assets/uploads/requirements/".$row['file'];
+                                            if($row['file'] == '')
+                                            {
+                                                echo "<button type='button' class='btn btn-info btn-sm disabled' title='View'>
                                                         <i class='fa fa-eye'></i>
                                                     </button>
-                                                </a>
-                                                <a href='edit_requirement.php?id=".$row['id']."'>
-                                                    <button type='button' class='btn btn-primary btn-sm' title='Edit'>
-                                                        <i class='fa fa-pencil'></i>
-                                                    </button>
-                                                </a>
-                                                <a href='models/remove_requirement.php?id=".$row['id']."'>
-                                                    <button type='button' class='btn btn-danger btn-sm' title='Remove'>
-                                                    <i class='fa fa-trash'></i>
-                                                    </button>
-                                                </a>
-                                                <a href=''>
-                                                    <button type='button' class='btn btn-success btn-sm' title='Download'>
-                                                    <i class='fa fa-download'></i>
-                                                    </button>
-                                                </a>
-                                            </td>
+                                                    <a href='edit_requirement.php?id=".$row['id']."'>
+                                                        <button type='button' class='btn btn-primary btn-sm' title='Edit'>
+                                                            <i class='fa fa-pencil'></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href='models/remove_requirement.php?id=".$row['id']."'>
+                                                        <button type='button' class='btn btn-danger btn-sm' title='Remove'>
+                                                        <i class='fa fa-trash'></i>
+                                                        </button>
+                                                    </a>
+                                                    <button type='button' class='btn btn-success btn-sm disabled' title='Download'>
+                                                        <i class='fa fa-download'></i>
+                                                    </button>";
+                                            } else {
+                                                echo "<a href='".$file."' target='_new'>
+                                                        <button type='button' class='btn btn-info btn-sm' title='View'>
+                                                            <i class='fa fa-eye'></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href='edit_requirement.php?id=".$row['id']."'>
+                                                        <button type='button' class='btn btn-primary btn-sm' title='Edit'>
+                                                            <i class='fa fa-pencil'></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href='models/remove_requirement.php?id=".$row['id']."'>
+                                                        <button type='button' class='btn btn-danger btn-sm' title='Remove'>
+                                                        <i class='fa fa-trash'></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href='".$file."'>
+                                                        <button type='button' class='btn btn-success btn-sm' title='Download'>
+                                                        <i class='fa fa-download'></i>
+                                                        </button>
+                                                    </a>";
+                                            }
+                                    echo    "</td>
                                         </tr>";
                                 }
 

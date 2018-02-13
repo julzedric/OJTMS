@@ -6,6 +6,7 @@
 		$name = $_POST['name'];
 		$description = $_POST['description'];
 		$type = $_POST['type'];
+		$is_online = $_POST['mode'];
 		$updated_at = date('Y-m-d');
 
 		$target_dir = "../../assets/uploads/requirements/";
@@ -18,7 +19,7 @@
 
 		if ($file == '') {
 			$sql = "UPDATE ojt_requirements_list SET name =  '".$name."', 
-					description = '".$description."', type = '".$type."',
+					description = '".$description."', type = '".$type."', is_online = '".$is_online."',
 					updated_at = '".$updated_at."' where id = '".$id."' ";
 
 				if($conn->query($sql) === TRUE) {
@@ -48,7 +49,7 @@
 			if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$filename)) {
 				
 					$sql = "UPDATE ojt_requirements_list SET name =  '".$name."', 
-					description = '".$description."', file = '".$filename."', type = '".$type."',
+					description = '".$description."', file = '".$filename."', type = '".$type."', is_online = '".$is_online."',
 					updated_at = '".$updated_at."' where id = '".$id."' ";
 
 				if($conn->query($sql) === TRUE) {

@@ -135,6 +135,22 @@
                             </select>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>Submission Mode:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <?php
+                                if($data['is_online'] == 0) {
+                                    echo "<input type='radio' name='mode' id='personal' value='0' checked='true'> Personal&emsp;
+                                    <input type='radio' name='mode' id='online' value='1'> Online";
+                                } else {
+                                     echo "<input type='radio' name='mode' id='personal' value='0'> Personal&emsp;
+                                    <input type='radio' name='mode' id='online' value='1' checked='true'> Online";
+                                }
+                            ?>
+                        </div>
+                    </div>
                     <div class="form-group margin-bottom-0">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div id="message"></div> 
