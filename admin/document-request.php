@@ -2,6 +2,7 @@
     $title = 'Document Request';
     require_once('../connection.php');
     include('../includes/header.php');
+    include('../models/functions.php');
     if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
         header("location: ../index.php");
     }
@@ -16,11 +17,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Course Group
+        Document Request
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Course Group</li>
+        <li class="active">Document Request</li>
       </ol>
     </section>
 
@@ -43,14 +44,22 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php
+                        $results = getDocumentRequest($conn);
+                        foreach($results as $result){
+                            if($result['type'] == 0){
+                        ?>
                         <tr>
-                            <td>Walid A. Jamarin</td>
+                            <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                             <td>
                                 <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                 <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
                                 <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
                             </td>
                         </tr>
+                        <?php }
+                        }?>
+                        </tbody>
                         </tfoot>
                     </table>
                 </div>
@@ -63,15 +72,23 @@
                             <th>Action</th>
                         </tr>
                         </thead>
+                         <?php
+                        foreach($results as $result){
+                            if($result['type'] == 1){
+                        ?>
+                            <tr>
+                                <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
+                                <td>
+                                    <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                    <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                    <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                                </td>
+                            </tr>
+                        <?php }
+                        }?>
+                        </tbody>
                         <tbody>
-                        <tr>
-                            <td>Walid A. Jamarin</td>
-                            <td>
-                                <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
-                                <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
-                                <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
-                            </td>
-                        </tr>
+
                         </tfoot>
                     </table>
                 </div>
@@ -85,14 +102,21 @@
                         </tr>
                         </thead>
                         <tbody>
+                        <?php
+                        foreach($results as $result){
+                            if($result['type'] == 2){
+                                ?>
                         <tr>
-                            <td>Walid A. Jamarin</td>
+                            <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                             <td>
                                 <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                 <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
                                 <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
                             </td>
                         </tr>
+                        <?php }
+                        }?>
+                        </tbody>
                         </tfoot>
                     </table>
                 </div>
@@ -106,14 +130,21 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Walid A. Jamarin</td>
-                            <td>
-                                <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
-                                <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
-                                <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
-                            </td>
-                        </tr>
+                          <?php
+                        foreach($results as $result){
+                            if($result['type'] == 3){
+                        ?>
+                                <tr>
+                                    <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
+                                    <td>
+                                        <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                        <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                        <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                                    </td>
+                                </tr>
+                            <?php }
+                        }?>
+                        </tbody>
                         </tfoot>
                     </table>
                 </div>
