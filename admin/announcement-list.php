@@ -79,7 +79,7 @@
             </div>
 
             <div class="box-body padding-20">
-                <table id="requirements-request" class="table table-bordered table-striped">
+                <table id="announcement-list" class="table table-bordered table-striped">
                     <thead>
                         <tr>
                           <th>Date</th>
@@ -120,6 +120,17 @@
   </div>
 
 <script>
+    function load_dataTable() 
+    {
+        $('.table').DataTable({
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        });
+    }
     function view_form() {
         $(".collapse").slideDown();
     }

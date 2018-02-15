@@ -36,11 +36,10 @@
                         <div class="col-md-8 col-md-offset-2">
                             <div class="form-group">
                                 <div class="col-md-2">
-                                    <label>Course:</label>
+                                    <label>By Course:</label>
                                 </div>
                                 <div class="col-md-6">
                                     <select class="s_ form-control" id="f_course" name="f_course" onchange="filter_($(this).val())" style="width: 100%;">
-                                        <option value="">--Select--</option>
                                         <option value="All">All Courses</option>
                                         <option value="BSIM">BSIM</option>
                                         <option value="BSAIT ">BSAIT</option>
@@ -204,7 +203,7 @@
             "order": [[ 1, "desc" ]],
             "sPaginationType": "full_numbers",
             "oLanguage": {
-                "sLengthMenu": "_MENU_ records per page",
+                "sLengthMenu": "Show _MENU_ entries",
                 "sSearch": "Search: "
             },
             "processing": true,

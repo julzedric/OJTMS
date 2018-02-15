@@ -333,4 +333,18 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+
+  <script>
+    function load_dataTable() 
+    {
+        $('#example2').DataTable({
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        });
+    }
+  </script>
 <?php include('../includes/footer.php')?>

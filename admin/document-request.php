@@ -155,4 +155,17 @@
     </div>
     <!-- /.content -->
   </div>
+  <script>
+    function load_dataTable() 
+    {
+        $('.table').DataTable({
+            'paging'      : true,
+            'lengthChange': true,
+            'searching'   : true,
+            'ordering'    : true,
+            'info'        : true,
+            'autoWidth'   : false
+        });
+    }
+  </script>
 <?php include('../includes/footer.php')?>

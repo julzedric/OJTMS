@@ -31,30 +31,6 @@
 
         var value = $("#type").val();
         show_step(value);
-        
-        $('#example1').DataTable()
-        $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': false,
-            'searching'   : false,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
-        $('#step1').DataTable()
-        $('#step2').DataTable()
-        $('#step3').DataTable()
-        $('#step4').DataTable()
-        $('#requirements-request').DataTable()
-        // $('#masterlist').DataTable()
-        $('#registration-request').DataTable({
-            'paging'      : true,
-            'lengthChange': true,
-            'searching'   : true,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        })
 
     })
 </script>
