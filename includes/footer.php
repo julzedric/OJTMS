@@ -27,7 +27,27 @@
 <script src="../dist/js/demo.js"></script>
 
 <script>
+    function selectStudent(val) {
+        $("#recipient").val(val);
+        $("#suggesstion-box").hide();
+    }
     $(function () {
+        $("#recipient").keyup(function(){
+            $.ajax({
+                type: "POST",
+                url: "models/searchStudent.php",
+                data:'recipient='+$(this).val(),
+                // beforeSend: function(){
+                //     $("#recipient").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
+                // },
+                success: function(data){
+                    $("#suggesstion-box").show();
+                    $("#suggesstion-box").html(data);
+                    $("#recipient").css("background","#FFF");
+                }
+            });
+        });
+
         load_dataTable();
 
         //Date picker

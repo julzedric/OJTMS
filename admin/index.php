@@ -201,7 +201,7 @@
             <form action="models/add_user.php" role="form" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4>Student Requirements Status</h4>
+                    <h4>Student's Progress</h4>
                 </div>
 
                 <div class="modal-body">
