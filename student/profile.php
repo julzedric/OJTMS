@@ -187,14 +187,54 @@
             <div class="icon">
               <i class="fa fa-clock-o"></i>
             </div>
-            <a href="#" class="small-box-footer">
-              More info <i class="fa fa-arrow-circle-right"></i>
+            <a data-toggle="modal" href="#DTR" class="small-box-footer"><i class="fa fa-pencil"></i>
+              Update DTR 
             </a>
           </div>
         
         </div>
       </div>
     </section>
-    <!-- /.content -->
+    
+    <div class="modal fade in" id="DTR" style="padding-right: 17px;">
+          <div class="modal-dialog">
+            <div class="modal-content" style=" margin-top:90px;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Update Daily Time Record</h4>
+              </div>
+              <div class="modal-body">
+                <form action="models/submit_dtr.php" method="POST" enctype="multipart/form-data">
+                <div class="box-body">
+                    <p style="color: red;"><strong>
+                      NOTE: The system will automatically compute for your total hours.
+                       Please input the total hours for the week ONLY!
+                    </strong></p>
+                    <div style="margin-bottom: 15px; height:34px;">
+                      <label for="hours_rendered" class="col-sm-3 control-label">Hours Rendered</label>
+                      <div class="col-lg-9">
+                        <input type="text" class="form-control" id="hours_rendered" name="hours_rendered" required>
+                      </div>
+                    </div>
+                    <div style="margin-bottom: 15px; height:34px;">
+                      <label for="dtr" class="col-sm-3 control-label">Proof/Attachment</label>
+                        <div class="col-lg-9">
+                        <input type="file" id="dtr" name="attachment" required>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+              </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+    </div>
+
   </div>
     <?php include('../includes/footer.php')?>
