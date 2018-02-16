@@ -47,14 +47,19 @@
                         <?php
                         $results = getDocumentRequest($conn);
                         foreach($results as $result){
+                            $file = "../assets/uploads/requirements/".$result['name'];
                             if($result['type'] == 0){
                         ?>
                         <tr>
                             <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                             <td>
+                                <a href="<?php echo $file; ?>" target='_new'>
                                 <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                </a>
+                                <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                 <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
-                                <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                                </a>
+                                <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button>
                             </td>
                         </tr>
                         <?php }
@@ -73,15 +78,18 @@
                         </tr>
                         </thead>
                          <?php
-                        foreach($results as $result){
-                            if($result['type'] == 1){
+                         foreach($results as $result){
+                             $file = "../assets/uploads/requirements/".$result['name'];
+                             if($result['type'] == 1){
                         ?>
                             <tr>
                                 <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                                 <td>
+                                    <a href="<?php echo $file; ?>" target='_new'>
                                     <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                    </a>
                                     <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
-                                    <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                                    <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button>
                                 </td>
                             </tr>
                         <?php }
@@ -104,14 +112,17 @@
                         <tbody>
                         <?php
                         foreach($results as $result){
+                            $file = "../assets/uploads/requirements/".$result['name'];
                             if($result['type'] == 2){
                                 ?>
                         <tr>
                             <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                             <td>
-                                <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                <a href="<?php echo $file; ?>" target='_new'>
+                                    <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                </a>
                                 <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
-                                <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                                <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button>
                             </td>
                         </tr>
                         <?php }
@@ -131,15 +142,18 @@
                         </thead>
                         <tbody>
                           <?php
-                        foreach($results as $result){
-                            if($result['type'] == 3){
+                          foreach($results as $result){
+                              $file = "../assets/uploads/requirements/".$result['name'];
+                              if($result['type'] == 3){
                         ?>
                                 <tr>
                                     <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                                     <td>
-                                        <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                        <a href="<?php echo $file; ?>" target='_new'>
+                                            <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                        </a>
                                         <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
-                                        <button class="btn btn-danger btn-xs" title="Disapprove"><i class="fa fa-thumbs-o-down"></i></button>
+                                       <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button></a>
                                     </td>
                                 </tr>
                             <?php }
@@ -166,6 +180,20 @@
             'info'        : true,
             'autoWidth'   : false
         });
+    }
+    function rejectDocument(id)
+    {
+        if(confirm("Are you sure you want to delete this Record?")){
+            $.ajax({
+                type : "DELETE",
+                url : "../models/rejectDocument.php?id="+id,
+                data : {id : id},
+                success: function(){
+                    location.reload();
+                }
+            });
+        }
+        return false;
     }
   </script>
 <?php include('../includes/footer.php')?>
