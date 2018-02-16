@@ -46,11 +46,10 @@
                         <tbody>
                         <?php
                         $results = getDocumentRequest($conn);
-                        print_r($results);
 
                         foreach($results as $result){
                             $file = "../assets/uploads/requirements/".$result['name'];
-                            if($result['type'] == 0){
+                            if($result['document_type'] == 'Application Letter'){
                         ?>
                         <tr>
                             <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
@@ -82,7 +81,7 @@
                          <?php
                          foreach($results as $result){
                              $file = "../assets/uploads/requirements/".$result['name'];
-                             if($result['type'] == 1){
+                             if($result['document_type'] == 'Monthly Report'){
                         ?>
                             <tr>
                                 <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
@@ -115,7 +114,7 @@
                         <?php
                         foreach($results as $result){
                             $file = "../assets/uploads/requirements/".$result['name'];
-                            if($result['type'] == 2){
+                            if($result['document_type'] == 'DTR'){
                                 ?>
                         <tr>
                             <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
@@ -146,7 +145,7 @@
                           <?php
                           foreach($results as $result){
                               $file = "../assets/uploads/requirements/".$result['name'];
-                              if($result['type'] == 3){
+                              if($result['document_type'] == 'Final Evaluation'){
                         ?>
                                 <tr>
                                     <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
