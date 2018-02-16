@@ -15,6 +15,10 @@
 
       $data = $result->fetch_assoc();
 
+      $school_year = explode(" - ", $data['school_year']);
+      $school_year_1 = $school_year[0];
+      $school_year_2 = $school_year[1];
+
       $conn->close();
     }
 ?>
@@ -55,7 +59,35 @@
                             <label>School Year:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="school_year" name="school_year" class="form-control" value="<?php echo $data['school_year']?>">
+                            <div class="col-md-5">
+                                <select class="form-control" id="school_year_1" name="school_year_1">
+                                    <?php
+                                        $currently_selected = $school_year_1;
+                                        $earliest_year = 1950;
+                                        $latest_year = date('Y') + 2;
+
+                                        foreach( range( $latest_year, $earliest_year ) as $i ) {
+                                            print '<option value="'.$i.'"'.($i === $currently_selected ? ' selected="selected"' : '').'>'.$i.'</option>';
+                                        }   
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-2" style="text-align: center;">
+                                <label>To</label>
+                            </div>
+                            <div class="col-md-5">
+                                <select class="form-control" id="school_year_2" name="school_year_2">
+                                    <?php
+                                        $currently_selected = $school_year_2;
+                                        $earliest_year = 1950;
+                                        $latest_year = date('Y') + 2;
+
+                                        foreach( range( $latest_year, $earliest_year ) as $i ) {
+                                            print '<option value="'.$i.'"'.($i === $currently_selected ? ' selected="selected"' : '').'>'.$i.'</option>';
+                                        }   
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -63,7 +95,20 @@
                             <label>Semester:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="semester" name="semester" class="form-control" value="<?php echo $data['semester']?>">
+                            <select class="form-control" id="semester" name="semester">
+                                <?php 
+                                    if($data['semester'] == 1)
+                                    {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="1" selected="true">First</option>
+                                            <option value="2">Second</option>';
+                                    } else {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="1">First</option>
+                                            <option value="2" selected="true">Second</option>';
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">

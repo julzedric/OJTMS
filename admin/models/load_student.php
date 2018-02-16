@@ -40,6 +40,7 @@
 	        while($row = $result->fetch_assoc())
 	        {
 	            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id'].")' title='View Profile'><i class='fa fa-eye'></i></button>
+	            			<button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#student_progress' title='Student&#39;s progress'><i class='fa fa-eye'></i></button>
 	                        <button type='button' class='btn btn-success btn-sm' title='Send Message'><i class='fa fa-envelope'></i></button>
 	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(".$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
 
