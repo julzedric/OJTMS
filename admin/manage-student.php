@@ -19,7 +19,7 @@
         <small>Vitas 7th Element</small>
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
         <li>Course Group</li>
         <li class="active">Manage Students</li>
       </ol>

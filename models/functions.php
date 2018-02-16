@@ -13,7 +13,9 @@ function getDocumentRequest($conn){
     $sql = "SELECT a.*, b.firstname, b.lastname
             FROM ojt_student_requirements AS a
             JOIN ojt_users AS b
-            ON a.stud_id = b.student_id";
+            ON a.stud_id = b.student_id
+            WHERE a.status = 1
+            ";
     $result = $conn->query($sql);
     $data = array();
 
