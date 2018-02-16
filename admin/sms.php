@@ -27,7 +27,7 @@ if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
                 <div class="box-body">
                     <form action="../models/smsSending.php" method="POST">
                         <label for="recipient">Recipient</label>
-                        <input type="text" id="recipient" name="recipient" class="form-control">
+                        <input type="text" id="recipient" name="recipient" class="form-control" placeholder="Enter Student Lastname">
                         <div id="suggesstion-box"></div>
                         <label for="sms_message">Message</label>
                         <textarea name="sms_message" id="sms_message" class="form-control" cols="30" rows="10"></textarea>

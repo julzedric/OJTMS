@@ -205,7 +205,17 @@
                 </div>
 
                 <div class="modal-body">
+                    <table id="student_req" class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>File Name</th>
+                                <th style='text-align: center;'>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
 
+                        </tbody>
+                    </table>
                 </div>
                 <div class="modal-footer">
                       <div class="col-lg-12">
@@ -222,6 +232,21 @@
 </div>
 
 <script>
+    function view_2(stud_id)
+    {
+        $('#student_req').dataTable().fnClearTable();
+        $('#student_req').dataTable().fnDraw();
+        $('#student_req').dataTable().fnDestroy();
+        $('#student_req').dataTable({
+            "sAjaxSource": "models/load_student.php"+"?get_stud_req=true&"+"student_id="+stud_id,
+            "aoColumns" : [ { sWidth: "70%" }, { sWidth: "30%" }],
+            "deferLoading": 10,
+            "fnInitComplete": function() {
+                $('[data-toggle="tooltip"]').tooltip();
+            }
+        });
+        $('#student_progress').modal('show');
+    }
     function load_dataTable() {
         $('#masterlist').dataTable().fnClearTable();
         $('#masterlist').dataTable().fnDraw();

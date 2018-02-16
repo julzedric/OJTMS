@@ -1,6 +1,8 @@
 <?php
 	require_once('../../connection.php');
 
+
+	/***************get specific student****************/
 	if(isset($_POST['a_get'])){
 
 		$id = $_POST['id'];
@@ -31,6 +33,7 @@
 	        echo json_encode($data);
 	}
 
+	/***************load student****************/
 	if(isset($_GET['loadstudent'])){
 		$sql = "SELECT user_id, concat(firstname, ' ',IFNULL(middlename,' '),' ',lastname,' ',IFNULL(suffix,' ')) 
 	            as name, student_id, course, email from ojt_users where is_admin = 0";
@@ -39,8 +42,46 @@
 	    if($result->num_rows > 0) {
 	        while($row = $result->fetch_assoc())
 	        {
+	            $button = "<button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id']. ")' title='View Profile'><i class='fa fa-eye'></i></button>
+	            			<button type='button' class='btn btn-primary btn-sm' data-uid='".$row['student_id']."'  onclick='view_2(getAttribute(\"data-uid\"))' title='Student&#39;s progress'><i class='fa fa-clock-o'></i></button>
+	                        <button type='button' class='btn btn-success btn-sm' title='Send Message'><i class='fa fa-envelope'></i></button>
+	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(" .$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button>";
+
+	            $data[] = array(
+	            	$row['student_id'],
+	            	$row['name'],
+	            	$row['course'],
+	            	$row['email'],
+	            	$button);
+	        }
+	    } else {
+	    	$data = array();
+	    }
+
+	    	$response = array(
+			  'aaData' => $data,
+			  'iTotalRecords' => count($data),
+			  'iTotalDisplayRecords' => count($data),
+			  'iDisplayStart' => 0
+			);
+
+			header("Content-Type: application/json", true);
+			echo json_encode($response);
+	}
+
+	/****************FILTER*********************/
+	if(isset($_GET['get_student'])){
+
+		$f_course = $_GET['course'];
+
+		$sql = "SELECT user_id, concat(firstname, ' ',IFNULL(middlename,' '),' ',lastname,' ',IFNULL(suffix,' ')) 
+	            as name, student_id, course, email FROM ojt_users WHERE is_admin = 0 AND course = '".$f_course."'";
+	    $result = $conn->query($sql);
+
+	    if($result->num_rows > 0) {
+	        while($row = $result->fetch_assoc())
+	        {
 	            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id'].")' title='View Profile'><i class='fa fa-eye'></i></button>
-	            			<button type='button' class='btn btn-primary btn-sm' data-toggle='modal' data-target='#student_progress' title='Student&#39;s progress'><i class='fa fa-clock-o'></i></button>
 	                        <button type='button' class='btn btn-success btn-sm' title='Send Message'><i class='fa fa-envelope'></i></button>
 	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(".$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
 
@@ -66,26 +107,21 @@
 			echo json_encode($response);
 	}
 
-	if(isset($_GET['get_student'])){
+	/******************load student requirement*********************/
+	if(isset($_GET['get_stud_req'])){
+		// print_r($_GET['student_id']); die();
+		$student_id = $_GET['student_id'];
 
-		$f_course = $_GET['course'];
-
-		$sql = "SELECT user_id, concat(firstname, ' ',IFNULL(middlename,' '),' ',lastname,' ',IFNULL(suffix,' ')) 
-	            as name, student_id, course, email FROM ojt_users WHERE is_admin = 0 AND course = '".$f_course."'";
+		$sql = "SELECT a.id, a.stud_id, a.name, b.name FROM ojt_student_requirements as a INNER JOIN ojt_requirements_list as b on a.requirement_id = b.id where a.stud_id = '".$student_id."' ORDER by b.step";
 	    $result = $conn->query($sql);
 
 	    if($result->num_rows > 0) {
 	        while($row = $result->fetch_assoc())
 	        {
-	            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id'].")' title='View Profile'><i class='fa fa-eye'></i></button>
-	                        <button type='button' class='btn btn-success btn-sm' title='Send Message'><i class='fa fa-envelope'></i></button>
-	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(".$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
+	            $button = "<center><input type='checkbox' value'' onclick='tag_completed('".$row['id']."')'></center>";
 
 	            $data[] = array(
-	            	$row['student_id'],
 	            	$row['name'],
-	            	$row['course'],
-	            	$row['email'],
 	            	$button);
 	        }
 	    } else {
