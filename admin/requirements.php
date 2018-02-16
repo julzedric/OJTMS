@@ -18,7 +18,7 @@
         Requirements
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
         <li><a href="#">Requirements</a></li>
       </ol>
     </section>
@@ -44,7 +44,16 @@
                             <label>Name:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="name" name="name" class="form-control">
+                             <select class="form-control" id="name" name="name">
+                                <option value="">--Select--</option>
+                                <option value="Acceptance Letter">Acceptance Letter</option>
+                                <option value="Application Letter">Application Letter</option>
+                                <option value="DTR">DTR</option>
+                                <option value="Final Evaluation">Final Evaluation</option>
+                                <option value="Monthly Report">Monthly Report</option>
+                                <option value="OJT Certificate">OJT Certificate</option>
+                                <option value="Recommendation Request">Recommendation Request</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -131,7 +140,35 @@
                             <label>School Year:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="school_year" name="school_year" class="form-control">
+                            <div class="col-md-5">
+                                <select class="form-control" id="school_year_1" name="school_year_1">
+                                    <?php
+                                        $currently_selected = date('Y');
+                                        $earliest_year = 1950;
+                                        $latest_year = date('Y') + 2;
+
+                                        foreach( range( $latest_year, $earliest_year ) as $i ) {
+                                            print '<option value="'.$i.'"'.($i === $currently_selected ? ' selected="selected"' : '').'>'.$i.'</option>';
+                                        }   
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-md-2" style="text-align: center;">
+                                <label>To</label>
+                            </div>
+                            <div class="col-md-5">
+                                <select class="form-control" id="school_year_2" name="school_year_2">
+                                    <?php
+                                        $currently_selected = date('Y');
+                                        $earliest_year = 1950;
+                                        $latest_year = date('Y') + 2;
+
+                                        foreach( range( $latest_year, $earliest_year ) as $i ) {
+                                            print '<option value="'.$i.'"'.($i === $currently_selected ? ' selected="selected"' : '').'>'.$i.'</option>';
+                                        }   
+                                    ?>
+                                </select>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group">
@@ -139,7 +176,11 @@
                             <label>Semester:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="semester" name="semester" class="form-control">
+                            <select class="form-control" id="semester" name="semester">
+                                <option value="">--Select--</option>
+                                <option value="1">First</option>
+                                <option value="2">Second</option>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -298,7 +339,7 @@
             </div>
 
             <div class="box-body padding-20">
-                <table id="requirements-request" class="table table-bordered table-striped">
+                <table id="requirements-request" class="table table-bordered table-striped table-hover">
                     <thead>
                         <tr>
                             <th>School Year</th>
@@ -390,6 +431,11 @@
             $("#steps").slideUp();
             $("#step").val('');
         }
+    }
+
+    function stud_req(id)
+    {
+        alert(id);
     }
 </script>
 <?php include('../includes/footer.php')?>

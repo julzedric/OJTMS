@@ -29,7 +29,7 @@
         Requirements
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
         <li><a href="#">Requirements</a></li>
       </ol>
     </section>
@@ -51,7 +51,74 @@
                             <label>Name:</label>
                         </div>
                         <div class="col-md-6">
-                            <input type="text" id="name" name="name" class="form-control" value="<?php echo $data['name']?>">
+                            <select class="form-control" id="name" name="name">
+                                <?php
+                                    if($data['name'] == 'Acceptance Letter'){
+                                        echo '<option value="">--Select--</option>
+                                            <option value="Acceptance Letter" selected="">Acceptance Letter</option>
+                                            <option value="Application Letter">Application Letter</option>
+                                            <option value="DTR">DTR</option>
+                                            <option value="Final Evaluation">Final Evaluation</option>
+                                            <option value="Monthly Report">Monthly Report</option>
+                                            <option value="OJT Certificate">OJT Certificate</option>
+                                            <option value="Recommendation Request">Recommendation Request</option>';
+                                    } else if($data['name'] == 'Application Letter'){
+                                         echo '<option value="">--Select--</option>
+                                            <option value="Acceptance Letter"Acceptance Letter</option>
+                                            <option value="Application Letter" selected="">>Application Letter</option>
+                                            <option value="DTR">DTR</option>
+                                            <option value="Final Evaluation">Final Evaluation</option>
+                                            <option value="Monthly Report">Monthly Report</option>
+                                            <option value="OJT Certificate">OJT Certificate</option>
+                                            <option value="Recommendation Request">Recommendation Request</option>';
+                                    } else if($data['name'] == 'DTR') {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="Acceptance Letter"Acceptance Letter</option>
+                                            <option value="Application Letter">>Application Letter</option>
+                                            <option value="DTR" selected="">DTR</option>
+                                            <option value="Final Evaluation">Final Evaluation</option>
+                                            <option value="Monthly Report">Monthly Report</option>
+                                            <option value="OJT Certificate">OJT Certificate</option>
+                                            <option value="Recommendation Request">Recommendation Request</option>';
+                                    } else if($data['name'] == 'Final Evaluation') {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="Acceptance Letter"Acceptance Letter</option>
+                                            <option value="Application Letter">>Application Letter</option>
+                                            <option value="DTR">DTR</option>
+                                            <option value="Final Evaluation" selected="">Final Evaluation</option>
+                                            <option value="Monthly Report">Monthly Report</option>
+                                            <option value="OJT Certificate">OJT Certificate</option>
+                                            <option value="Recommendation Request">Recommendation Request</option>';
+                                    } else if($data['name'] == 'Monthly Report') {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="Acceptance Letter"Acceptance Letter</option>
+                                            <option value="Application Letter">>Application Letter</option>
+                                            <option value="DTR">DTR</option>
+                                            <option value="Final Evaluation">Final Evaluation</option>
+                                            <option value="Monthly Report" selected="">Monthly Report</option>
+                                            <option value="OJT Certificate">OJT Certificate</option>
+                                            <option value="Recommendation Request">Recommendation Request</option>';
+                                    } else if($data['name'] == 'OJT Certificate') {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="Acceptance Letter"Acceptance Letter</option>
+                                            <option value="Application Letter">>Application Letter</option>
+                                            <option value="DTR">DTR</option>
+                                            <option value="Final Evaluation">Final Evaluation</option>
+                                            <option value="Monthly Report">Monthly Report</option>
+                                            <option value="OJT Certificate" selected="">OJT Certificate</option>
+                                            <option value="Recommendation Request">Recommendation Request</option>';
+                                    } else if($data['name'] == 'Recommendation Request') {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="Acceptance Letter"Acceptance Letter</option>
+                                            <option value="Application Letter">>Application Letter</option>
+                                            <option value="DTR">DTR</option>
+                                            <option value="Final Evaluation">Final Evaluation</option>
+                                            <option value="Monthly Report">Monthly Report</option>
+                                            <option value="OJT Certificate">OJT Certificate</option>
+                                            <option value="Recommendation Request" selected="">Recommendation Request</option>';
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
@@ -71,7 +138,7 @@
                                 $ext = pathinfo(strtolower($data['file']),PATHINFO_EXTENSION);
 
                                 if($ext == 'jpg' || $ext == 'png' || $ext == 'jpeg'){
-                                    echo "<img src='../assets/uploads/requirements/".$data['file']."?>' class='margin-bottom-5' style='width: 120px; height: 100px;' alt='File'>";
+                                    echo "<img src='../assets/uploads/requirements/".$data['file']."?>' class='margin-bottom-5' style='width: 140px; height: 120px;' alt='File'>";
                                     echo "<input type='hidden' id='old_file' name='old_file' value='".$data['file']."'>";
                                 } elseif ($ext == 'pdf') {
                                     echo "<input type='text' id='old_file' name='old_file' value='".$data['file']."' class='form-control margin-bottom-5' disabled>";

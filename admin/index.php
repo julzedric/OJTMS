@@ -18,7 +18,7 @@
         OJT Master List
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
+        <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
         <li class="active">OJT Master List</li>
       </ol>
     </section>
@@ -178,6 +178,34 @@
                         </div>
                   
                     <!-- </div> -->
+                </div>
+                <div class="modal-footer">
+                      <div class="col-lg-12">
+                        <div class="pull-right">
+                          <!-- <button type="submit" class="btn btn-primary">Register</button> -->
+                          <button class="btn btn-default" data-dismiss="modal">Close</button>
+                        </div>
+                      </div>
+                </div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+
+<!-- Modal 2 -->
+<div class="modal fade" id="student_progress" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        
+        <div class="modal-content">
+            <form action="models/add_user.php" role="form" method="POST" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4>Student Requirements Status</h4>
+                </div>
+
+                <div class="modal-body">
+
                 </div>
                 <div class="modal-footer">
                       <div class="col-lg-12">

@@ -33,7 +33,7 @@
             </li>
             <li class="<?php if ($title == 'Document Request') {echo 'active'; }else{ echo ''; } ?>">
                 <a href="document-request.php">
-                    <i class="fa fa-home"></i> <span>Document Request</span>
+                    <i class="fa fa-folder-o"></i> <span>Document Request</span>
                 </a>
             </li>
             <li class="<?php if ($title == 'Requirements') {echo 'active'; }else{ echo ''; } ?>">
@@ -44,6 +44,11 @@
             <li class="<?php if ($title == 'Announcement List') {echo 'active'; }else{ echo ''; } ?>">
                 <a href="announcement-list.php">
                     <i class="fa fa-table"></i> <span>Announcement List</span>
+                </a>
+            </li>
+            <li class="<?php if ($title == 'SMS') {echo 'active'; }else{ echo ''; } ?>">
+                <a href="sms.php">
+                    <i class="fa fa-envelope-o"></i> <span>SMS</span>
                 </a>
             </li>
         </ul>

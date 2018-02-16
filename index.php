@@ -240,7 +240,7 @@
                     </select>
                 </div>
                 <div class="form-group col-lg-4">
-                    <label for="contact number">Contact Number <span style="color:red">*</span></label>
+                    <label for="contact number">CONTACT NUMBER <span style="color:red">*</span></label>
                     <input class="form-control" type="text" name="contact_number" required>
                     <?php if(isset($_POST['contact_number'])) {
                         echo htmlentities ($_POST['contact_number']); }?>
