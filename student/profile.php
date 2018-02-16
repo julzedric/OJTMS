@@ -71,7 +71,17 @@
                                 ojt_users B ON A.stud_id = B.student_id WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' ";
                         $result = $conn->query($sql);
                         $hours = $result->fetch_assoc()['hours']; ?>
-                      <h5 class="description-header"><?php echo $hours; ?></h5>
+                      <h5 class="description-header">
+                        <?php 
+                          if($hours > 0) {
+                          echo $hours; 
+                        }
+                        else
+                        {
+                          echo '0';
+                        }
+                        ?>
+                      </h5>
                       <span class="description-text">Total Hours Rendered</span>
                     </div>
                     <!-- /.description-block -->
@@ -95,7 +105,17 @@
                   
                   <div class="col-sm-4">
                     <div class="description-block">
-                      <h5 class="description-header"><?php echo $total; ?></h5>
+                      <h5 class="description-header">
+                        <?php 
+                          if($result->num_rows > 0) {
+                          echo $total; 
+                        }
+                        else
+                        {
+                          echo 'Not yet set';
+                        }
+                        ?>
+                      </h5>
                       <span class="description-text">Total Hours Required</span>
                     </div>
                     <!-- /.description-block -->
@@ -198,13 +218,13 @@
 
             <div class="info-box-content">
               <span class="info-box-text">Requirements Summary</span>
-              <span class="info-box-number">(1 out of 5) completed.</span>
+              <span class="info-box-number">(1 out of 4) completed.</span>
 
               <div class="progress">
-                <div class="progress-bar" style="width: 20%"></div>
+                <div class="progress-bar" style="width: 25%"></div>
               </div>
                   <span class="progress-description">
-                    20%
+                    25%
                   </span>
             </div>
             <!-- /.info-box-content -->
@@ -214,7 +234,7 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>80</h3>
+              <h3><?php echo $hours;?></h3>
 
               <p>Hours Rendered</p>
             </div>
