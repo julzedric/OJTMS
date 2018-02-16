@@ -27,6 +27,7 @@
     <div class="box-body">
         <div class="margin-bottom-20">
             <button class="btn btn-primary" onclick="view_form();">Add New Requirement</button>
+            <button class="btn btn-primary" onclick="view_form2();">Add Hours Required</button>
         </div>
 
         <div class="box box-primary collapse" style="display: hidden;"> 
@@ -74,27 +75,29 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group" id="steps" style="display: none;">
-                        <div class="col-md-2">
-                            <label>Steps:</label>
+                    <div id="steps" style="display: none;"> 
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label>Steps:</label>
+                            </div>
+                            <div class="col-md-6">  
+                                <select class="form-control" id="step" name="step">
+                                    <option value="">--Select--</option>
+                                    <option value="1">Step 1</option>
+                                    <option value="2">Step 2</option>
+                                    <option value="3">Step 3</option>
+                                    <option value="4">Step 4</option>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-6">  
-                            <select class="form-control" id="step" name="step">
-                                <option value="">--Select--</option>
-                                <option value="1">Step 1</option>
-                                <option value="2">Step 2</option>
-                                <option value="3">Step 3</option>
-                                <option value="4">Step 4</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-2">
-                            <label>Submission Mode:</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="radio" name="mode" id="personal" value="0"> Personal&emsp;
-                            <input type="radio" name="mode" id="online" value="1"> Online
+                        <div class="form-group" id="submission_mode">
+                            <div class="col-md-2">
+                                <label>Submission Mode:</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="radio" name="mode" id="personal" value="0"> Personal&emsp;
+                                <input type="radio" name="mode" id="online" value="1"> Online
+                            </div>
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">
@@ -102,6 +105,68 @@
                             <div id="message"></div> 
                             <div id="actionButtons" class="pull-right">
                                 <button type="reset" id="btn_cancel" onclick="clearfield()" class="btn btn-squared btn-default btn-o">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-squared btn-primary" id="btnSubmit">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="box box-primary collapse2" style="display: none;"> 
+            <div class="box-header with-border">
+                <h3 class="box-title">Add Hours Required</h3>
+            </div>
+            <div class="box-body padding-20">
+                <form action="models/create_total_hours.php" class="form-horizontal row-border" role="form" method="POST" id="ojtmsForm" enctype="multipart/form-data">
+                    <input type="hidden" name="act" id="act">
+                    <input type="hidden" name="id" id="id">
+
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>School Year:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="school_year" name="school_year" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>Semester:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" id="semester" name="semester" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>Course:</label>
+                        </div>
+                        <div class="col-md-6">  
+                            <select class="form-control" id="course" name="course">
+                                <option value="">--Select--</option>
+                                <option value="BSIM">BSIM</option>
+                                <option value="BSAIT">BSAIT</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>Total Hours:</label>
+                        </div>
+                        <div class="col-md-6">  
+                            <input type="text" id="total_hours" name="total_hours" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group margin-bottom-0">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <div id="message"></div> 
+                            <div id="actionButtons" class="pull-right">
+                                <button type="reset" id="btn_cancel" onclick="clearfield2()" class="btn btn-squared btn-default btn-o">
                                     Cancel
                                 </button>
                                 <button type="submit" class="btn btn-squared btn-primary" id="btnSubmit">
@@ -226,6 +291,58 @@
                 </table>
             </div>
         </div>
+
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Total Hours List</h3>
+            </div>
+
+            <div class="box-body padding-20">
+                <table id="requirements-request" class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th>School Year</th>
+                            <th>Semester</th>
+                            <th>Course</th>
+                            <th>Total Hours</th>
+                            <th style='width: 20%; text-align: center;'>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            $sql = "SELECT * FROM ojt_total_hours ORDER BY id DESC";
+                            $result = $conn->query($sql);
+
+                            if($result->num_rows > 0) {
+                                while($row = $result->fetch_assoc())
+                                {
+                                    echo "
+                                        <tr>
+                                            <td>".$row['school_year']."</td>
+                                            <td>".$row['semester']."</td>
+                                            <td>".$row['course']."</td>
+                                            <td>".$row['total_hours']."</td>
+                                            <td style='width:20%; text-align: center;'>
+                                                    <a href='edit_total_hours.php?id=".$row['id']."'>
+                                                        <button type='button' class='btn btn-primary btn-sm' title='Edit'>
+                                                            <i class='fa fa-pencil'></i>
+                                                        </button>
+                                                    </a>
+                                                    <a href='models/remove_total_hours.php?id=".$row['id']."'>
+                                                        <button type='button' class='btn btn-danger btn-sm' title='Remove'>
+                                                        <i class='fa fa-trash'></i>
+                                                        </button>
+                                                    </a>
+                                            </td>
+                                        </tr>";
+                                }
+
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <!-- /.content -->
   </div>
@@ -246,6 +363,10 @@
         $(".collapse").slideDown();
     }
 
+    function view_form2() {
+        $(".collapse2").slideDown();
+    }
+
     function clearfield() {
         $("#name").val("");
         $("#description").val("");
@@ -253,36 +374,20 @@
         $(".downloadable").val("");
         $(".collapse").slideUp();
     }
-    function delete_(id){
-        $.ajax({
-            url: "models/remove_requirement.php",
-            type: 'POST',
-            data: {
-                    a_delete: true,
-                    id : id
-            },
-            dataType: 'json',
-            success: function(data)
-            {
-                if(data == 'Success') {
-                    alert('Success!');
-                } else if(data == 'Error'){
-                    alert('Please try again.');
-                }
-            },
-            error: function(data)
-            {
-                alert('Please try again. lol');
-            }
-            
-        });
+
+    function clearfield2() {
+        $("#school_year").val("");
+        $("#semester").val("");
+        $("#course").val("");
+        $(".total_hours").val("");
+        $(".collapse2").slideUp();
     }
 
     function show_step(value){
         if (value == 1) {
-            $("#steps").show();
+            $("#steps").slideDown();
         } else {
-            $("#steps").hide();
+            $("#steps").slideUp();
             $("#step").val('');
         }
     }

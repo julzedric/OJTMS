@@ -10,7 +10,7 @@
     if($_GET['id']) {
       $id = $_GET['id'];
 
-      $sql = "SELECT * FROM  ojt_announcements WHERE id = '".$id."'";
+      $sql = "SELECT * FROM  ojt_total_hours WHERE id = '".$id."'";
       $result = $conn->query($sql);
 
       $data = $result->fetch_assoc();
@@ -41,63 +41,65 @@
         <!-- <div class="margin-bottom-20">
             <button class="btn btn-primary" onclick="$('.collapse').toggle();">Add new Announcement</button>
         </div> -->
-        <div class="box box-primary">
+        <div class="box box-primary"> 
             <div class="box-header with-border">
-                <h3 class="box-title">Edit Announcement</h3>
+                <h3 class="box-title">Edit Hours Required</h3>
             </div>
-
             <div class="box-body padding-20">
-                <form action="models/update_announcement.php" class="form-horizontal row-border" role="form" method="POST" id="ojtmsForm" enctype="multipart/form-data">
-                    <input type="hidden" name="act" id="act" value="edit">
+                <form action="models/update_total_hours.php" class="form-horizontal row-border" role="form" method="POST" id="ojtmsForm" enctype="multipart/form-data">
+                    <input type="hidden" name="act" id="act">
                     <input type="hidden" name="id" id="id" value="<?php echo $data['id']?>">
 
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>Date From:</label>
+                            <label>School Year:</label>
                         </div>
                         <div class="col-md-6">
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right datepicker" name="date_from" id="date_from" value="<?php echo $data['start_date']?>">
-                            </div>
+                            <input type="text" id="school_year" name="school_year" class="form-control" value="<?php echo $data['school_year']?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>Date To:</label>
+                            <label>Semester:</label>
                         </div>
                         <div class="col-md-6">
-                            <div class="input-group date">
-                              <div class="input-group-addon">
-                                <i class="fa fa-calendar"></i>
-                              </div>
-                              <input type="text" class="form-control pull-right datepicker" name="date_to" id="date_to" value="<?php echo $data['end_date']?>">
-                            </div>
+                            <input type="text" id="semester" name="semester" class="form-control" value="<?php echo $data['semester']?>">
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>Title:</label>
+                            <label>Course:</label>
                         </div>
-                        <div class="col-md-6">
-                            <textarea name="title" id="title" class="form-control" rows="3"><?php echo $data['title']?></textarea>
+                        <div class="col-md-6">  
+                            <select class="form-control" id="course" name="course">
+                                <?php 
+                                    if($data['course'] == 'BSIM')
+                                    {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="BSIM" selected="true">BSIM</option>
+                                            <option value="BSAIT">BSAIT</option>';
+                                    } else {
+                                        echo '<option value="">--Select--</option>
+                                            <option value="BSIM">BSIM</option>
+                                            <option value="BSAIT" selected="true">BSAIT</option>';
+                                    }
+                                ?>
+                            </select>
                         </div>
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>Announcement:</label>
+                            <label>Total Hours:</label>
                         </div>
-                        <div class="col-md-6">
-                            <textarea name="announcement" id="announcement" class="form-control" rows="7"><?php echo $data['announcements']?></textarea>
+                        <div class="col-md-6">  
+                            <input type="text" id="total_hours" name="total_hours" class="form-control" value="<?php echo $data['total_hours']?>">
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">
                         <div class="col-sm-offset-2 col-sm-10">
                             <div id="message"></div> 
                             <div id="actionButtons" class="pull-right">
-                                <button type="reset" id="btn_cancel" onclick="clearfield()" class="btn btn-squared btn-default btn-o">
+                                <button type="reset" id="btn_cancel" onclick="clearfield2()" class="btn btn-squared btn-default btn-o">
                                     Cancel
                                 </button>
                                 <button type="submit" class="btn btn-squared btn-primary" id="btnSubmit">
