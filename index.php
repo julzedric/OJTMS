@@ -232,12 +232,18 @@
                     <?php if(isset($_POST['student_id'])) {
                         echo htmlentities ($_POST['student_id']); }?>
                 </div>
-                <div class="form-group col-lg-5">
+                <div class="form-group col-lg-3">
                   <label for="course" class="control-label" >COURSE <span style="color:red">*</span></label>
                     <select class="form-control" name="course" id="Course" >
-                      <option value="1">BSIM</option>
-                      <option value="2">BSAIT</option>
+                      <option value="BSIM">BSIM</option>
+                      <option value="BSAIT">BSAIT</option>
                     </select>
+                </div>
+                <div class="form-group col-lg-4">
+                    <label for="contact number">Contact Number <span style="color:red">*</span></label>
+                    <input class="form-control" type="text" name="contact_number" required>
+                    <?php if(isset($_POST['contact_number'])) {
+                        echo htmlentities ($_POST['contact_number']); }?>
                 </div>
                 <div class="form-group col-lg-4">
                   <label for="username" class="control-label" oi>USERNAME <span style="color:red">*</span></label>

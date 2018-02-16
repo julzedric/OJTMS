@@ -61,11 +61,17 @@
               <div class="widget-user-image">
                 <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
               </div>
+              
               <div class="box-footer">
                 <div class="row">
                   <div class="col-sm-4 border-right">
                     <div class="description-block">
-                      <h5 class="description-header">80</h5>
+                      <?php
+                        $sql = "SELECT sum(hours_rendered) hours FROM ojt_hours_rendered A INNER JOIN 
+                                ojt_users B ON A.stud_id = B.student_id WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' ";
+                        $result = $conn->query($sql);
+                        $hours = $result->fetch_assoc()['hours']; ?>
+                      <h5 class="description-header"><?php echo $hours; ?></h5>
                       <span class="description-text">Total Hours Rendered</span>
                     </div>
                     <!-- /.description-block -->
@@ -73,15 +79,23 @@
                   <!-- /.col -->
                   <div class="col-sm-4 border-right">
                     <div class="description-block">
-                      <h5 class="description-header">160</h5>
+                      <?php                       
+                        $sql = "SELECT a.total_hours FROM ojt_total_hours A 
+                                INNER JOIN ojt_users B ON A.course = B.course WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' ";
+                        $result = $conn->query($sql);
+                        $total = $result->fetch_assoc()['total_hours'];
+                        $diff_hours = $total - $hours;
+                      ?>
+                      <h5 class="description-header"><?php echo $diff_hours; ?></h5>
                       <span class="description-text">Total Hours Needed</span>
                     </div>
                     <!-- /.description-block -->
                   </div>
                   <!-- /.col -->
+                  
                   <div class="col-sm-4">
                     <div class="description-block">
-                      <h5 class="description-header">240</h5>
+                      <h5 class="description-header"><?php echo $total; ?></h5>
                       <span class="description-text">Total Hours Required</span>
                     </div>
                     <!-- /.description-block -->
@@ -89,6 +103,7 @@
                   <!-- /.col -->
                 </div>
                 <!-- /.row -->
+              
               </div>
            </div>
         </div>
@@ -103,6 +118,20 @@
                 </span>
               </div>
               <!-- /.box-header -->
+              <?php
+                require_once('../connection.php');
+
+                $query = mysqli_query($conn, "
+                           SELECT  * from ojt_users where `username` = '".$_SESSION['username']."'        
+                    ");
+                $results = array();
+                while ($row = mysqli_fetch_assoc($query)){
+                    $results[] = $row;
+                }
+                foreach ($results as $result){
+                    //echo json_encode($result);
+                }
+              ?>
               <div class="box-body">
                   <strong><i class="fa fa-book margin-r-5"></i> Personal Information</strong>
 
