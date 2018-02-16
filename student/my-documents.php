@@ -39,24 +39,60 @@
               <table id="example2" class="table table-bordered table-hover">
                 <thead>
                 <tr>
+                  <th>Requirement Name</th>
                   <th>Document Name</th>
-                  <th>Action</th>            
+                  <th class="text-center">Action</th>            
                 </tr>
                 </thead>
                 <tbody>
                 <!-- List -->
                 <?php
-                $sql = "SELECT * FROM ojt_student_requirements WHERE stud_id = '".$_SESSION['stud_id']."' ";
+                $sql = "SELECT a.*, b.id as b_id, b.name as requirement_name FROM ojt_student_requirements as a
+                        INNER JOIN ojt_requirements_list as b
+                        ON 
+                        a.requirement_id = b.id
+                         WHERE stud_id = '".$_SESSION['stud_id']."' ";
                 $result = $conn->query($sql);
 
                 if($result->num_rows > 0) {
                     while($row = $result->fetch_assoc())
                     {
                         echo'<tr>
+                                <td>'.$row['requirement_name'].'</td>
                                  <td>'.$row['name'].'</td>';
-                        echo    '<td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
-                             </tr>
-                                  ';
+                        $file = "../assets/uploads/student_requirements/".$row['name'];
+                        if($row['status'] != 2){
+                          echo "<td class='text-center'>
+                                  <a href='".$file."' target='_new'>
+                                    <button type='button' class='btn btn-info btn-sm' title='View'>
+                                      <i class='fa fa-eye'></i> Preview
+                                    </button>
+                                  </a>
+                                  <a href='".$file."'>
+                                      <button type='button' class='btn btn-success btn-sm' title='Download'>
+                                        <i class='fa fa-download'></i> Download
+                                      </button>
+                                  </a>
+                                  <a href='models/remove_requirement.php?id=".$row['id']."'>
+                                    <button type='button' class='btn btn-danger btn-sm' title='Remove'>
+                                      <i class='fa fa-trash'></i> Delete
+                                    </button>
+                                  </a>
+                                </td>";
+                        }else{
+                          echo "<td class='text-center'>
+                                  <a href='".$file."' target='_new'>
+                                    <button type='button' class='btn btn-info btn-sm' title='View'>
+                                      <i class='fa fa-eye'></i> Preview
+                                    </button>
+                                  </a>
+                                  <a href='".$file."'>
+                                      <button type='button' class='btn btn-success btn-sm' title='Download'>
+                                        <i class='fa fa-download'></i> Download
+                                      </button>
+                                  </a>
+                                </td>";
+                        }
                     }
                 }
                 else{

@@ -57,8 +57,8 @@
                             {
                        echo    
                               '<td class="text-center">
-                                  <button type="button" class="btn btn-success btn-sm"><i class="fa fa-eye"></i> Preview</button>
-                                  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download</button>
+                                  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-eye"></i> Preview</button>
+                                  <button type="button" class="btn btn-success btn-sm"><i class="fa fa-download"></i> Download</button>
                                 </td>';
                             }
                         else{
