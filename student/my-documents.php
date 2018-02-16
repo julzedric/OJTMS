@@ -54,7 +54,7 @@
                     {
                         echo'<tr>
                                  <td>'.$row['name'].'</td>';
-                                 '<td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
+                        echo    '<td><button type="button" class="btn btn-block btn-primary btn-xs"><i class="fa fa-download"></i> Download</button></td>
                              </tr>
                                   ';
                     }

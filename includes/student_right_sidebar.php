@@ -3,11 +3,11 @@
         <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
 
         <div class="info-box-content">
-            <span class="info-box-text">Requirements Summary</span>
-            <span class="info-box-number">(1 out of 5) completed.</span>
+            <span class="info-box-text">Step Requirement Summary</span>
+            <span class="info-box-number">(1 out of 5 Steps) completed.</span>
 
             <div class="progress">
-                <div class="progress-bar" style="width: 20%"></div>
+                <div class="progress-bar" style="width:20%"></div>
             </div>
             <span class="progress-description">
                     20%
@@ -23,7 +23,7 @@
             <h3 class="box-title"><i class="fa fa-bullhorn margin-r-5"></i> Announcement</h3>
         </div>
         <!-- /.box-header -->
-        <div class="box-body">
+        <div class="box-body" style="height:320px; overflow:auto;">
 
             <?php
             $sql = "SELECT * FROM ojt_announcements";

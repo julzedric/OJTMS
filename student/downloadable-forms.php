@@ -39,30 +39,46 @@
                 <thead>
                 <tr>
                   <th>Document Name</th>
-                  <th>Action</th>            
+                  <th class="text-center">Action</th>            
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                  <td>Intial Requirments</td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
-                </tr>
-                <tr>
-                  <td>Student Trainee Evaluation</td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
-                </tr>
-                <tr>
-                  <td>Waiver</td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
-                </tr>
-                <tr>
-                  <td>Medical Certificate</td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
-                </tr>
-                <tr>
-                  <td>Recommendation Letter</td>
-                  <td><button type="button" class="btn btn-block btn-success btn-xs"><i class="fa fa-search"></i> Preview</button></td>
-                </tr>
+                <?php
+                  $sql = "SELECT * FROM ojt_requirements_list WHERE type = 0";
+                  $result = $conn->query($sql);
+
+                  if($result->num_rows > 0) {
+                      while($row = $result->fetch_assoc())
+                      {
+                       echo  '<tr>
+                                <td>'.$row['name'].'</td> ';
+                       $file = "../assets/uploads/requirements/".$row['file'];
+                        if($row['file'] == '')
+                            {
+                       echo    
+                              '<td class="text-center">
+                                  <button type="button" class="btn btn-success btn-sm"><i class="fa fa-eye"></i> Preview</button>
+                                  <button type="button" class="btn btn-primary btn-sm"><i class="fa fa-download"></i> Download</button>
+                                </td>';
+                            }
+                        else{
+                        echo "<td class='text-center'>
+                                <a href='".$file."' target='_new'>
+                                  <button type='button' class='btn btn-info btn-sm' title='View'>
+                                      <i class='fa fa-eye'></i> Preview
+                                  </button>
+                                </a>
+                                <a href='".$file."'>
+                                    <button type='button' class='btn btn-success btn-sm' title='Download'>
+                                      <i class='fa fa-download'></i> Download
+                                    </button>
+                                </a>
+                              </td>";  
+                        }
+                        echo '</tr>';    
+                      }
+                    }
+                ?>
                 </tfoot>
               </table>
             </div>
