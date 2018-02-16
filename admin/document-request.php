@@ -46,6 +46,8 @@
                         <tbody>
                         <?php
                         $results = getDocumentRequest($conn);
+                        print_r($results);
+
                         foreach($results as $result){
                             $file = "../assets/uploads/requirements/".$result['name'];
                             if($result['type'] == 0){
