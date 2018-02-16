@@ -235,8 +235,8 @@
                 <div class="form-group col-lg-5">
                   <label for="course" class="control-label" >COURSE <span style="color:red">*</span></label>
                     <select class="form-control" name="course" id="Course" >
-                      <option value="1">BSIM</option>
-                      <option value="2">BSAIT</option>
+                      <option value="BSIM">BSIM</option>
+                      <option value="BSAIT">BSAIT</option>
                     </select>
                 </div>
                 <div class="form-group col-lg-4">
