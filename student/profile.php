@@ -96,6 +96,11 @@
           <div class="box box-primary">
               <div class="box-header with-border">
                 <h3 class="box-title">About Me</h3>
+                <span class="pull-right">
+                  <a href="#EditProfile"  data-toggle="modal" title="Edit Profile">
+                      <i class="fa fa-pencil"></i>
+                  </a>
+                </span>
               </div>
               <!-- /.box-header -->
               <div class="box-body">
@@ -235,6 +240,114 @@
           </div>
           <!-- /.modal-dialog -->
     </div>
+  </div>
+
+<!--GET PROFILE-->
+<?php 
+    
+
+      $sql = "SELECT * FROM  ojt_users WHERE student_id = '".$_SESSION['stud_id']."'";
+      $result = $conn->query($sql);
+
+      $data = $result->fetch_assoc();
+
+      $conn->close();
+   
+?>
+
+  <div class="modal fade in" id="EditProfile" style="padding-right: 17px;">
+          <div class="modal-dialog">
+            <div class="modal-content" style=" margin-top:90px;">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Edit Profile</h4>
+              </div>
+              <div class="modal-body">
+                <form action="models/update_profile.php" method="POST" enctype="multipart/form-data">
+                  <div class="box-body">
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="name" class="col-sm-3 control-label">Name</label>
+                        <div class="col-lg-9">
+                          <input type="text" class="form-control" id="name" name="name" value="<?php echo $data['firstname']." ".$data['lastname']; ?>" disabled>
+                        </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="student_id" class="col-sm-3 control-label">Student ID</label>
+                          <div class="col-lg-9">
+                          <input type="text" class="form-control" id="student_id" name="student_id" value="<?php echo $data['student_id']; ?>" disabled>
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="email" class="col-sm-3 control-label">Email</label>
+                          <div class="col-lg-9">
+                          <input type="email" class="form-control" id="email" name="email" value="<?php echo $data['email']; ?>" required>
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="contact_number" class="col-sm-3 control-label">Contact Number</label>
+                          <div class="col-lg-9">
+                          <input type="text" class="form-control" id="contact_number" name="contact_number" value="<?php echo $data['contact_number']; ?>" required>
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="dtr" class="col-sm-3 control-label">Gender</label>
+                          <div class="col-lg-9">
+                            <?php
+                              if($data['gender'] == "FEMALE"){
+                              echo  '<input type="radio" name="optradio" disabled>Male
+                                     <input type="radio" name="optradio" checked disabled>Female';
+                              }else{
+                              echo  '<input type="radio" name="optradio" checked disabled>Male
+                                     <input type="radio" name="optradio" disabled>Female';  
+                              }
+                             ?>
+                            
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="birthdate" class="col-sm-3 control-label">Birthdate</label>
+                          <div class="col-lg-9">
+                            <input type="text" class="form-control" id="birthdate" name="birthdate" value="<?php echo $data['birthdate']; ?>" disabled>
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="street" class="col-sm-3 control-label">Street</label>
+                          <div class="col-lg-9">
+                            <input type="text" class="form-control" id="street" name="street" value="<?php echo $data['street']; ?>" required>
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="barangay" class="col-sm-3 control-label">Barangay</label>
+                          <div class="col-lg-9">
+                            <input type="text" class="form-control" id="barangay" name="barangay" value="<?php echo $data['barangay']; ?>" required>
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="city" class="col-sm-3 control-label">City</label>
+                          <div class="col-lg-9">
+                            <input type="text" class="form-control" id="city" name="city" value="<?php echo $data['city']; ?>" required>
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="province" class="col-sm-3 control-label">Province</label>
+                          <div class="col-lg-9">
+                            <input type="text" class="form-control" id="province" name="province" value="<?php echo $data['province']; ?>" required>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+    </div>
+  </div>
 
   </div>
     <?php include('../includes/footer.php')?>
