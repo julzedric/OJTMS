@@ -22,12 +22,18 @@
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <script src="../bower_components/Chart.js/Chart.js"></script>
 <script src="../bower_components/sweetalert/sweet-alert.min.js"></script>
+<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
 <script src="../dist/js/pages/dashboard2.js"></script>
 <script src="../dist/js/demo.js"></script>
 
 <script>
     $(function () {
         load_dataTable();
+
+        //Date picker
+        $('.datepicker').datepicker({
+          autoclose: true
+        });
 
         var value = $("#type").val();
         show_step(value);

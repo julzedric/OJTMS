@@ -42,6 +42,32 @@
 
                     <div class="form-group">
                         <div class="col-md-2">
+                            <label>Date From:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right datepicker" name="date_from" id="date_from">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
+                            <label>Date To:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="input-group date">
+                              <div class="input-group-addon">
+                                <i class="fa fa-calendar"></i>
+                              </div>
+                              <input type="text" class="form-control pull-right datepicker" name="date_to" id="date_to">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-2">
                             <label>Title:</label>
                         </div>
                         <div class="col-md-6">
