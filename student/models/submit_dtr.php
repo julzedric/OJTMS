@@ -4,7 +4,7 @@
 	if($_POST) {
 		$hours_rendered = $_POST['hours_rendered'];
 		$created_at = date('Y-m-d');
-		//$dtr = $_POST['attachment'];
+		$stud_id = $_SESSION['stud_id'];
 		$status = 0;
 
 		$target_dir = "../../assets/uploads/dtr/";
@@ -29,7 +29,7 @@
 		if($uploadOk == 1) {
 				if(move_uploaded_file($_FILES['attachment']['tmp_name'], $target_dir.$filename)) {
 					$sql = "INSERT INTO ojt_hours_rendered (hours_rendered,dtr,status,stud_id,created_at)
-					values ('".$hours_rendered."','".$file."','".$status."','".$_SESSION['stud_id']."','".$created_at."')";
+					values ('".$hours_rendered."','".$file."','".$status."','".$stud_id."','".$created_at."')";
 
 					if($conn->query($sql) == TRUE) {
 						echo "<script type='text/javascript'> 
