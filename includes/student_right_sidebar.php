@@ -4,13 +4,13 @@
 
         <div class="info-box-content">
             <span class="info-box-text">Step Requirement Summary</span>
-            <span class="info-box-number">(1 out of 5 Steps) completed.</span>
+            <span class="info-box-number">(1 out of 4 Steps) completed.</span>
 
             <div class="progress">
-                <div class="progress-bar" style="width:20%"></div>
+                <div class="progress-bar" style="width:25%"></div>
             </div>
             <span class="progress-description">
-                    20%
+                    25%
                   </span>
         </div>
         <!-- /.info-box-content -->

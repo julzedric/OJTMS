@@ -51,32 +51,37 @@
                       <!-- List -->
                       <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
                         <?php
-                            $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 1";
-                            $result = $conn->query($sql);
-
-                            if($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc())
-                                {
-                                  echo'
-                                    <input type="hidden" name="requirement_id'.$row['id'].'" value="'.$row['id'].'">
-                                    <input type="hidden" name="step" value="1">
-                                    <ul>
-                                      <li>'
-                                        .$row['name'];
-                                      if($row['is_online'] == 1){
-                                        echo '<input type="file" name="name'.$row['id'].'" class="pull-right">';
-                                      }
-                                  echo '</li>
-                                    </ul>';
-                                }
-                                echo '<br>
+                                $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM `ojt_requirements_list` as a 
+                                                     left join `ojt_student_requirements`as b 
+                                                     on a.id = b.requirement_id
+                                                     where a.step = 1";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc())
+                                    {
+                                      $rl_id=$row['id'];
+                                      echo'
+                                        <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
+                                        <input type="hidden" name="step" value="1">
+                                        <ul>
+                                          <li>'
+                                            .$row['name'];
+                                          if($row['is_online'] == 1){
+                                            if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
+                                              echo '<input type="file" name="name'.$rl_id.'" class="pull-right">';
+                                            }
+                                          }
+                                      echo '</li>
+                                        </ul>';
+                                    }
+                                    echo '<br>
                                           <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
                                           <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
-                              }
-                            else{
-                                echo "No records found.";
-                              }
-                        ?>
+                                  }
+                                else{
+                                    echo "No records found.";
+                                  }
+                           ?>
                       </form>
                     </div>
                   </div>
@@ -93,21 +98,26 @@
                     <div class="box-body">
                       <!-- List -->
                       <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
-                          <?php
-                                $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 2";
+                        <?php
+                                $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM `ojt_requirements_list` as a 
+                                                     left join `ojt_student_requirements`as b 
+                                                     on a.id = b.requirement_id
+                                                     where a.step = 2";
                                 $result = $conn->query($sql);
-
                                 if($result->num_rows > 0) {
                                     while($row = $result->fetch_assoc())
                                     {
+                                      $rl_id=$row['id'];
                                       echo'
-                                        <input type="hidden" name="requirement_id'.$row['id'].'" value="'.$row['id'].'">
+                                        <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
                                         <input type="hidden" name="step" value="2">
                                         <ul>
                                           <li>'
                                             .$row['name'];
                                           if($row['is_online'] == 1){
-                                            echo '<input type="file" name="name'.$row['id'].'" class="pull-right">';
+                                            if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
+                                              echo '<input type="file" name="name'.$rl_id.'" class="pull-right">';
+                                            }
                                           }
                                       echo '</li>
                                         </ul>';
@@ -137,32 +147,37 @@
                       <!-- List -->
                       <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
                         <?php
-                              $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 3";
-                              $result = $conn->query($sql);
-
-                              if($result->num_rows > 0) {
-                                  while($row = $result->fetch_assoc())
-                                  {
-                                    echo'
-                                      <input type="hidden" name="requirement_id'.$row['id'].'" value="'.$row['id'].'">
-                                      <input type="hidden" name="step" value="3">
-                                      <ul>
-                                        <li>'
-                                          .$row['name'];
-                                        if($row['is_online'] == 1){
-                                          echo '<input type="file" name="name" class="pull-right">';
-                                        }
-                                    echo '</li>
-                                      </ul>';
-                                  }
-                                  echo '<br>
+                                $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM `ojt_requirements_list` as a 
+                                                     left join `ojt_student_requirements`as b 
+                                                     on a.id = b.requirement_id
+                                                     where a.step = 3";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc())
+                                    {
+                                      $rl_id=$row['id'];
+                                      echo'
+                                        <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
+                                        <input type="hidden" name="step" value="3">
+                                        <ul>
+                                          <li>'
+                                            .$row['name'];
+                                          if($row['is_online'] == 1){
+                                            if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
+                                              echo '<input type="file" name="name'.$rl_id.'" class="pull-right">';
+                                            }
+                                          }
+                                      echo '</li>
+                                        </ul>';
+                                    }
+                                    echo '<br>
                                           <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
                                           <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
-                                }
-                              else{
-                                  echo "No records found.";
-                                }
-                         ?>
+                                  }
+                                else{
+                                    echo "No records found.";
+                                  }
+                           ?>
                       </form>
                     </div>
                   </div>
@@ -180,32 +195,37 @@
                       <!-- List -->
                       <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
                         <?php
-                            $sql = "SELECT * FROM ojt_requirements_list WHERE `type` = 1 AND `step` = 4";
-                            $result = $conn->query($sql);
-
-                            if($result->num_rows > 0) {
-                                while($row = $result->fetch_assoc())
-                                {
-                                  echo'
-                                    <input type="hidden" name="requirement_id'.$row['id'].'" value="'.$row['id'].'">
-                                    <input type="hidden" name="step" value="4">
-                                    <ul>
-                                      <li>'
-                                        .$row['name'];
-                                      if($row['is_online'] == 1){
-                                        echo '<input type="file" name="name" class="pull-right">';
-                                      }
-                                  echo '</li>
-                                    </ul>';
-                                }
-                                echo '<br>
+                                $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM `ojt_requirements_list` as a 
+                                                     left join `ojt_student_requirements`as b 
+                                                     on a.id = b.requirement_id
+                                                     where a.step = 4";
+                                $result = $conn->query($sql);
+                                if($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc())
+                                    {
+                                      $rl_id=$row['id'];
+                                      echo'
+                                        <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
+                                        <input type="hidden" name="step" value="4">
+                                        <ul>
+                                          <li>'
+                                            .$row['name'];
+                                          if($row['is_online'] == 1){
+                                            if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
+                                              echo '<input type="file" name="name'.$rl_id.'" class="pull-right">';
+                                            }
+                                          }
+                                      echo '</li>
+                                        </ul>';
+                                    }
+                                    echo '<br>
                                           <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
                                           <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
-                              }
-                            else{
-                                echo "No records found.";
-                              }
-                        ?>
+                                  }
+                                else{
+                                    echo "No records found.";
+                                  }
+                           ?>
                       </form>    
                     </div>
                   </div>
