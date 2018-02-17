@@ -241,7 +241,7 @@
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="contact number">CONTACT NUMBER <span style="color:red">*</span></label>
-                    <input class="form-control" type="text" name="contact_number" required style="padding-left: 30px;">
+                    <input class="form-control" type="text" name="contact_number" required style="padding-left: 40px;">
                     <span class="unit">+63</span>
                     <?php if(isset($_POST['contact_number'])) {
                         echo htmlentities ($_POST['contact_number']); }?>
