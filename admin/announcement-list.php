@@ -108,7 +108,8 @@
                 <table id="announcement-list" class="table table-bordered table-striped">
                     <thead>
                         <tr>
-                          <th>Date</th>
+                          <th>Start Date</th>
+                          <th>End Date</th>
                           <th>Title</th>
                           <th>Announcement</th>
                           <th>Action</th>
@@ -124,7 +125,8 @@
                                 {
                                     echo "
                                         <tr>
-                                            <td>".$row['created_at']."</td>
+                                            <td>".$row['start_date']."</td>
+                                            <td>".$row['end_date']."</td>
                                             <td>".$row['title']."</td>
                                             <td>".$row['announcements']."</td>
                                             <td style='text-align: center;'>

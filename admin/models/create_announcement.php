@@ -5,8 +5,11 @@
 		$title = $_POST['title'];
 		$announcement = $_POST['announcement'];
 		$created_at = date('Y-m-d');
-		$start_date =$_POST['date_from'];
-		$end_date =$_POST['date_to']; 
+		// $start_date = str_replace('/','-',$_POST['date_from']);
+		// $end_date = str_replace('/','-',$_POST['date_to']);
+
+		$start_date = date('Y-m-d', strtotime($_POST['date_from']));
+		$end_date = date('Y-m-d', strtotime($_POST['date_to']));
 
 		if($end_date < $start_date)
 		{
