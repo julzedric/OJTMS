@@ -369,7 +369,7 @@
                   <label for="pword" class="control-label" oi>PASSWORD</label>
                   <input type="password" class="form-control" name="password" id="password" required="">
                   <br>
-                  <a href="#">Forgot Password?</a>
+                  <a data-dissmiss="modal" data-target="#forgotPassword" data-toggle="modal">Forgot Password?</a>
                 </div>               
               </div>
                 <div class="modal-footer">
@@ -388,7 +388,46 @@
       </div>
     </div>
 
-    
+    <div class="portfolio-modal modal fade" id="forgotPassword" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>Forgot Password ?</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+
+                        <form method="POST" action="models/forgotPassword.php">
+                            <div class="row">
+                                <div class="form-group col-lg-12">
+                                    <label for="uname" class="control-label">EMAIL ADDRESS</label>
+                                    <input type="email" class="form-control" name="fgt_email_address" id="email_address" required="">
+                                </div>
+                                <div class="form-group col-lg-12">
+                                    <label for="student_id">STUDENT ID</label>
+                                    <input type="text" class="form-control" name="fgt_student_id" required>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <div class="col-lg-12">
+                                    <div class="pull-right">
+                                        <button class="btn btn-primary">Send</button>
+                                        <button class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
     <!-- Bootstrap core JavaScript -->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js">$('.carousel').carousel();</script>
