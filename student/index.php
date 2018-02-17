@@ -18,7 +18,6 @@
     <section class="content-header">
       <h1>
         OJTMS Student 
-        <small>Homepage <?php echo 'session name '.$_SESSION['username']; ?></small>
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
