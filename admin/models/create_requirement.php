@@ -6,14 +6,23 @@
 		$created_at = date('Y-m-d');
 		$description = $_POST['description'];
 		$type = $_POST['type'];
-		$step = $_POST['step'];
-		$is_online = $_POST['mode'];
+		$step = isset($_POST['step'])? $_POST['step'] : '';
+		$is_online = isset($_POST['mode'])? $_POST['mode'] : '';
 
 		$target_dir = "../../assets/uploads/requirements/";
 		$file = $_FILES['file']['name'];
 		$filename = str_replace(' ', '_', $file);
 
-		$imageFileType = pathinfo($filename,PATHINFO_EXTENSION);
+		$imageFileType = pathinfo($file,PATHINFO_EXTENSION);
+
+		// $sql1 = "SELECT TOP(1) id from ojt_requirements_list";
+		// $result = $conn->query($sql1);
+
+	 //    while($row = $result->fetch_assoc())
+	 //        {
+	 //        	$data1 = $row['id'];
+	 //        };
+	 //        print_r($data1); die();
 
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "" ) {
@@ -50,23 +59,45 @@
 				}
 			} else {
 				if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$filename)) {
-					$sql = "INSERT INTO ojt_requirements_list (name,file,description,created_at,type,step)
-					values ('".$name."','".$filename."','".$description."','".$created_at."','".$type."','".$step."')";
+					if($type == 0)
+					{
+						$sql = "INSERT INTO ojt_requirements_list (name,file,description,created_at)
+						values ('".$name."','".$filename."','".$description."','".$created_at."')";
 
-					if($conn->query($sql) == TRUE) {
-						echo "<script type='text/javascript'> 
-								var conf= confirm(\"Successfully Created.\");
-								if(conf == true){
-									window.location.href = 'http://localhost/ojtms/admin/requirements.php';
-								}
-							</script>";
+						if($conn->query($sql) == TRUE) {
+							echo "<script type='text/javascript'> 
+									var conf= confirm(\"Successfully Created.\");
+									if(conf == true){
+										window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+									}
+								</script>";
+						} else {
+							echo "<script type='text/javascript'> 
+									var conf= confirm(\"Error. Please try again.\");
+									if(conf == true){
+										window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+									}
+								</script>";
+						}
 					} else {
-						echo "<script type='text/javascript'> 
-								var conf= confirm(\"Error. Please try again.\");
-								if(conf == true){
-									window.location.href = 'http://localhost/ojtms/admin/requirements.php';
-								}
-							</script>";
+						$sql = "INSERT INTO ojt_requirements_list (name,file,description,created_at,type,step,is_online)
+						values ('".$name."','".$filename."','".$description."','".$created_at."','".$type."','".$step."','".$is_online."')";
+
+						if($conn->query($sql) == TRUE) {
+							echo "<script type='text/javascript'> 
+									var conf= confirm(\"Successfully Created.\");
+									if(conf == true){
+										window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+									}
+								</script>";
+						} else {
+							echo "<script type='text/javascript'> 
+									var conf= confirm(\"Error. Please try again.\");
+									if(conf == true){
+										window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+									}
+								</script>";
+						}
 					}
 				} else {
 					echo "Error";

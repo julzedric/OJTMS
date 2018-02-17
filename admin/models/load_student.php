@@ -108,16 +108,16 @@
 
 	/******************load student requirement*********************/
 	if(isset($_GET['get_stud_req'])){
-		// print_r($_GET['student_id']); die();
+
 		$student_id = $_GET['student_id'];
 
-		$sql = "SELECT a.id, a.stud_id, a.is_complete, a.name, b.name FROM ojt_student_requirements as a INNER JOIN ojt_requirements_list as b on a.requirement_id = b.id where a.stud_id = '".$student_id."' ORDER by b.step";
+		$sql = "SELECT a.id, a.stud_id, a.is_completed, a.name, b.name FROM ojt_student_requirements as a INNER JOIN ojt_requirements_list as b on a.requirement_id = b.id where a.stud_id = '".$student_id."' ORDER by b.step";
 	    $result = $conn->query($sql);
 
 	    if($result->num_rows > 0) {
 	        while($row = $result->fetch_assoc())
 	        {
-	            if($row['is_complete'] == 0){
+	            if($row['is_completed'] == 0){
 					$button = "<center><input type='checkbox' value'' onclick='tag_completed(".$row['id'].")'></center>";
 	            } else {
 	            	$button = "<center><input type='checkbox' value'' onclick='tag_completed(".$row['id'].")' checked='true'></center>";
