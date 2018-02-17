@@ -39,6 +39,25 @@
         show_step(value);
 
     })
+
+
+  $(".update_profile").hide();
+
+  $("#widget-user-image").hover(function(){
+    $(".update_profile").show();
+  });
+
+  $(".update_profile").mouseout(function(){
+    $(".update_profile").hide();
+  });
+
+  $(".update_profile").on("click",function(){
+    $("#EditProfilePicture").show();
+  });
+
+  $("#pic_close").on("click",function(){
+    $("#EditProfilePicture").hide();
+  });
 </script>
 </body>
 </html>

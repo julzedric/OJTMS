@@ -6,6 +6,16 @@
         header("location: ../index.php");
     }
 ?>
+<style>
+.update_profile{
+    background-color: rgba(0, 0, 0, 0.5);
+    width:111px; 
+    margin-left:-53px !important; 
+    margin-top:2px; 
+    height:111px;
+    padding-top: 50px !important;
+}
+</style>
 
 <div class="wrapper">
 
@@ -50,7 +60,7 @@
                 <h3 class="widget-user-username"><?php echo $result['firstname'] ." ".$result['middlename']." ".$result['lastname']; ?></h3>
                 <h5 class="widget-user-desc">
                   <?php 
-                    if($result['course'] == 1){
+                    if($result['course'] == "BSIM"){
                       echo "BSIM";
                     }else{
                       echo "BSAIT";
@@ -58,36 +68,30 @@
                   ?>
                 </h5>
               </div>
-              <div class="widget-user-image">
-                <img class="img-circle" src="../dist/img/user1-128x128.jpg" alt="User Avatar">
+              <div class="widget-user-image" id="widget-user-image">
+                <?php 
+                  if($result['profile_picture'] != ""){
+                    $profile_pic = $result['profile_picture'];
+                  }else{
+                    $profile_pic = "default_img.png";
+                  }
+                ?>
+                <img style="width:115px; margin-left:-10px; height: 115px;" class="img-circle" src="<?php echo "../assets/uploads/profile_picture/".$profile_pic; ?>" alt="User Avatar">  
               </div>
-              
+              <div class="widget-user-image update_profile text-center img-circle"  >
+                <span style="color:white;"> <i class="fa fa-camera"></i> Update Profile</span>
+              </div>
               <div class="box-footer">
                 <div class="row">
-                  <div class="col-sm-4 border-right">
-                    <div class="description-block">
+                  
                       <?php
                         $sql = "SELECT sum(hours_rendered) hours FROM ojt_hours_rendered A INNER JOIN 
                                 ojt_users B ON A.stud_id = B.student_id WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' ";
                         $result = $conn->query($sql);
                         $hours = $result->fetch_assoc()['hours']; ?>
-                      <h5 class="description-header">
-                        <?php 
-                          if($hours > 0) {
-                          echo $hours; 
-                        }
-                        else
-                        {
-                          echo '0';
-                        }
-                        ?>
-                      </h5>
-                      <span class="description-text">Total Hours Rendered</span>
-                    </div>
-                    <!-- /.description-block -->
-                  </div>
-                  <!-- /.col -->
-                  <div class="col-sm-4 border-right">
+                     
+                
+                  <div class="col-sm-6 ">
                     <div class="description-block">
                       <?php                       
                         $sql = "SELECT a.total_hours FROM ojt_total_hours A 
@@ -103,7 +107,7 @@
                   </div>
                   <!-- /.col -->
                   
-                  <div class="col-sm-4">
+                  <div class="col-sm-6">
                     <div class="description-block">
                       <h5 class="description-header">
                         <?php 
@@ -234,7 +238,17 @@
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3><?php echo $hours;?></h3>
+              <h3>
+                <?php 
+                        if($hours > 0) {
+                          echo $hours; 
+                        }
+                        else
+                        {
+                          echo '0';
+                        }
+                        ?>
+              </h3>
 
               <p>Hours Rendered</p>
             </div>
@@ -304,7 +318,7 @@
    
 ?>
 
-  <div class="modal fade in" id="EditProfile" style="padding-right: 17px;">
+    <div class="modal fade in" id="EditProfile" style="padding-right: 17px;">
           <div class="modal-dialog">
             <div class="modal-content" style=" margin-top:90px;">
               <div class="modal-header">
@@ -396,7 +410,40 @@
           </div>
           <!-- /.modal-dialog -->
     </div>
+
+    <div class="modal fade in" id="EditProfilePicture" style="padding-right: 17px;">
+          <div class="modal-dialog">
+            <div class="modal-content" style=" margin-top:90px;">
+              <div class="modal-header">
+                <button type="button" class="close" id="pic_close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">×</span></button>
+                <h4 class="modal-title">Edit Profile</h4>
+              </div>
+              <div class="modal-body">
+                <form action="models/update_profile.php" method="POST" enctype="multipart/form-data">
+                  <div class="box-body">
+                      <div style="margin-bottom: 15px; height:34px;">
+                        <label for="profile_pic" class="col-sm-3 control-label">Profile Pictures</label>
+                          <div class="col-lg-9">
+                            <input type="file" id="profile_pic" name="profile_pic"  required>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-default pull-left" id="pic_close" data-dismiss="modal">Close</button>
+                  <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+              </form>
+            </div>
+            <!-- /.modal-content -->
+          </div>
+          <!-- /.modal-dialog -->
+    </div>
   </div>
 
   </div>
-    <?php include('../includes/footer.php')?>
+
+
+
+<?php include('../includes/footer.php'); ?>
