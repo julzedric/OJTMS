@@ -208,6 +208,9 @@
                     <div>
                         <label class="text-light-blue">Click check if the student completed submitting the requirements.</label>
                     </div>
+
+                    <input type="hidden" name="stud_id" id="stud_id">
+                    <input type="hidden" name="act" id="act">
                     <table id="student_req" class="table table-bordered">
                         <thead>
                             <tr>
@@ -256,6 +259,7 @@
             }
         });
         $('#student_progress').modal('show');
+        $('#stud_id').val(stud_id);
     }
     function load_dataTable() {
         $('#masterlist').dataTable().fnClearTable();
@@ -274,7 +278,7 @@
             "sAjaxSource": "models/load_student.php"+"?loadstudent=true",
             "aoColumns" : [ { sWidth: "20%" }, { sWidth: "30%" }, { sWidth: "20%" }, { sWidth: "10%" }, { sWidth: "20%" }],
             "deferLoading": 10,
-            "fnInitComplete": function() { 
+            "fnInitComplete": function() {
                 $('[data-toggle="tooltip"]').tooltip();
               }
         });
@@ -309,13 +313,13 @@
                $("#city").val(data[0][13]);
                $("#province").val(data[0][14]);
 
-               var prof_pic = "../assets/uploads/profile_picture/"+data[0][15];                    
+               var prof_pic = "../assets/uploads/profile_picture/"+data[0][15];
 
                 if(data[0][15] == null || data[0][15] == ""){
                     $('#profile_pic').attr("src","../assets/images/noprofilepic.png");
-                    
+
                 }else{
-                    $('#profile_pic').attr("src",prof_pic);             
+                    $('#profile_pic').attr("src",prof_pic);
                 }
 
 
@@ -347,7 +351,7 @@
                         url : "models/remove_student.php",
                         dataType : 'json',
                         data : {id : id},
-                        success : function(data){                           
+                        success : function(data){
                             if(data == 'Success'){
                                 swal("Removed!", "Successfully Removed.", "success");
                                 load_dataTable();
@@ -389,32 +393,55 @@
                 "sAjaxSource": "models/load_student.php"+"?get_student=true&"+"course="+course,
                 "aoColumns" : [ { sWidth: "20%" }, { sWidth: "30%" }, { sWidth: "20%" }, { sWidth: "10%" }, { sWidth: "20%" }],
                 "deferLoading": 10,
-                "fnInitComplete": function() { 
+                "fnInitComplete": function() {
                     $('[data-toggle="tooltip"]').tooltip();
                   }
             });
         }
     }
 
-    function tag_completed(id)
+    function tag_completed(id, req_id, is_online)
     {
-        $.ajax({
-            type : "POST",
-            url : "models/tag_student_completed.php",
-            dataType : 'json',
-            data : {id : id},
-            success : function(data){                           
-                if(data == 'Success'){
-                    toastr.success('Successfully tagged as Completed', 'Success');
+        if(is_online == 1)
+        {
+            $.ajax({
+                type : "POST",
+                url : "models/tag_student_completed.php",
+                dataType : 'json',
+                data : {id : id},
+                success : function(data){
+                    if(data == 'Success'){
+                        toastr.success('Successfully tagged as Completed', 'Success');
+                    }
+                    else if (data == 'Error'){
+                        toastr.error('Please check your submitted form.', 'Error');
+                    }
+                },
+                error : function(data){
+                    alert('Please try again.');
                 }
-                else if (data == 'Error'){
-                    toastr.error('Please check your submitted form.', 'Error');
+            });
+        } else if(is_online == 0)
+        {
+            var stud_id = $('#stud_id').val();
+            $.ajax({
+                type : "POST",
+                url : "models/add_personal_requirement.php",
+                dataType : 'json',
+                data : {stud_id : stud_id, req_id : req_id},
+                success : function(data){
+                    if(data == 'Success'){
+                        toastr.success('Successfully Add', 'Success');
+                    }
+                    else if (data == 'Error'){
+                        toastr.error('Please check your submitted form.', 'Error');
+                    }
+                },
+                error : function(data){
+                    alert('Please try again.');
                 }
-            },
-            error : function(data){
-                alerts('Please try again.');
-            }
-        });
+            });
+        }
     }
 </script>
 <?php include('../includes/footer.php') ?>

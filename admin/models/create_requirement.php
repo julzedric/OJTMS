@@ -28,6 +28,19 @@
 			$uploadOk = 1;
 		}
 
+		// Check file size
+		if ($_FILES["file"]["size"] > 5000000) {
+		    echo "<script type='text/javascript'> 
+					var conf= confirm(\"Sorry, your file is too large. File limit is 5mb.\");
+					if(conf == true){
+						window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+					}
+				</script>";
+		    $uploadOk = 0;
+		} else {
+			$uploadOk = 1;
+		}
+
 		if($uploadOk == 1) {
 			if($filename == '') {
 				$sql = "INSERT INTO ojt_requirements_list (name,description,created_at,type,step,is_online)

@@ -111,7 +111,10 @@
 
 		$student_id = $_GET['student_id'];
 
-		$sql = "SELECT a.id, a.stud_id, a.is_completed, a.name as filename, a.status, b.name FROM ojt_student_requirements as a RIGHT JOIN ojt_requirements_list as b on a.requirement_id = b.id ORDER by b.step";
+		$sql = "
+              SELECT a.id, a.stud_id, a.is_completed, a.name as filename, b.is_online, a.status, b.id as req_id, b.name 
+              FROM ojt_student_requirements as a 
+              RIGHT JOIN ojt_requirements_list as b on a.requirement_id = b.id";
 	    $result = $conn->query($sql);
 
 	    if($result->num_rows > 0) {
@@ -120,23 +123,26 @@
 	        	
 	        	 if(is_null($row['stud_id']) ||$row['stud_id'] == $student_id)
 	        	 {
+
+	        	 	$id  = isset($row['id'])? $row['id'] : 0;
 		            if($row['is_completed'] == 0){
-		            	if($row['status'] == 1 || is_null($row['stud_id'])) {
-		            		$button = "<center><input type='checkbox' onclick='tag_completed(".$row['id'].")' disabled></center>";
-		            	} else {
-		            		$button = "<center><input type='checkbox' onclick='tag_completed(".$row['id'].")' ></center>";
-		            	}
-		            } else {
-		            	$button = "<center><input type='checkbox' onclick='tag_completed(".$row['id'].")' checked='true'></center>";
-		            }
+		        	 	if($row['is_online'] == 0 && $row['is_online'] != NULL || $row['status'] == 2) {
+		        	 		$button = "<center><input type='checkbox' onclick='tag_completed(".$id.",".$row['req_id'].",".$row['is_online'].")' ></center>";
+		        	 	} else {
+		        	 		$button = "<center><input type='checkbox' onclick='tag_completed(".$id.",".$row['req_id'].",".$row['is_online'].")' disabled></center>";
+		        	 	}
+		        	 } else {
+		        	 	$button = "<center><input type='checkbox' onclick='tag_completed(".$id.",".$row['req_id'].",".$row['is_online'].")' checked='true'></center>";
+		        	 }
 
 		            $data[] = array(
 		            	$row['name'],
 		            	$row['filename'],
 		            	$button);
-		         } /*else {*/
-		        // 	$data = array();
-		        // }
+		         } 
+		         else {
+		        	$data = array();
+		        }
 	        }
 	    } else {
 	    	$data = array();
