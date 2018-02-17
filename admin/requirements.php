@@ -46,14 +46,14 @@
                         <div class="col-md-6">
                              <select class="form-control" id="name" name="name">
                                 <option value="">--Select--</option>
-                                <option value="Acceptance Letter">Acceptance Letter</option>
                                 <option value="Application Letter">Application Letter</option>
                                 <option value="DTR">DTR</option>
                                 <option value="Final Evaluation">Final Evaluation</option>
                                 <option value="Monthly Report">Monthly Report</option>
-                                <option value="OJT Certificate">OJT Certificate</option>
-                                <option value="Recommendation Request">Recommendation Request</option>
+                                <option value="Others">Others</option>
                             </select>
+                            <br/>
+                            <input type="text" class="form-control" name ="others" id="others" placeholder="Other Requirement" style="display: none">
                         </div>
                     </div>
                     <div class="form-group">
@@ -389,6 +389,7 @@
   </div>
 
 <script>
+
     function load_dataTable() 
     {
         $('.table').DataTable({

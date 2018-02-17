@@ -33,6 +33,7 @@
                 <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Monthly Report</a></li>
                 <li class=""><a href="#tab_3" data-toggle="tab" aria-expanded="false">DTR</a></li>
                 <li class=""><a href="#tab_4" data-toggle="tab" aria-expanded="false">Final Evaluation</a></li>
+                <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">Others</a></li>
             </ul>
             <div class="tab-content">
                 <div class="tab-pane active" id="tab_1">
@@ -89,7 +90,9 @@
                                     <a href="<?php echo $file; ?>" target='_new'>
                                     <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                     </a>
+                                    <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                     <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                    </a>
                                     <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button>
                                 </td>
                             </tr>
@@ -122,7 +125,9 @@
                                 <a href="<?php echo $file; ?>" target='_new'>
                                     <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                 </a>
+                                <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                 <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                </a>
                                 <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button>
                             </td>
                         </tr>
@@ -153,8 +158,42 @@
                                         <a href="<?php echo $file; ?>" target='_new'>
                                             <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                         </a>
+                                        <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                         <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                        </a>
                                        <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button></a>
+                                    </td>
+                                </tr>
+                            <?php }
+                        }?>
+                        </tbody>
+                        </tfoot>
+                    </table>
+                </div>
+                <div class="tab-pane" id="tab_5">
+                    <table id="step4" class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Action</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <?php
+                        foreach($results as $result){
+                            $file = "../assets/uploads/student_requirements/".$result['name'];
+                            if($result['document_type'] != 'Final Evaluation' && $result['document_type'] != 'DTR' && $result['document_type'] != 'Monthly Report' && $result['document_type'] != 'Application Letter' ){
+                                ?>
+                                <tr>
+                                    <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
+                                    <td>
+                                        <a href="<?php echo $file; ?>" target='_new'>
+                                            <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                        </a>
+                                        <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
+                                        <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                        </a>
+                                        <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button></a>
                                     </td>
                                 </tr>
                             <?php }

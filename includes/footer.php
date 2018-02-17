@@ -28,6 +28,13 @@
 <script src="../dist/js/demo.js"></script>
 
 <script>
+    $('#name').change(function () {
+      if ($(this).val() == 'Others'){
+          $('#others').show();
+      }else{
+          $('#others').hide();
+      }
+    });
     function selectStudent(val) {
         $("#recipient").val(val);
         $("#suggesstion-box").hide();
