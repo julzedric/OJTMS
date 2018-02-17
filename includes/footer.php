@@ -23,6 +23,7 @@
 <script src="../bower_components/Chart.js/Chart.js"></script>
 <script src="../bower_components/sweetalert/sweet-alert.min.js"></script>
 <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../bower_components/toastr/toastr.min.js"></script>
 <script src="../dist/js/pages/dashboard2.js"></script>
 <script src="../dist/js/demo.js"></script>
 

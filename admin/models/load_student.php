@@ -42,10 +42,9 @@
 	    if($result->num_rows > 0) {
 	        while($row = $result->fetch_assoc())
 	        {
-	            $button = "<button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id']. ")' title='View Profile'><i class='fa fa-eye'></i></button>
+	            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id']. ")' title='View Profile'><i class='fa fa-eye'></i></button>
 	            			<button type='button' class='btn btn-primary btn-sm' data-uid='".$row['student_id']."'  onclick='view_2(getAttribute(\"data-uid\"))' title='Student&#39;s progress'><i class='fa fa-clock-o'></i></button>
-	                        <button type='button' class='btn btn-success btn-sm' title='Send Message'><i class='fa fa-envelope'></i></button>
-	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(" .$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button>";
+	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(" .$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
 
 	            $data[] = array(
 	            	$row['student_id'],
@@ -82,7 +81,7 @@
 	        while($row = $result->fetch_assoc())
 	        {
 	            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id'].")' title='View Profile'><i class='fa fa-eye'></i></button>
-	                        <button type='button' class='btn btn-success btn-sm' title='Send Message'><i class='fa fa-envelope'></i></button>
+	            			<button type='button' class='btn btn-primary btn-sm' data-uid='".$row['student_id']."'  onclick='view_2(getAttribute(\"data-uid\"))' title='Student&#39;s progress'><i class='fa fa-clock-o'></i></button>
 	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(".$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
 
 	            $data[] = array(
@@ -112,13 +111,18 @@
 		// print_r($_GET['student_id']); die();
 		$student_id = $_GET['student_id'];
 
-		$sql = "SELECT a.id, a.stud_id, a.name, b.name FROM ojt_student_requirements as a INNER JOIN ojt_requirements_list as b on a.requirement_id = b.id where a.stud_id = '".$student_id."' ORDER by b.step";
+		$sql = "SELECT a.id, a.stud_id, a.is_complete, a.name, b.name FROM ojt_student_requirements as a INNER JOIN ojt_requirements_list as b on a.requirement_id = b.id where a.stud_id = '".$student_id."' ORDER by b.step";
 	    $result = $conn->query($sql);
 
 	    if($result->num_rows > 0) {
 	        while($row = $result->fetch_assoc())
 	        {
-	            $button = "<center><input type='checkbox' value'' onclick='tag_completed('".$row['id']."')'></center>";
+	            if($row['is_complete'] == 0){
+					$button = "<center><input type='checkbox' value'' onclick='tag_completed(".$row['id'].")'></center>";
+	            } else {
+	            	$button = "<center><input type='checkbox' value'' onclick='tag_completed(".$row['id'].")' checked='true'></center>";
+	            }
+	            
 
 	            $data[] = array(
 	            	$row['name'],

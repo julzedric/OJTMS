@@ -205,7 +205,10 @@
                 </div>
 
                 <div class="modal-body">
-                    <table id="student_req" class="table table-bordered table-hover">
+                    <div>
+                        <label class="text-light-blue">Click check if the student completed submitting the requirements.</label>
+                    </div>
+                    <table id="student_req" class="table table-bordered">
                         <thead>
                             <tr>
                                 <th>File Name</th>
@@ -238,8 +241,14 @@
         $('#student_req').dataTable().fnDraw();
         $('#student_req').dataTable().fnDestroy();
         $('#student_req').dataTable({
+            'paging'      : false,
+            'lengthChange': false,
+            'searching'   : false,
+            'ordering'    : false,
+            'info'        : false,
+            'autoWidth'   : false,
             "sAjaxSource": "models/load_student.php"+"?get_stud_req=true&"+"student_id="+stud_id,
-            "aoColumns" : [ { sWidth: "70%" }, { sWidth: "30%" }],
+            "aoColumns" : [ { sWidth: "70%" }, { sWidth: "50%" }],
             "deferLoading": 10,
             "fnInitComplete": function() {
                 $('[data-toggle="tooltip"]').tooltip();
@@ -384,6 +393,27 @@
                   }
             });
         }
-    }   
+    }
+
+    function tag_completed(id)
+    {
+        $.ajax({
+            type : "POST",
+            url : "models/tag_student_completed.php",
+            dataType : 'json',
+            data : {id : id},
+            success : function(data){                           
+                if(data == 'Success'){
+                    toastr.success('Successfully tagged as Completed', 'Success');
+                }
+                else if (data == 'Error'){
+                    toastr.error('Please check your submitted form.', 'Error');
+                }
+            },
+            error : function(data){
+                alerts('Please try again.');
+            }
+        });
+    }
 </script>
 <?php include('../includes/footer.php') ?>
