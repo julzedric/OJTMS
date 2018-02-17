@@ -46,7 +46,7 @@
                         <div class="col-md-6">
                              <select class="form-control" id="name" name="name">
                                 <option value="">--Select--</option>
-                                <option value="Acceptance Letter">Acceptance Letter</option>
+                                <option value="Application Letter">Application Letter</option>
                                 <option value="DTR">DTR</option>
                                 <option value="Final Evaluation">Final Evaluation</option>
                                 <option value="Monthly Report">Monthly Report</option>
