@@ -211,6 +211,7 @@
                     <table id="student_req" class="table table-bordered">
                         <thead>
                             <tr>
+                                <th>Requirement Name</th>
                                 <th>File Name</th>
                                 <th style='text-align: center;'>Action</th>
                             </tr>
@@ -241,14 +242,14 @@
         $('#student_req').dataTable().fnDraw();
         $('#student_req').dataTable().fnDestroy();
         $('#student_req').dataTable({
-            'paging'      : false,
+            'paging'      : true,
             'lengthChange': false,
-            'searching'   : false,
+            'searching'   : true,
             'ordering'    : false,
             'info'        : false,
             'autoWidth'   : false,
             "sAjaxSource": "models/load_student.php"+"?get_stud_req=true&"+"student_id="+stud_id,
-            "aoColumns" : [ { sWidth: "70%" }, { sWidth: "50%" }],
+            "aoColumns" : [ { sWidth: "35%" }, { sWidth: "35%" }, { sWidth: "30%" }],
             "deferLoading": 10,
             "fnInitComplete": function() {
                 $('[data-toggle="tooltip"]').tooltip();
