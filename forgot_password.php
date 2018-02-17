@@ -7,7 +7,7 @@
  */
 require 'PHPMailer/PHPMailerAutoload.php';
 
-function sendEmail ($email, $username, $link) {
+function resetPassword($email, $newPassword) {
     $mail = new PHPMailer;
     require_once ('mail_settings.php');
     $mail->addAddress($email);   // Add a recipient
@@ -17,7 +17,7 @@ function sendEmail ($email, $username, $link) {
     $mail->isHTML(true);  // Set email format to HTML
 
 //    $bodyContent = '<h1>OJT Management System</h1>';
-    $bodyContent = '<p>Hi '.$username.'. Thank you for signing up! Please click <a href="'.$link.'">here</a> to activate your account !</p>';
+    $bodyContent = '<p>Hi ! Please use "'.$newPassword.'"as you temporary password. Thank you!</p>';
 
     $mail->Subject = 'Email from OJT Management System';
     $mail->Body    = $bodyContent;
