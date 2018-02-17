@@ -348,6 +348,12 @@
                           </div>
                       </div>
                       <div style="margin-bottom: 15px; height:34px;">
+                          <label for="password" class="col-sm-3 control-label">Password</label>
+                          <div class="col-lg-9">
+                              <input type="password" pattern=".{8,}"   required title="8 minimum characters"  class="form-control" id="password" name="password" value="<?php echo $data['password']; ?>">
+                          </div>
+                      </div>
+                      <div style="margin-bottom: 15px; height:34px;">
                         <label for="contact_number" class="col-sm-3 control-label">Contact Number</label>
                           <div class="col-lg-9">
                           <input type="text" class="form-control" id="contact_number" name="contact_number" value="<?php echo $data['contact_number']; ?>" required>
@@ -377,25 +383,25 @@
                       <div style="margin-bottom: 15px; height:34px;">
                         <label for="street" class="col-sm-3 control-label">Street</label>
                           <div class="col-lg-9">
-                            <input type="text" class="form-control" id="street" name="street" value="<?php echo $data['street']; ?>" required>
+                            <input type="text" class="form-control" id="street" name="street" value="<?php echo $data['street']; ?>" >
                           </div>
                       </div>
                       <div style="margin-bottom: 15px; height:34px;">
                         <label for="barangay" class="col-sm-3 control-label">Barangay</label>
                           <div class="col-lg-9">
-                            <input type="text" class="form-control" id="barangay" name="barangay" value="<?php echo $data['barangay']; ?>" required>
+                            <input type="text" class="form-control" id="barangay" name="barangay" value="<?php echo $data['barangay']; ?>" >
                           </div>
                       </div>
                       <div style="margin-bottom: 15px; height:34px;">
                         <label for="city" class="col-sm-3 control-label">City</label>
                           <div class="col-lg-9">
-                            <input type="text" class="form-control" id="city" name="city" value="<?php echo $data['city']; ?>" required>
+                            <input type="text" class="form-control" id="city" name="city" value="<?php echo $data['city']; ?>" >
                           </div>
                       </div>
                       <div style="margin-bottom: 15px; height:34px;">
                         <label for="province" class="col-sm-3 control-label">Province</label>
                           <div class="col-lg-9">
-                            <input type="text" class="form-control" id="province" name="province" value="<?php echo $data['province']; ?>" required>
+                            <input type="text" class="form-control" id="province" name="province" value="<?php echo $data['province']; ?>" >
                           </div>
                       </div>
                   </div>

@@ -6,8 +6,17 @@
  * Time: 12:00 AM
  */
 
-function getQuery(){
+function getStudentsByID($conn, $stud_id){
+    $sql = "SELECT * FROM ojt_users WHERE student_id = '".$stud_id."' ";
+    $result = $conn->query($sql);
+    $data = array();
 
+    if($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data = $row;
+        }
+    }
+    return $data;
 }
 function getDocumentRequest($conn){
     $sql = "SELECT a.*, b.firstname, b.lastname, c.name AS document_type

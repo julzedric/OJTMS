@@ -1,5 +1,9 @@
 <header class="main-header">
 
+    <?php
+    include('../models/functions.php');
+    $student = getStudentsByID($conn,$_SESSION['stud_id']);
+    ?>
     <!-- Logo -->
     <a href="index.php" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -31,29 +35,14 @@
                             <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+
+                                <?php echo ucfirst($student['firstname']).' ' .ucfirst($student['lastname']); ?>
                             </p>
-                        </li>
-                        <!-- Menu Body -->
-                        <li class="user-body">
-                            <div class="row">
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Followers</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Sales</a>
-                                </div>
-                                <div class="col-xs-4 text-center">
-                                    <a href="#">Friends</a>
-                                </div>
-                            </div>
-                            <!-- /.row -->
                         </li>
                         <!-- Menu Footer-->
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Profile</a>
+                                <a href="../student/profile.php" class="btn btn-default btn-flat">Profile</a>
                             </div>
                             <div class="pull-right">
                                 <form method="POST" action="../models/logout.php">

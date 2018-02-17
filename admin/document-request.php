@@ -48,7 +48,7 @@
                         $results = getDocumentRequest($conn);
 
                         foreach($results as $result){
-                            $file = "../assets/uploads/requirements/".$result['name'];
+                            $file = "../assets/uploads/student_requirements/".$result['name'];
                             if($result['document_type'] == 'Application Letter'){
                         ?>
                         <tr>
@@ -80,7 +80,7 @@
                         </thead>
                          <?php
                          foreach($results as $result){
-                             $file = "../assets/uploads/requirements/".$result['name'];
+                             $file = "../assets/uploads/student_requirements/".$result['name'];
                              if($result['document_type'] == 'Monthly Report'){
                         ?>
                             <tr>
@@ -113,7 +113,7 @@
                         <tbody>
                         <?php
                         foreach($results as $result){
-                            $file = "../assets/uploads/requirements/".$result['name'];
+                            $file = "../assets/uploads/student_requirements/".$result['name'];
                             if($result['document_type'] == 'DTR'){
                                 ?>
                         <tr>
@@ -144,7 +144,7 @@
                         <tbody>
                           <?php
                           foreach($results as $result){
-                              $file = "../assets/uploads/requirements/".$result['name'];
+                              $file = "../assets/uploads/student_requirements/".$result['name'];
                               if($result['document_type'] == 'Final Evaluation'){
                         ?>
                                 <tr>

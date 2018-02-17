@@ -1,13 +1,16 @@
 <?php
 	require_once('../../connection.php');
-
+    include('../../models/functions.php');
 	if($_POST) {
+
+        $student = getStudentsByID($conn,$_SESSION['stud_id']);
 		$email = $_POST['email'];
 		$contact_number = $_POST['contact_number'];
 		$street = $_POST['street'];
 		$barangay = $_POST['barangay'];
 		$city = $_POST['city'];
 		$province = $_POST['province'];
+		$password = ($student['password'] == $_POST['password'])? $student['password']: sha1($_POST['password']);
 		$updated_at = date('Y-m-d');	
 
 		
@@ -18,6 +21,7 @@
 
 		if ($file == '') {
 			$sql = "UPDATE ojt_users SET email =  '".$email."', 
+					password = '".$password."',
 					contact_number = '".$contact_number."', street = '".$street."', barangay = '".$barangay."', city = '".$city."', province = '".$province."',
 					updated_at = '".$updated_at."' where student_id = '".$_SESSION['stud_id']."' ";
 				
