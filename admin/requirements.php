@@ -53,7 +53,10 @@
                                 <option value="Monthly Report">Monthly Report</option>
                                 <option value="OJT Certificate">OJT Certificate</option>
                                 <option value="Recommendation Request">Recommendation Request</option>
+                                <option value="Others">Others</option>
                             </select>
+                            <br/>
+                            <input type="text" class="form-control" name ="others" id="others" placeholder="Other Requirement" style="display: none">
                         </div>
                     </div>
                     <div class="form-group">
@@ -389,6 +392,7 @@
   </div>
 
 <script>
+
     function load_dataTable() 
     {
         $('.table').DataTable({

@@ -2,7 +2,7 @@
 	require_once('../../connection.php');
 
 	if($_POST) {
-		$name = $_POST['name'];
+		$name = $_POST['name'] == 'Others'? $_POST['others']: $_POST['name'];
 		$created_at = date('Y-m-d');
 		$description = $_POST['description'];
 		$type = $_POST['type'];
