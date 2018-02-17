@@ -67,8 +67,10 @@
 
             if($result->num_rows > 0) {
                 while($row = $result->fetch_assoc())
-                {
-                    echo '
+                {   
+                    $today = date('Y-m-d');
+                    if($row['end_date'] >= $today){
+                         echo '
                                         <strong><i class="fa fa-book margin-r-5"></i>'.$row['title'].'</strong>
 
                                         <p class="text-muted">
@@ -78,6 +80,7 @@
                                         <hr>
 
                                         ';
+                    }
                 }
 
             }
