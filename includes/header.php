@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="../bower_components/sweetalert/sweet-alert.css">
   <link rel="stylesheet" href="../bower_components/sweetalert/ie9.css">
   <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
+  <link rel="stylesheet" href="../bower_components/toastr/toastr.min.css">
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
   <link rel="stylesheet" href="../dist/css/CustomCss.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">

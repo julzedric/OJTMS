@@ -23,11 +23,32 @@
 <script src="../bower_components/Chart.js/Chart.js"></script>
 <script src="../bower_components/sweetalert/sweet-alert.min.js"></script>
 <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<script src="../bower_components/toastr/toastr.min.js"></script>
 <script src="../dist/js/pages/dashboard2.js"></script>
 <script src="../dist/js/demo.js"></script>
 
 <script>
+    function selectStudent(val) {
+        $("#recipient").val(val);
+        $("#suggesstion-box").hide();
+    }
     $(function () {
+        $("#recipient").keyup(function(){
+            $.ajax({
+                type: "POST",
+                url: "models/searchStudent.php",
+                data:'recipient='+$(this).val(),
+                // beforeSend: function(){
+                //     $("#recipient").css("background","#FFF url(LoaderIcon.gif) no-repeat 165px");
+                // },
+                success: function(data){
+                    $("#suggesstion-box").show();
+                    $("#suggesstion-box").html(data);
+                    $("#recipient").css("background","#FFF");
+                }
+            });
+        });
+
         load_dataTable();
 
         //Date picker

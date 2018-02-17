@@ -23,7 +23,16 @@ if($_POST) {
     $province = $_POST['province'];
     $created_at = date('Y-m-d');
     $captcha = $_POST['g-recaptcha-response'];
-
+    preg_match('/\d+/', $contact_number, $matches);
+    if ($contact_number[0] != '9'){
+        echo "<script type='text/javascript'> 
+                    var conf = confirm(\"Contact Number Invalid Format.\");
+                   if(conf == true){
+                        window.history.back();
+                    }
+                    </script>";
+        exit;
+    }
     $query = mysqli_query($conn, "
            SELECT  `username`,`email`,`student_id`
            FROM ojt_users         
@@ -94,7 +103,7 @@ if($_POST) {
                 birthdate, gender, street, barangay, city, province, 
                 created_at )
                 VALUES (
-                '".$student_id."', '".$course."', '".$contact_number."', '".$username."', '".$enc_password."','".$token."',
+                '".$student_id."', '".$course."', '".'63'.$contact_number."', '".$username."', '".$enc_password."','".$token."',
                 '".$lastname."', '".$firstname."', '".$middlename."', '".$suffix."', '".$email."', 
                 '".$birthdate."', '".$gender."', '".$street."',
                 '".$barangay."', '".$city."', '".$province."', '".$created_at."' 
