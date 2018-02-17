@@ -19,7 +19,7 @@
                 <a href="downloadable-forms.php">
                     <i class="fa fa-download"></i> <span>Downloadable Forms</span>
                     <span class="pull-right-container">
-              <small class="label pull-right bg-green">new</small>
+            
             </span>
                 </a>
             </li>
