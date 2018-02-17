@@ -36,199 +36,101 @@
             <!-- /.box-header -->
             <div class="box-body">
               <div class="box-group" id="accordion">
+                <!--start loop -->
+                <?php
+                    $step_completed = 0;
+                    for($ctr=1; $ctr <= 4; $ctr++) { 
+                      
+                    $sql1 = "SELECT count(*) step_tally FROM ojt_requirements_list where step = '".$ctr."' ";
+                        $result1 = $conn->query($sql1);
+
+                        $step_tally = $result1->fetch_assoc()['step_tally'];
+                    $sql2 = "SELECT count(*) completed_tally FROM ojt_student_requirements a inner join
+                             ojt_requirements_list b on a.requirement_id = b.id where a.stud_id='".$_SESSION['stud_id']."' 
+                             and b.step = '".$ctr."' ";
+                        $result2 = $conn->query($sql2);    
+                        $completed_tally = $result2->fetch_assoc()['completed_tally'];
+                        if ($step_tally == $completed_tally)
+                        {
+                            $step_completed = $step_completed + 1;
+                        }
+                              $step = $step_completed +1;
+                              if($step == $ctr){
+                                $collapse = "in";
+                                $color ="box-primary";
+                                $disabled = "";
+                              }else if($step_completed >= $ctr){
+                                $collapse = "";
+                                $color = "box-success";
+                                $disabled = "disabled";
+                              }
+                              else{
+                                $collapse = "";
+                                $color = "box-danger";
+                                $disabled = "disabled";
+                              }
+                        ?>
+                        
+                          <div class="panel box <?php echo $color; ?>" id="step<?php echo $ctr; ?>">
+                            <div class="box-header with-border">
+                              <h4 class="box-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#collapse<?php echo $ctr; ?>">
+                                  Step <?php echo $ctr; ?>
+                                </a>
+                              </h4>
+                            </div>
+                            
+                            <div id="collapse<?php echo $ctr; ?>" class="panel-collapse collapse <?php echo $collapse; ?>">
+                              <div class="box-body">
+                                <!-- List -->
+                                <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
+                                  <?php
+                                          $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM ojt_requirements_list as a 
+                                                               left join `ojt_student_requirements`as b 
+                                                               on a.id = b.requirement_id
+                                                               where a.step = '".$ctr."'";
+                                          $result = $conn->query($sql);
+                                          if($result->num_rows > 0) {
+                                              while($row = $result->fetch_assoc())
+                                              {
+                                                $rl_id=$row['id'];
+                                                echo'
+                                                  <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
+                                                  <input type="hidden" name="step" value="'.$ctr.'">
+                                                  <ul>
+                                                    <li>'
+                                                      .$row['name'];
+                                                    if($row['is_online'] == 1){
+                                                      if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
+                                                        echo '<input type="file" name="name'.$rl_id.'" class="pull-right" '.$disabled.'>';
+                                                      }
+                                                    }
+                                                echo '</li>
+                                                  </ul>';
+                                              }
+                                              echo '<br>
+                                                    <button type="reset" class="btn btn-danger btn-xs pull-right"'.$disabled.'>Cancel</button>
+                                                    <button type="submit" class="btn btn-primary btn-xs pull-right"'.$disabled.'>Submit</button>';
+                                            }
+                                          else{
+                                              echo "No records found.";
+                                            }
+                                     ?>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                <?php         
+                        } 
+                ?>  
+                <!--close loop-->
+
                 <!-- we are adding the .panel class so bootstrap.js collapse plugin detects it -->
-                <div class="panel box box-primary">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
-                        Step 1
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse in">
-                    <div class="box-body">
-                      <!-- List -->
-                      <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
-                        <?php
-                                $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM `ojt_requirements_list` as a 
-                                                     left join `ojt_student_requirements`as b 
-                                                     on a.id = b.requirement_id
-                                                     where a.step = 1";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc())
-                                    {
-                                      $rl_id=$row['id'];
-                                      echo'
-                                        <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
-                                        <input type="hidden" name="step" value="1">
-                                        <ul>
-                                          <li>'
-                                            .$row['name'];
-                                          if($row['is_online'] == 1){
-                                            if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
-                                              echo '<input type="file" name="name'.$rl_id.'" class="pull-right">';
-                                            }
-                                          }
-                                      echo '</li>
-                                        </ul>';
-                                    }
-                                    echo '<br>
-                                          <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
-                                          <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
-                                  }
-                                else{
-                                    echo "No records found.";
-                                  }
-                           ?>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel box box-danger">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
-                        Step 2
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseTwo" class="panel-collapse collapse">
-                    <div class="box-body">
-                      <!-- List -->
-                      <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
-                        <?php
-                                $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM `ojt_requirements_list` as a 
-                                                     left join `ojt_student_requirements`as b 
-                                                     on a.id = b.requirement_id
-                                                     where a.step = 2";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc())
-                                    {
-                                      $rl_id=$row['id'];
-                                      echo'
-                                        <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
-                                        <input type="hidden" name="step" value="2">
-                                        <ul>
-                                          <li>'
-                                            .$row['name'];
-                                          if($row['is_online'] == 1){
-                                            if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
-                                              echo '<input type="file" name="name'.$rl_id.'" class="pull-right">';
-                                            }
-                                          }
-                                      echo '</li>
-                                        </ul>';
-                                    }
-                                    echo '<br>
-                                          <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
-                                          <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
-                                  }
-                                else{
-                                    echo "No records found.";
-                                  }
-                           ?>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel box box-danger">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-                        Step 3
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseThree" class="panel-collapse collapse">
-                    <div class="box-body">
-                      <!-- List -->
-                      <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
-                        <?php
-                                $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM `ojt_requirements_list` as a 
-                                                     left join `ojt_student_requirements`as b 
-                                                     on a.id = b.requirement_id
-                                                     where a.step = 3";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc())
-                                    {
-                                      $rl_id=$row['id'];
-                                      echo'
-                                        <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
-                                        <input type="hidden" name="step" value="3">
-                                        <ul>
-                                          <li>'
-                                            .$row['name'];
-                                          if($row['is_online'] == 1){
-                                            if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
-                                              echo '<input type="file" name="name'.$rl_id.'" class="pull-right">';
-                                            }
-                                          }
-                                      echo '</li>
-                                        </ul>';
-                                    }
-                                    echo '<br>
-                                          <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
-                                          <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
-                                  }
-                                else{
-                                    echo "No records found.";
-                                  }
-                           ?>
-                      </form>
-                    </div>
-                  </div>
-                </div>
-                <div class="panel box box-danger">
-                  <div class="box-header with-border">
-                    <h4 class="box-title">
-                      <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
-                        Step 4
-                      </a>
-                    </h4>
-                  </div>
-                  <div id="collapseFour" class="panel-collapse collapse">
-                    <div class="box-body">
-                      <!-- List -->
-                      <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
-                        <?php
-                                $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM `ojt_requirements_list` as a 
-                                                     left join `ojt_student_requirements`as b 
-                                                     on a.id = b.requirement_id
-                                                     where a.step = 4";
-                                $result = $conn->query($sql);
-                                if($result->num_rows > 0) {
-                                    while($row = $result->fetch_assoc())
-                                    {
-                                      $rl_id=$row['id'];
-                                      echo'
-                                        <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
-                                        <input type="hidden" name="step" value="4">
-                                        <ul>
-                                          <li>'
-                                            .$row['name'];
-                                          if($row['is_online'] == 1){
-                                            if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
-                                              echo '<input type="file" name="name'.$rl_id.'" class="pull-right">';
-                                            }
-                                          }
-                                      echo '</li>
-                                        </ul>';
-                                    }
-                                    echo '<br>
-                                          <button type="reset" class="btn btn-danger btn-xs pull-right">Cancel</button>
-                                          <button type="submit" class="btn btn-primary btn-xs pull-right">Submit</button>';
-                                  }
-                                else{
-                                    echo "No records found.";
-                                  }
-                           ?>
-                      </form>    
-                    </div>
-                  </div>
-                </div>
+               
+                
+                
+                
+                
               </div>
             </div>
             <!-- /.box-body -->
@@ -366,4 +268,4 @@
         });
     }
   </script>
-<?php include('../includes/footer.php')?>
+<?php include('../includes/footer.php');?>
