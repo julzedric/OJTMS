@@ -3,8 +3,8 @@
 
 	if($_POST) {
 		$id = $_POST['id'];
-		$name = $_POST['name'];
-		$description = $_POST['description'];
+        $name = $_POST['name'] == 'Others'? $_POST['others']: $_POST['name'];
+        $description = $_POST['description'];
 		$type = $_POST['type'];
 		$step = $_POST['step'];
 		$is_online = isset($_POST['mode'])? $_POST['mode'] : '';

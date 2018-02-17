@@ -3,7 +3,8 @@
 
 	if($_POST) {
 		$id	=  $_POST['id'];
-		$school_year = $_POST['school_year'];
+        $sy = array($_POST['school_year_1'],$_POST['school_year_2']);
+        $school_year = implode(" - ", $sy);
 		$semester = $_POST['semester'];
 		$course = $_POST['course'];
 		$total_hours = $_POST['total_hours'];

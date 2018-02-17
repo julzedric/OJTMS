@@ -158,7 +158,9 @@
                                         <a href="<?php echo $file; ?>" target='_new'>
                                             <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                         </a>
+                                        <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                         <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                        </a>
                                        <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button></a>
                                     </td>
                                 </tr>
