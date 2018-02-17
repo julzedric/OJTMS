@@ -47,7 +47,7 @@
                         $step_tally = $result1->fetch_assoc()['step_tally'];
                     $sql2 = "SELECT count(*) completed_tally FROM ojt_student_requirements a inner join
                              ojt_requirements_list b on a.requirement_id = b.id where a.stud_id='".$_SESSION['stud_id']."' 
-                             and b.step = '".$ctr."' ";
+                             and b.step = '".$ctr."' and is_completed = 1 ";
                         $result2 = $conn->query($sql2);    
                         $completed_tally = $result2->fetch_assoc()['completed_tally'];
                         if ($step_tally == $completed_tally)
@@ -56,11 +56,17 @@
                         }
 
                               $step = $step_completed +1;
-                              if($step == $ctr){
-                                $collapse = "in";
-                                $color ="box-primary";
-                                $disabled = "";
-                              }else if($step_completed >= $ctr){
+                              if($step_tally == 0)
+                              {
+                                $collapse = "";
+                                $color = "box-danger";
+                                $disabled = "disabled";
+                              }
+                              else
+                              {
+                                
+
+                              if($step_completed >= $ctr){
                                 $collapse = "";
                                 $color = "box-success";
                                 $disabled = "disabled";
@@ -70,6 +76,13 @@
                                 $color = "box-danger";
                                 $disabled = "disabled";
                               }
+                              if($step == $ctr){
+                                $collapse = "in";
+                                $color ="box-primary";
+                                $disabled = "";
+                              }
+                              }
+                              
                         ?>
                         
                           <div class="panel box <?php echo $color; ?>" id="step<?php echo $ctr; ?>">
@@ -110,7 +123,7 @@
                                                   </ul>';
                                               }
                                               echo '<br>
-                                                    <button type="reset" class="btn btn-danger btn-xs pull-right"'.$disabled.'>Cancel</button>
+                                                    
                                                     <button type="submit" class="btn btn-primary btn-xs pull-right"'.$disabled.'>Submit</button>';
                                             }
                                           else{
@@ -181,14 +194,8 @@
                                       }else{
                                         echo '<span class="label label-danger" style="display: block;">Rejected</span>';
                                       }
-                            echo    '</td> 
-                                     <td>';
-                                     if($row['status'] != 2){
-                                      echo '<button type="button" class="btn btn-block btn-primary btn-xs" data-toggle="modal" data-target="#modal-default">Submit</button>';
-                                     }
                             echo    '</td>
-                                 </tr>
-                                      ';
+                                 </tr>';
                         }
                     }
                     else{
