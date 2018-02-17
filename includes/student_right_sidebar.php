@@ -1,16 +1,35 @@
 <div class="col-xs-4">
     <div class="info-box bg-aqua">
         <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
+        <?php
+            $step_completed = 0;
+            for ($ctr=1; $ctr > 4; $ctr++) { 
+            $sql1 = "SELECT count(*) step_tally FROM ojt_requirements_list where step = '".$ctr."' ";
+                $result1 = $conn->query($sql1);
 
+                $step_tally = $result1->fetch_assoc()['step_tally'];
+            $sql2 = "SELECT count(*) completed_tally FROM ojt_student_requirements a inner join
+                     ojt_requirements_list b on a.requirement_id = b.id where a.stud_id='".$_SESSION['stud_id']."' 
+                     and b.step = '".$ctr."' ";
+                $result2 = $conn->query($sql2);    
+                $completed_tally = $result2->fetch_assoc()['completed_tally'];
+                if ($step_tally == $completed_tally)
+                {
+                    $step_completed = $step_completed + 1;
+                }
+            }    
+
+            $step_percentage = ($step_completed / 4) * 100;
+        ?>
         <div class="info-box-content">
             <span class="info-box-text">Step Requirement Summary</span>
-            <span class="info-box-number">(1 out of 4) Steps completed.</span>
+            <span class="info-box-number">(<?php echo $step_completed; ?> out of 4) Steps completed.</span>
 
             <div class="progress">
-                <div class="progress-bar" style="width:25%"></div>
+                <div class="progress-bar" style="width: <?php echo $step_percentage; ?>%"></div>
             </div>
             <span class="progress-description">
-                    25%
+                    <?php echo $step_percentage; ?>%
                   </span>
         </div>
         <!-- /.info-box-content -->

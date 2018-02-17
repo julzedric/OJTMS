@@ -6,7 +6,8 @@
 		$name = $_POST['name'];
 		$description = $_POST['description'];
 		$type = $_POST['type'];
-		$is_online = $_POST['mode'];
+		$step = $_POST['step'];
+		$is_online = isset($_POST['mode'])? $_POST['mode'] : '';
 		$updated_at = date('Y-m-d');
 
 		$target_dir = "../../assets/uploads/requirements/";
