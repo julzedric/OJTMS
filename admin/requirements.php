@@ -273,10 +273,10 @@
                                                 }
                                     echo    "</td>
                                             <td>";
-                                                if($row['is_online'] == 0)
+                                                if($row['is_online'] == '0')
                                                 {
                                                     echo "Personal";
-                                                }else{
+                                                }else if($row['is_online'] == '1'){
                                                     echo "Online";
                                                 }
                                     echo    "</td>
@@ -430,12 +430,8 @@
         } else {
             $("#steps").slideUp();
             $("#step").val('');
+            $("input:radio[name=mode]").prop('checked', false);
         }
-    }
-
-    function stud_req(id)
-    {
-        alert(id);
     }
 </script>
 <?php include('../includes/footer.php')?>
