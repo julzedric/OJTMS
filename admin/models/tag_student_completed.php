@@ -3,8 +3,8 @@
 
 	$id = $_POST['id'];
 
-	$sql = "UPDATE ojt_student_requirements SET is_complete =  1  where id = '".$id."' ";
-
+	$sql = "UPDATE ojt_student_requirements SET is_completed =  1  where id = '".$id."' ";
+	
 		if($conn->query($sql) === TRUE) {
 			$result = "Success";
 		} else {
