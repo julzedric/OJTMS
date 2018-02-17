@@ -17,7 +17,7 @@ function sendEmail ($email, $username, $link) {
     $mail->isHTML(true);  // Set email format to HTML
 
 //    $bodyContent = '<h1>OJT Management System</h1>';
-    $bodyContent = '<p>Hi '.$username.'. Thank you for signing up! Please click <a href="'.$link.'">here</a> to activate your account !</p>';
+    $bodyContent = '<p>Hi '.$username.'. Thank you for signing up! Please click <a href="http://'.$link.'">here</a> to activate your account !</p>';
 
     $mail->Subject = 'Email from OJT Management System';
     $mail->Body    = $bodyContent;
