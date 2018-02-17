@@ -39,6 +39,7 @@
                 <!--start loop -->
                 <?php
                     $step_completed = 0;
+                    $recommendation = 1;
                     for($ctr=1; $ctr <= 4; $ctr++) { 
                       
                     $sql1 = "SELECT count(*) step_tally FROM ojt_requirements_list where step = '".$ctr."' ";
@@ -64,25 +65,40 @@
                               }
                               else
                               {
-                                
-
-                              if($step_completed >= $ctr){
-                                $collapse = "";
-                                $color = "box-success";
-                                $disabled = "disabled";
+                                if($step_completed >= $ctr){
+                                  $collapse = "";
+                                  $color = "box-success";
+                                  $disabled = "disabled";
+                                }
+                                else{
+                                  $collapse = "";
+                                  $color = "box-danger";
+                                  $disabled = "disabled";
+                                }
+                                if($step == $ctr){
+                                  $collapse = "in";
+                                  $color ="box-primary";
+                                  $disabled = "";
+                                }                              
                               }
-                              else{
+                $sql3 = "SELECT count(*) status FROM ojt_student_recommendation where stud_id='".$_SESSION['stud_id']."' 
+                and status = 0 ";      
+                    $result3 = $conn->query($sql3);    
+                              
+                              if($result3->num_rows > 0) 
+                              {
+                                $btn_disabled = "disabled";
+                              }  
+                              else
+                              {
+                                $btn_disabled = "";
+                              }
+                              if($recommendation == 0 && $ctr == 2)  
+                              {
                                 $collapse = "";
                                 $color = "box-danger";
                                 $disabled = "disabled";
                               }
-                              if($step == $ctr){
-                                $collapse = "in";
-                                $color ="box-primary";
-                                $disabled = "";
-                              }
-                              }
-                              
                         ?>
                         
                           <div class="panel box <?php echo $color; ?>" id="step<?php echo $ctr; ?>">
@@ -122,9 +138,12 @@
                                                 echo '</li>
                                                   </ul>';
                                               }
-                                              echo '<br>
-                                                    
-                                                    <button type="submit" class="btn btn-primary btn-xs pull-right"'.$disabled.'>Submit</button>';
+                                              if($ctr == 1 && $step_completed == 1){
+                                                    echo '<br>
+                                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_reco" '.$btn_disabled.'>Request Recommendation Letter</button>';
+                                                    $recommendation = 0;
+                                              }    
+                                                    echo '<button type="submit" class="btn btn-primary btn-xs pull-right"'.$disabled.'>Submit</button>';
                                             }
                                           else{
                                               echo "No records found.";
@@ -209,40 +228,75 @@
                 </table>
 
                 <!--modal-->
-                <div class="modal fade in modal-xs" id="modal-default" style="padding-right: 17px;">
+                <div class="modal fade in modal-xs" id="modal_reco" >
                   <div class="modal-dialog">
+                    <form method="POST" action="models/request_recommendation.php">
                     <div class="modal-content">
                       <div class="modal-header">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                          <span aria-hidden="true">×</span></button>
-                        <h4 class="modal-title">Change Document</h4>
+                        <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">Recommendation Letter</h4>
                       </div>
-                      <div class="modal-body" style="padding-bottom:150px;">
-                        <div class="col-lg-12">
-                          <div class="col-lg-4">
-                            <label>Requirement Name:</label>
-                          </div>
-                          <div class="col-lg-8">
-                            <input type="text" class="form-control" value="Application Letter" disabled>
+                      
+                        <div class="modal-body" >
+                          <div class="box-body">
+                            <div class="col-lg-12">
+                              <div class="col-lg-4">
+                                <label>Company Name:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" name="company_name" class="form-control">
+                              </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                              <div style="padding-bottom: 10px;"></div>
+                              <div class="col-lg-4">
+                                <label>Company Address:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" name="company_address" class="form-control">
+                              </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                              <div style="padding-bottom: 10px;"></div>
+                              <div class="col-lg-4">
+                                <label>Name of Supervisor:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" name="supervisor_name" class="form-control">
+                              </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                              <div style="padding-bottom: 10px;"></div>
+                              <div class="col-lg-4">
+                                <label>Position:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" name="supervisor_position" class="form-control">
+                              </div>
+                            </div>
+
+                            <div class="col-lg-12">
+                              <div style="padding-bottom: 10px;"></div>
+                              <div class="col-lg-4">
+                                <label>Contact Number:</label>
+                              </div>
+                              <div class="col-lg-8">
+                                <input type="text" name="supervisor_contact" class="form-control">
+                              </div>
+                            </div>
                           </div>
                         </div>
-                        <div class="col-lg-12">
-                          <div style="padding-bottom: 10px;"></div>
-                          <div class="col-lg-4">
-                            <label>Document:</label>
-                          </div>
-                          <div class="col-lg-8">
-                            <input type="text" class="form-control" value="Wow">
-                            <br>
-                            <input type="file" class="form-control" name="name">
-                          </div>
-                        </div>
-                      </div>
+                      
                       <div class="modal-footer">
                         <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
                       </div>
                     </div>
+                    </form>
                     <!-- /.modal-content -->
                   </div>
                   <!-- /.modal-dialog -->
