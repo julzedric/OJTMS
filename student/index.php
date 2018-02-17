@@ -54,6 +54,7 @@
                         {
                             $step_completed = $step_completed + 1;
                         }
+
                               $step = $step_completed +1;
                               if($step == $ctr){
                                 $collapse = "in";
@@ -146,7 +147,7 @@
                       <th>Requirement Name</th>
                       <th>Document Name</th>
                       <th>Document Status</th>
-                      <th>Action</th>            
+                                
                     </tr>
                     </thead>
                     <tbody>

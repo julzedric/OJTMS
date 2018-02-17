@@ -83,12 +83,12 @@
                           echo "<td class='text-center'>
                                   <a href='".$file."' target='_new'>
                                     <button type='button' class='btn btn-info btn-sm' title='View'>
-                                      <i class='fa fa-eye'></i> Preview
+                                      <i class='fa fa-eye'></i>
                                     </button>
                                   </a>
                                   <a href='".$file."'>
                                       <button type='button' class='btn btn-success btn-sm' title='Download'>
-                                        <i class='fa fa-download'></i> Download
+                                        <i class='fa fa-download'></i>
                                       </button>
                                   </a>
                                 </td>";
