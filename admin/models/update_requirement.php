@@ -33,10 +33,9 @@
 				}
 				$conn->close();
 				exit;
-
 		}
 		// Allow certain file formats
-			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" ) {
+			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "docx" && $imageFileType != "xlsx") {
 			echo "<script type='text/javascript'> 
 					var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF files are allowed.\");
 					if(conf == true){
