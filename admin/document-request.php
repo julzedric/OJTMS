@@ -41,6 +41,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Document Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -54,6 +55,7 @@
                         ?>
                         <tr>
                             <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
+                            <td><?php echo $result['name']; ?></td>
                             <td>
                                 <a href="<?php echo $file; ?>" target='_new'>
                                 <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
@@ -76,6 +78,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Document Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -86,6 +89,7 @@
                         ?>
                             <tr>
                                 <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
+                                <td><?php echo $result['name']; ?></td>
                                 <td>
                                     <a href="<?php echo $file; ?>" target='_new'>
                                     <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
@@ -110,6 +114,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Document Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -121,6 +126,7 @@
                                 ?>
                         <tr>
                             <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
+                            <td><?php echo $result['name']; ?></td>
                             <td>
                                 <a href="<?php echo $file; ?>" target='_new'>
                                     <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
@@ -143,6 +149,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Document Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -154,6 +161,7 @@
                         ?>
                                 <tr>
                                     <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
+                                    <td><?php echo $result['name']; ?></td>
                                     <td>
                                         <a href="<?php echo $file; ?>" target='_new'>
                                             <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
@@ -175,6 +183,7 @@
                         <thead>
                         <tr>
                             <th>Name</th>
+                            <th>Document Name</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -186,6 +195,7 @@
                                 ?>
                                 <tr>
                                     <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
+                                    <td><?php echo $result['name']; ?></td>
                                     <td>
                                         <a href="<?php echo $file; ?>" target='_new'>
                                             <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
