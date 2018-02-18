@@ -66,17 +66,9 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>File:</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="file" id="file" name="file" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-2">
                             <label>Type:</label>
                         </div>
-                        <div class="col-md-6">  
+                        <div class="col-md-6">
                             <select class="form-control" id="type" name="type" onchange="show_step($(this).val())">
                                 <option value="">--Select--</option>
                                 <option value="0">Downloadable</option>
@@ -84,6 +76,15 @@
                             </select>
                         </div>
                     </div>
+                    <div id="fileUpload" class="form-group" style="display: none;">
+                        <div class="col-md-2">
+                            <label>File:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" id="file" name="file" class="form-control">
+                        </div>
+                    </div>
+
                     <div id="steps" style="display: none;"> 
                         <div class="form-group">
                             <div class="col-md-2">

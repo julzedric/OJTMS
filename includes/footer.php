@@ -28,6 +28,13 @@
 <script src="../dist/js/demo.js"></script>
 
 <script>
+    $('#type').change(function(){
+        if ($(this).val() == '0'){
+            $('#fileUpload').slideDown();
+        }else{
+            $('#fileUpload').slideUp();
+        }
+    })
     $('#name').change(function () {
       if ($(this).val() == 'Others'){
           $('#others').show();
