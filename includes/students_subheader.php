@@ -5,11 +5,14 @@
     $student = getStudentsByID($conn,$_SESSION['stud_id']);
     ?>
     <!-- Logo -->
+
     <a href="index.php" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
-        <span class="logo-mini"><b>OJT</b>MS</span>
+        <span class="logo-mini"><img src="../img/ics_desktop.png" class="img-circle" alt="ICS" width="30px"></span>
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>OJT</b>MS</span>
+        <span class="logo-lg">
+            <img src="../img/ics_desktop.png" class="img-circle" alt="ICS" width="30px" style="margin: 0px 5px 5px 0px;">
+            OJTMS</span>
     </a>
 
     <!-- Header Navbar: style can be found in header.less -->

@@ -66,22 +66,22 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-2">
-                            <label>File:</label>
-                        </div>
-                        <div class="col-md-6">
-                            <input type="file" id="file" name="file" class="form-control">
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-2">
                             <label>Type:</label>
                         </div>
-                        <div class="col-md-6">  
+                        <div class="col-md-6">
                             <select class="form-control" id="type" name="type" onchange="show_step($(this).val())">
                                 <option value="">--Select--</option>
                                 <option value="0">Downloadable</option>
                                 <option value="1">Steps Requirement</option>
                             </select>
+                        </div>
+                    </div>
+                    <div id="fileUpload" class="form-group" style="display: none">
+                        <div class="col-md-2">
+                            <label>File:</label>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="file" id="file" name="file" class="form-control">
                         </div>
                     </div>
                     <div id="steps" style="display: none;"> 
@@ -389,8 +389,7 @@
   </div>
 
 <script>
-
-    function load_dataTable() 
+    function load_dataTable()
     {
         $('.table').DataTable({
             'paging'      : true,
@@ -428,7 +427,7 @@
     function show_step(value){
         if (value == 1) {
             $("#steps").slideDown();
-        } else {
+        }else {
             $("#steps").slideUp();
             $("#step").val('');
             $("input:radio[name=mode]").prop('checked', false);
