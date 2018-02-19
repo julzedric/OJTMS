@@ -28,7 +28,7 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <?php $profPicsmall = $student['profile_picture'] != '' ? "../assets/uploads/profile_picture/".$student['profile_picture']: '../dist/img/user2-160x160.jpg'?>
+                        <?php $profPicsmall = $student['profile_picture'] != '' ? "../assets/uploads/profile_picture/".$student['profile_picture']: '../assets/images/noprofilepic.png'?>
 
                         <img src="<?php echo $profPicsmall ;?>" class="user-image" alt="User Image">
                         <span class="hidden-xs"><?php echo ucfirst($_SESSION['username']); ?></span>
@@ -36,7 +36,7 @@
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <?php $profPic = $student['profile_picture'] != '' ? "../assets/uploads/profile_picture/".$student['profile_picture']: '../dist/img/user2-160x160.jpg'?>
+                            <?php $profPic = $student['profile_picture'] != '' ? "../assets/uploads/profile_picture/".$student['profile_picture']: '../assets/images/noprofilepic.png'?>
                             <img src="<?php echo $profPic; ?>" class="img-circle" alt="User Image">
 
                             <p>
