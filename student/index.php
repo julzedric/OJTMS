@@ -40,6 +40,10 @@
                 <?php
                     $step_completed = 0;
                     $recommendation = 1;
+                    $color = "";
+                    $collapse = "";
+                    $disabled = "";
+                    $btn_disable = "";
                     for($ctr=1; $ctr <= 4; $ctr++) { 
                       
                     $sql1 = "SELECT count(*) step_tally FROM ojt_requirements_list where step = '".$ctr."' ";
@@ -52,53 +56,61 @@
                         $result2 = $conn->query($sql2);    
                         $completed_tally = $result2->fetch_assoc()['completed_tally'];
                         if ($step_tally == $completed_tally)
-                        {
+                        {   if($ctr == 1)
+                            {
+                                $sql3="SELECT
+                                          *
+                                        FROM
+                                          ojt_student_recommendation AS a
+                                        INNER JOIN
+                                          ojt_users AS b
+                                        ON
+                                          a.stud_id = b.student_id
+                                        WHERE
+                                          stud_id = '".$_SESSION['stud_id']."' ";
+                                $result3 = $conn->query($sql3);
+                                if($result3->num_rows == 0)
+                                {
+                                    $step_completed = 0;
+                                }else if($result3->fetch_assoc()['status'] == 0){
+                                    $step_completed = 0;
+                                }else{
+                                    $btn_disable ="disabled";
+                                    $step_completed = 1;
+                                }
+                            }else{
                             $step_completed = $step_completed + 1;
                         }
 
-                              $step = $step_completed +1;
-                              if($step_tally == 0)
-                              {
+                        }
+                        $step = $step_completed +1;
+                        if($step_tally == 0)
+                        {
+                            $collapse = "";
+                            $color = "box-danger";
+                            $disabled = "disabled";
+                        }
+                        else
+                        {
+
+
+                            if($step_completed >= $ctr){
+                                $collapse = "";
+                                $color = "box-success";
+                                $disabled = "disabled";
+                            }
+                            else{
                                 $collapse = "";
                                 $color = "box-danger";
                                 $disabled = "disabled";
-                              }
-                              else
-                              {
-                                if($step_completed >= $ctr){
-                                  $collapse = "";
-                                  $color = "box-success";
-                                  $disabled = "disabled";
-                                }
-                                else{
-                                  $collapse = "";
-                                  $color = "box-danger";
-                                  $disabled = "disabled";
-                                }
-                                if($step == $ctr){
-                                  $collapse = "in";
-                                  $color ="box-primary";
-                                  $disabled = "";
-                                }                              
-                              }
-                $sql3 = "SELECT count(*) status FROM ojt_student_recommendation where stud_id='".$_SESSION['stud_id']."' 
-                and status = 0 ";      
-                    $result3 = $conn->query($sql3);    
-                              
-                              if($result3->num_rows > 0) 
-                              {
-                                $btn_disabled = "disabled";
-                              }  
-                              else
-                              {
-                                $btn_disabled = "";
-                              }
-                              if($recommendation == 0 && $ctr == 2)  
-                              {
-                                $collapse = "";
-                                $color = "box-danger";
-                                $disabled = "disabled";
-                              }
+                            }
+                            if($step == $ctr){
+                                $collapse = "in";
+                                $color ="box-primary";
+                                $disabled = "";
+                            }
+                        }
+
                         ?>
                         
                           <div class="panel box <?php echo $color; ?>" id="step<?php echo $ctr; ?>">
@@ -138,9 +150,9 @@
                                                 echo '</li>
                                                   </ul>';
                                               }
-                                              if($ctr == 1 && $step_completed == 1){
+                                              if($ctr == 1 && $step_tally == $completed_tally){
                                                     echo '<br>
-                                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_reco" '.$btn_disabled.'>Request Recommendation Letter</button>';
+                                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_reco" '.$btn_disable.'>Request Recommendation Letter</button>';
                                                     $recommendation = 0;
                                               }    
                                                     echo '<button type="submit" class="btn btn-primary btn-xs pull-right"'.$disabled.'>Submit</button>';
