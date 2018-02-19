@@ -118,6 +118,17 @@ if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
         <!-- /.content -->
     </div>
     <script>
+        function load_dataTable()
+        {
+            $('.table').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            });
+        }
         function rejectDTR(id){
             if(confirm("Are you sure you want to delete this Record?")){
                 $.ajax({

@@ -51,6 +51,11 @@
                     <i class= "fa fa-clock-o"></i> <span>Hours Rendered</span>
                 </a>
             </li>
+            <li class="<?php if ($title == 'Recommendation Letter') {echo 'active'; }else{ echo ''; } ?>">
+                <a href="recommendation_letter.php">
+                    <i class= "fa fa-file-text-o"></i> <span>Recommendation Letter</span>
+                </a>
+            </li>
             <li class="<?php if ($title == 'SMS') {echo 'active'; }else{ echo ''; } ?>">
                 <a href="sms.php">
                     <i class="fa fa-envelope-o"></i> <span>SMS</span>
