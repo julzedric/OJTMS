@@ -46,6 +46,11 @@
                     <i class="fa fa-table"></i> <span>Announcement List</span>
                 </a>
             </li>
+            <li class="<?php if ($title == 'Hours rendered') {echo 'active'; }else{ echo ''; } ?>">
+                <a href="hours_rendered.php">
+                    <i class= "fa fa-clock-o"></i> <span>Hours Rendered</span>
+                </a>
+            </li>
             <li class="<?php if ($title == 'SMS') {echo 'active'; }else{ echo ''; } ?>">
                 <a href="sms.php">
                     <i class="fa fa-envelope-o"></i> <span>SMS</span>

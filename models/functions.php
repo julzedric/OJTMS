@@ -37,3 +37,22 @@ function getDocumentRequest($conn){
     }
     return $data;
 }
+
+
+function getHoursRendered($conn){
+    $sql = "
+            SELECT a.*, b.firstname, b.lastname, b.course
+            FROM ojt_hours_rendered as a
+            JOIN ojt_users as b
+            ON a.stud_id = b.student_id
+            ";
+    $result = $conn->query($sql);
+    $data = array();
+
+    if($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+    }
+    return $data;
+}
