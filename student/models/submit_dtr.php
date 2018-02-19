@@ -9,9 +9,10 @@
 
 		$target_dir = "../../assets/uploads/dtr/";
 		$file = $_FILES['attachment']['name'];
-		$filename = str_replace(' ', '_', $file);
 
-		$imageFileType = pathinfo($filename,PATHINFO_EXTENSION);
+		$r = rand(0,50000);
+		$imageFileType = pathinfo($name,PATHINFO_EXTENSION);
+		$filename = str_replace(' ', '_', $stud_id.'_'.$r.'.'.$imageFileType);
 
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "" ) {
@@ -29,7 +30,7 @@
 		if($uploadOk == 1) {
 				if(move_uploaded_file($_FILES['attachment']['tmp_name'], $target_dir.$filename)) {
 					$sql = "INSERT INTO ojt_hours_rendered (hours_rendered,dtr,status,stud_id,created_at)
-					values ('".$hours_rendered."','".$file."','".$status."','".$stud_id."','".$created_at."')";
+					values ('".$hours_rendered."','".$filename."','".$status."','".$stud_id."','".$created_at."')";
 
 					if($conn->query($sql) == TRUE) {
 						echo "<script type='text/javascript'> 

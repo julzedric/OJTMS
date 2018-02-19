@@ -12,9 +12,9 @@
 
 		$target_dir = "../../assets/uploads/requirements/";
 		$file = $_FILES['file']['name'];
-		$filename = str_replace(' ', '_', $file);
 
 		$imageFileType = pathinfo($filename,PATHINFO_EXTENSION);
+		$filename = str_replace(' ', '_', $name.'.'.$imageFileType);
 
 		$uploadOk = 1;
 
@@ -37,7 +37,7 @@
 		// Allow certain file formats
 			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "docx" && $imageFileType != "xlsx") {
 			echo "<script type='text/javascript'> 
-					var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF files are allowed.\");
+					var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF, DOCX, XLSX files are allowed.\");
 					if(conf == true){
 						window.location.href = 'http://localhost/ojtms/admin/edit_requirement.php?id=".$id."';
 					}

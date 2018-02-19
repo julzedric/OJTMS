@@ -293,11 +293,9 @@
                                                             <i class='fa fa-pencil'></i>
                                                         </button>
                                                     </a>
-                                                    <a href='models/remove_requirement.php?id=".$row['id']."'>
-                                                        <button type='button' class='btn btn-danger btn-sm' title='Remove'>
+                                                    <button type='button' class='btn btn-danger btn-sm' onclick='remove_(".$row['id'].")' title='Remove'>
                                                         <i class='fa fa-trash'></i>
-                                                        </button>
-                                                    </a>
+                                                    </button>
                                                     <button type='button' class='btn btn-success btn-sm disabled' title='Download'>
                                                         <i class='fa fa-download'></i>
                                                     </button>";
@@ -312,12 +310,10 @@
                                                             <i class='fa fa-pencil'></i>
                                                         </button>
                                                     </a>
-                                                    <a href='models/remove_requirement.php?id=".$row['id']."'>
-                                                        <button type='button' class='btn btn-danger btn-sm' title='Remove'>
+                                                    <button type='button' class='btn btn-danger btn-sm' onclick='remove_(".$row['id'].")' title='Remove'>
                                                         <i class='fa fa-trash'></i>
-                                                        </button>
-                                                    </a>
-                                                    <a href='".$file."'>
+                                                    </button>
+                                                    <a href='models/download_file.php?file=".$row['file']."'>
                                                         <button type='button' class='btn btn-success btn-sm' title='Download'>
                                                         <i class='fa fa-download'></i>
                                                         </button>
@@ -370,11 +366,9 @@
                                                             <i class='fa fa-pencil'></i>
                                                         </button>
                                                     </a>
-                                                    <a href='models/remove_total_hours.php?id=".$row['id']."'>
-                                                        <button type='button' class='btn btn-danger btn-sm' title='Remove'>
+                                                    <button type='button' class='btn btn-danger btn-sm' onclick='remove_2(".$row['id'].")' title='Remove'>
                                                         <i class='fa fa-trash'></i>
-                                                        </button>
-                                                    </a>
+                                                    </button>
                                             </td>
                                         </tr>";
                                 }
@@ -434,6 +428,36 @@
             $("#step").val('');
             $("input:radio[name=mode]").prop('checked', false);
         }
+    }
+
+    function remove_(id)
+    {
+        if(confirm("Are you sure you want to delete this Record?")){
+            $.ajax({
+                type : "DELETE",
+                url : "models/remove_requirement.php?id="+id,
+                data : {id : id},
+                success: function(){
+                    location.reload();
+                }
+            });
+        }
+        return false;
+    }
+
+    function remove_2(id)
+    {
+        if(confirm("Are you sure you want to delete this Record?")){
+            $.ajax({
+                type : "DELETE",
+                url : "models/remove_total_hours.php?id="+id,
+                data : {id : id},
+                success: function(){
+                    location.reload();
+                }
+            });
+        }
+        return false;
     }
 </script>
 <?php include('../includes/footer.php')?>

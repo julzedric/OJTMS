@@ -241,9 +241,9 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div id="message"></div>
                             <div id="actionButtons" class="pull-right">
-                                <button type="reset" id="btn_cancel" onclick="cancel()" class="btn btn-squared btn-default btn-o">
+                                <a href="requirements.php" id="btn_cancel" class="btn btn-squared btn-default btn-o">
                                     Cancel
-                                </button>
+                                </a>
                                 <button type="submit" class="btn btn-squared btn-primary" id="btnSubmit">
                                     Save
                                 </button>

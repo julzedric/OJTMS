@@ -1,6 +1,6 @@
 <?php
 
-    $title = 'Edit Announcement';
+    $title = 'Announcement List';
     require_once('../connection.php');
     include('../includes/header.php');
     if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
@@ -97,9 +97,9 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div id="message"></div> 
                             <div id="actionButtons" class="pull-right">
-                                <button type="reset" id="btn_cancel" onclick="clearfield()" class="btn btn-squared btn-default btn-o">
+                                <a href="announcement-list.php" id="btn_cancel" class="btn btn-squared btn-default btn-o">
                                     Cancel
-                                </button>
+                                </a>
                                 <button type="submit" class="btn btn-squared btn-primary" id="btnSubmit">
                                     Save
                                 </button>

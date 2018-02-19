@@ -11,14 +11,14 @@
 
 		$target_dir = "../../assets/uploads/requirements/";
 		$file = $_FILES['file']['name'];
-		$filename = str_replace(' ', '_', $file);
-
+		
+		$r = rand(0,50000);
 		$imageFileType = pathinfo($file,PATHINFO_EXTENSION);
-
+		$filename = str_replace(' ', '_', $name.'_'.$r.'.'.$imageFileType);
 		// Allow certain file formats
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "docx" && $imageFileType != "xlsx" && $imageFileType != "" ) {
 		    echo "<script type='text/javascript'> 
-					var conf= confirm(\"Sorry, only JPG, JPEG, PNG & PDF files are allowed.\");
+					var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF, DOCX, XLSX files are allowed.\");
 					if(conf == true){
 						window.location.href = 'http://localhost/ojtms/admin/requirements.php';
 					}
@@ -42,7 +42,7 @@
 		}
 
 		if($uploadOk == 1) {
-			if($filename == '') {
+			if($file == '') {
 				$sql = "INSERT INTO ojt_requirements_list (name,description,created_at,type,step,is_online)
 				values ('".$name."','".$description."','".$created_at."','".$type."','".$step."','".$is_online."')";
 
@@ -104,7 +104,12 @@
 						}
 					}
 				} else {
-					echo "Error";
+					echo "<script type='text/javascript'> 
+						var conf= confirm(\"Error. Please try again.\");
+						if(conf == true){
+							window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+						}
+					</script>";
 				}
 
 			}

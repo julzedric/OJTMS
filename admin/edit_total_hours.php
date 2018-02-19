@@ -1,6 +1,6 @@
 <?php
 
-    $title = 'Edit Announcement';
+    $title = 'Requirements';
     require_once('../connection.php');
     include('../includes/header.php');
     if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
@@ -32,7 +32,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Announcements
+        Hours Required
       </h1>
       <ol class="breadcrumb">
         <li><a href="#"><i class="fa fa-dashboard"></i> Admin</a></li>
@@ -144,9 +144,9 @@
                         <div class="col-sm-offset-2 col-sm-10">
                             <div id="message"></div> 
                             <div id="actionButtons" class="pull-right">
-                                <button type="reset" id="btn_cancel" onclick="clearfield2()" class="btn btn-squared btn-default btn-o">
+                                <a href="requirements.php" id="btn_cancel" class="btn btn-squared btn-default btn-o">
                                     Cancel
-                                </button>
+                                </a>
                                 <button type="submit" class="btn btn-squared btn-primary" id="btnSubmit">
                                     Save
                                 </button>

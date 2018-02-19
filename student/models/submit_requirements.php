@@ -16,10 +16,11 @@
 					$status = 1;
 					$student_id = $_SESSION['stud_id'];
 					$link = "../../assets/uploads/student_requirements/";
-					$filename = str_replace(' ', '_', $name);
 					$requirement_id = $_POST['requirement_id'.$row['id']];
 
-					$imageFileType = pathinfo($filename,PATHINFO_EXTENSION);
+					$r = rand(0,50000);
+					$imageFileType = pathinfo($name,PATHINFO_EXTENSION);
+					$filename = str_replace(' ', '_', $student_id.'_'.$r.'.'.$imageFileType);
 
 					// Allow certain file formats
 					if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "docx" ) 
@@ -41,7 +42,7 @@
 						if(move_uploaded_file($_FILES['name'.$row['id']]['tmp_name'], $link.$filename))
 						 {
 							$sql = "INSERT INTO ojt_student_requirements (name,stud_id,created_at,link,status,requirement_id)
-							values ('".$name."','".$student_id."','".$created_at."','".$link."','".$status."','".$requirement_id."')";
+							values ('".$filename."','".$student_id."','".$created_at."','".$link."','".$status."','".$requirement_id."')";
 
 							if($conn->query($sql) == TRUE) 
 							{

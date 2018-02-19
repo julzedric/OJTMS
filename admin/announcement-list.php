@@ -131,7 +131,7 @@
                                             <td>".$row['announcements']."</td>
                                             <td style='text-align: center;'>
                                             <a href='edit_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-primary btn-sm' title='Edit'><i class='fa fa-pencil'></i></button></a>
-                                            <a href='models/remove_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-danger btn-sm' title='Remove'><i class='fa fa-trash'></i></button></a>
+                                            <button type='button' class='btn btn-danger btn-sm' onclick='remove_(".$row['id'].")' title='Remove'><i class='fa fa-trash'></i></button>
                                             </td>
                                         </tr>";
                                 }
@@ -168,11 +168,20 @@
         $("#announcement").val("");
         $(".collapse").slideUp();
     }
-    function delete_(id){
-        var conf= confirm("Are you sure?");
-        if(conf == true){
-            window.location.href = 'http://localhost/OJTMS/admin/models/remove-requirement.php?id='+id;
+
+    function remove_(id)
+    {
+        if(confirm("Are you sure you want to delete this Record?")){
+            $.ajax({
+                type : "DELETE",
+                url : "models/remove_announcement.php?id="+id,
+                data : {id : id},
+                success: function(){
+                    location.reload();
+                }
+            });
         }
-    } 
+        return false;
+    }
 </script>
 <?php include('../includes/footer.php')?>
