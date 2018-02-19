@@ -85,10 +85,15 @@
                 <div class="row">
                   
                       <?php
-                        $sql = "SELECT sum(hours_rendered) hours FROM ojt_hours_rendered A INNER JOIN 
-                                ojt_users B ON A.stud_id = B.student_id WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' ";
-                        $result = $conn->query($sql);
-                        $hours = $result->fetch_assoc()['hours']; ?>
+                        $sql1 = "SELECT sum(hours_rendered) hours FROM ojt_hours_rendered A INNER JOIN 
+                                ojt_users B ON A.stud_id = B.student_id WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' and status = 1 ";
+                        $result1 = $conn->query($sql1);
+                        
+                        
+                          $hours = $result1->fetch_assoc()['hours'];
+                        
+
+                         ?>
                      
                 
                   <div class="col-sm-6 ">
@@ -239,7 +244,31 @@
                 {
                     if ($step_tally == $completed_tally)
                     {
-                        $step_completed = $step_completed + 1;
+                        if($ctr == 1)
+                        {
+                            $sql3= "SELECT * FROM ojt_student_recommendation AS a
+                                    INNER JOIN ojt_users AS b ON a.stud_id = b.student_id
+                                    WHERE stud_id = '".$_SESSION['stud_id']."' ";
+
+                                $result3 = $conn->query($sql3);
+                                if($result3->num_rows == 0)
+                                {
+                                    $step_completed = 0;
+                                }
+                                else if($result3->fetch_assoc()['status'] == 0)
+                                {
+                                    $step_completed = 0;
+                                }
+                                else
+                                {
+                                    $btn_disable ="disabled";
+                                    $step_completed = 1;
+                                }
+                        }
+                        else
+                        {
+                            $step_completed = $step_completed + 1;
+                        }
                     }
                 }
             }    

@@ -25,7 +25,31 @@
                 {
                     if ($step_tally == $completed_tally)
                     {
-                        $step_completed = $step_completed + 1;
+                        if($ctr == 1)
+                        {
+                            $sql3= "SELECT * FROM ojt_student_recommendation AS a
+                                    INNER JOIN ojt_users AS b ON a.stud_id = b.student_id
+                                    WHERE stud_id = '".$_SESSION['stud_id']."' ";
+
+                                $result3 = $conn->query($sql3);
+                                if($result3->num_rows == 0)
+                                {
+                                    $step_completed = 0;
+                                }
+                                else if($result3->fetch_assoc()['status'] == 0)
+                                {
+                                    $step_completed = 0;
+                                }
+                                else
+                                {
+                                    $btn_disable ="disabled";
+                                    $step_completed = 1;
+                                }
+                        }
+                        else
+                        {
+                            $step_completed = $step_completed + 1;
+                        }
                     }
                 }
                
@@ -83,6 +107,10 @@
                     }
                 }
 
+            }
+            else
+            {
+            	echo "No records found.";
             }
             ?>
             <!-- /.box-body -->
