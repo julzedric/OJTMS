@@ -127,6 +127,22 @@
                                 <!-- List -->
                                 <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
                                   <?php
+
+                                  /*$sql= "SELECT
+                                              id AS req_id,
+                                              `name` AS `req_name`,
+                                              FILE AS req_file,
+                                              0 AS 'type'
+                                            FROM
+                                              ojt_requirements_list
+                                            UNION
+                                            SELECT
+                                              id AS stud_req_id,
+                                              `name` AS `stud_req_filename`,
+                                              stud_id AS stud_req_stud_id,
+                                              1 AS 'type'
+                                            FROM
+                                              ojt_student_requirements";*/
                                           $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM ojt_requirements_list as a 
                                                                left join `ojt_student_requirements`as b 
                                                                on a.id = b.requirement_id
