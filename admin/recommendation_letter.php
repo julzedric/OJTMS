@@ -11,6 +11,8 @@ if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
     <?php include('../includes/admin_subheader.php') ?>
     <?php include('../includes/admin_sidebar.php') ?>
     <div class="content-wrapper">
+        <div class="loader" style="display: none"></div>
+
         <!-- Content Header (Page header) -->
         <section class="content-header">
             <h1>
@@ -112,6 +114,9 @@ if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
                     type : "POST",
                     url : "../models/notifyStudent.php?id="+id,
                     data : {id : id},
+                    beforeSend: function() {
+                        $('.loader').show();
+                    },
                     success: function(){
                         location.reload();
                     }

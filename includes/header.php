@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="../bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
   <link rel="stylesheet" href="../bower_components/toastr/toastr.min.css">
   <link rel="stylesheet" href="../dist/css/AdminLTE.min.css">
-  <link rel="stylesheet" href="../dist/css/CustomCss.css">
+  <link rel="stylesheet" href="../dist/css/custom.css">
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.ico">
   <link rel="stylesheet"
