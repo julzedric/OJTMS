@@ -99,10 +99,11 @@
                   <div class="col-sm-6 ">
                     <div class="description-block">
                       <?php                       
-                        $sql = "SELECT a.total_hours FROM ojt_total_hours A 
+                        $sql = "SELECT a.id, a.total_hours FROM ojt_total_hours A 
                                 INNER JOIN ojt_users B ON A.course = B.course WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' ";
                         $result = $conn->query($sql);
                         $total = $result->fetch_assoc()['total_hours'];
+                        $total_id = $result->fetch_assoc()['id'];
                         $diff_hours = $total - $hours;
                       ?>
                       <h5 class="description-header"><?php echo $diff_hours; ?></h5>
@@ -329,6 +330,7 @@
               </div>
               <div class="modal-body">
                 <form action="models/submit_dtr.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="id" id="id" value="<?php echo $total_id?>">
                 <div class="box-body">
                     <p style="color: red;"><strong>
                       NOTE: The system will automatically compute for your total hours.

@@ -11,13 +11,13 @@
 		$file = $_FILES['attachment']['name'];
 
 		$r = rand(0,50000);
-		$imageFileType = pathinfo($name,PATHINFO_EXTENSION);
+		$imageFileType = pathinfo($file,PATHINFO_EXTENSION);
 		$filename = str_replace(' ', '_', $stud_id.'_'.$r.'.'.$imageFileType);
 
 		// Allow certain file formats
-		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "" ) {
+		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "docx" && $imageFileType != "xlsx" && $imageFileType != "" ) {
 		    echo "<script type='text/javascript'> 
-					var conf= confirm(\"Sorry, only JPG, JPEG, PNG & PDF files are allowed.\");
+					var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF, DOCX, XLSX  files are allowed.\");
 					if(conf == true){
 						window.location.href = 'http://localhost/ojtms/student/profile.php';
 					}

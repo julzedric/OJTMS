@@ -78,6 +78,7 @@
                             <th>Name</th>
                             <th>Course</th>
                             <th>Email Adress</th>
+                            <th>Rendered Hours</th>
                             <th style='text-align: center;'>Action</th>
                         </tr>
                     </thead>
@@ -276,7 +277,7 @@
             "processing": true,
             "serverSide": false,
             "sAjaxSource": "models/load_student.php"+"?loadstudent=true",
-            "aoColumns" : [ { sWidth: "20%" }, { sWidth: "30%" }, { sWidth: "20%" }, { sWidth: "10%" }, { sWidth: "20%" }],
+            "aoColumns" : [ { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "10%" }, { sWidth: "20%" }, { sWidth: "10%" }],
             "deferLoading": 10,
             "fnInitComplete": function() {
                 $('[data-toggle="tooltip"]').tooltip();
@@ -391,7 +392,7 @@
                 "processing": true,
                 "serverSide": false,
                 "sAjaxSource": "models/load_student.php"+"?get_student=true&"+"course="+course,
-                "aoColumns" : [ { sWidth: "20%" }, { sWidth: "30%" }, { sWidth: "20%" }, { sWidth: "10%" }, { sWidth: "20%" }],
+                "aoColumns" : [ { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "10%" }, { sWidth: "20%" }, { sWidth: "10%" }],
                 "deferLoading": 10,
                 "fnInitComplete": function() {
                     $('[data-toggle="tooltip"]').tooltip();

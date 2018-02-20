@@ -42,16 +42,24 @@
 	    if($result->num_rows > 0) {
 	        while($row = $result->fetch_assoc())
 	        {
-	            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id']. ")' title='View Profile'><i class='fa fa-eye'></i></button>
-	            			<button type='button' class='btn btn-primary btn-sm' data-uid='".$row['student_id']."'  onclick='view_2(getAttribute(\"data-uid\"))' title='Student&#39;s progress'><i class='fa fa-clock-o'></i></button>
-	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(" .$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
+	            $sql1 = "SELECT sum(hours_rendered) as hour FROM ojt_hours_rendered WHERE stud_id = '".$row['student_id']."'";
+	            $result1 = $conn->query($sql1);
 
-	            $data[] = array(
-	            	$row['student_id'],
-	            	$row['name'],
-	            	$row['course'],
-	            	$row['email'],
-	            	$button);
+
+	            while($row1 = $result1->fetch_assoc())
+	        	{
+		            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id']. ")' title='View Profile'><i class='fa fa-eye'></i></button>
+		            			<button type='button' class='btn btn-primary btn-sm' data-uid='".$row['student_id']."'  onclick='view_2(getAttribute(\"data-uid\"))' title='Student&#39;s progress'><i class='fa fa-clock-o'></i></button>
+		                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(" .$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
+
+		            $data[] = array(
+		            	$row['student_id'],
+		            	$row['name'],
+		            	$row['course'],
+		            	$row['email'],
+		            	$row1['hour'],
+		            	$button);
+		        }
 	        }
 	    } else {
 	    	$data = array();
@@ -80,16 +88,24 @@
 	    if($result->num_rows > 0) {
 	        while($row = $result->fetch_assoc())
 	        {
-	            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id'].")' title='View Profile'><i class='fa fa-eye'></i></button>
-	            			<button type='button' class='btn btn-primary btn-sm' data-uid='".$row['student_id']."'  onclick='view_2(getAttribute(\"data-uid\"))' title='Student&#39;s progress'><i class='fa fa-clock-o'></i></button>
-	                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(".$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
+	        	$sql1 = "SELECT sum(hours_rendered) as hour FROM ojt_hours_rendered WHERE stud_id = '".$row['student_id']."'";
+	            $result1 = $conn->query($sql1);
 
-	            $data[] = array(
-	            	$row['student_id'],
-	            	$row['name'],
-	            	$row['course'],
-	            	$row['email'],
-	            	$button);
+
+	            while($row1 = $result1->fetch_assoc())
+	        	{
+		            $button = "<center><button type='button' class='btn btn-info btn-sm' onclick='view_(".$row['user_id'].")' title='View Profile'><i class='fa fa-eye'></i></button>
+		            			<button type='button' class='btn btn-primary btn-sm' data-uid='".$row['student_id']."'  onclick='view_2(getAttribute(\"data-uid\"))' title='Student&#39;s progress'><i class='fa fa-clock-o'></i></button>
+		                        <button type='button' class='btn btn-danger btn-sm' onclick='delete_(".$row['user_id'].")' title='Remove'><i class='fa fa-trash'></i></button></center>";
+
+		            $data[] = array(
+		            	$row['student_id'],
+		            	$row['name'],
+		            	$row['course'],
+		            	$row['email'],
+		            	$row1['hour'],
+		            	$button);
+		        }
 	        }
 	    } else {
 	    	$data = array();
