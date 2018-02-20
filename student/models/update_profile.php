@@ -1,6 +1,5 @@
 <?php
 	require_once('../../connection.php');
-    include('../../models/functions.php');
 	if($_POST) {
 
         $student = getStudentsByID($conn,$_SESSION['stud_id']);

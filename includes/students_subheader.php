@@ -1,7 +1,6 @@
 <header class="main-header">
 
     <?php
-    include('../models/functions.php');
     $student = getStudentsByID($conn,$_SESSION['stud_id']);
     ?>
     <!-- Logo -->

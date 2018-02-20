@@ -10,7 +10,30 @@
         </a>
         <div class="navbar-custom-menu">
             <ul class="nav navbar-nav">
-
+                <li class="dropdown notifications-menu">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fa fa-bell-o"></i>
+                        <span class="label label-warning"><?php echo getNotifCount($conn); ?></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="header">You have <?php echo getNotifCount($conn); ?> notifications</li>
+                        <li>
+                            <!-- inner menu: contains the actual data -->
+                            <ul class="menu">
+                                <?php
+                                foreach (getNotifications($conn) as $notif){
+                                ?>
+                                <li>
+                                    <a href="#">
+                                         <?php echo $notif['document_type'] .' is submitted by '. $notif['firstname'] . ' ' . $notif['lastname']  ?>
+                                    </a>
+                                </li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+<!--                        <li class="footer"><a href="#">View all</a></li>-->
+                    </ul>
+                </li>
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">

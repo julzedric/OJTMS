@@ -2,7 +2,6 @@
     $title = 'Document Request';
     require_once('../connection.php');
     include('../includes/header.php');
-    include('../models/functions.php');
     if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '1'){
         header("location: ../index.php");
     }
