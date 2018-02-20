@@ -13,7 +13,11 @@
                 <li class="dropdown notifications-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         <i class="fa fa-bell-o"></i>
-                        <span class="label label-warning"><?php echo getNotifCount($conn); ?></span>
+                        <span class="label label-warning"><?php
+                                    if (getNotifCount($conn) < 0){
+                                        echo getNotifCount($conn);
+                                    }
+                            ?></span>
                     </a>
                     <ul class="dropdown-menu">
                         <li class="header">You have <?php echo getNotifCount($conn); ?> notifications</li>
@@ -23,9 +27,13 @@
                                 <?php
                                 foreach (getNotifications($conn) as $notif){
                                 ?>
-                                <li>
-                                    <a href="#">
-                                         <?php echo $notif['document_type'] .' is submitted by '. $notif['firstname'] . ' ' . $notif['lastname']  ?>
+                                <li <?php
+                                if ($notif['flag'] == 0 ) {
+                                    echo 'style="background-color:#f3f3f3;"';
+                                }
+                                ?>>
+                                    <a data-uid="<?php echo $notif['id']; ?>" class="notification" href="../admin/document-request.php">
+                                         <?php echo $notif['firstname'] . ' ' . $notif['lastname'] . ' submitted ' . $notif['document_type']   ?>
                                     </a>
                                 </li>
                                 <?php } ?>

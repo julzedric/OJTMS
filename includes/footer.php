@@ -28,6 +28,17 @@
 <script src="../dist/js/demo.js"></script>
 
 <script>
+    $('.notification').click(function () {
+        var id = $(this).data('uid');
+        console.log(id);
+        $.ajax({
+            url: '../models/updateNotification.php?id='+id,
+            type: 'POST',
+            success: function () {
+
+            }
+        })
+    })
     $('#type').change(function(){
         if ($(this).val() == '0'){
             $('#fileUpload').slideDown();
