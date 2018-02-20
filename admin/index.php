@@ -35,14 +35,20 @@
                     <div class="col-md-12">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="form-group">
-                                <div class="col-md-2">
-                                    <label>By Course:</label>
-                                </div>
                                 <div class="col-md-6">
                                     <select class="s_ form-control" id="f_course" name="f_course" onchange="filter_($(this).val())" style="width: 100%;">
                                         <option value="All">All Courses</option>
                                         <option value="BSIM">BSIM</option>
                                         <option value="BSAIT ">BSAIT</option>
+                                    </select>
+                                </div>
+                                <div class="col-md-3">
+                                    <select class="s_ form-control" id="f_course" name="f_course" style="width: 100%;">
+                                        <option value="0">All Section</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
                                     </select>
                                 </div>
                             </div>
@@ -400,7 +406,6 @@
             });
         }
     }
-
     function tag_completed(id, req_id, is_online)
     {
         if(is_online == 1)

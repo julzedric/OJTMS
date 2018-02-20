@@ -226,18 +226,29 @@
                   <p>Required Fields <span style="color:red">(*)</span></p>
                 <div class="row">
                 
-                <div class="form-group col-lg-5">
+                <div class="form-group col-lg-4">
                   <label for="studentid" class="control-label">STUDENT ID <span style="color:red">*</span></label>
                   <input type="text" class="form-control" name="student_id" id="studentid" placeholder="00000-0000" maxlength="10" required="">
                     <?php if(isset($_POST['student_id'])) {
                         echo htmlentities ($_POST['student_id']); }?>
                 </div>
-                <div class="form-group col-lg-3">
+                <div class="form-group col-lg-2">
                   <label for="course" class="control-label" >COURSE <span style="color:red">*</span></label>
                     <select class="form-control" name="course" id="Course" >
                       <option value="BSIM">BSIM</option>
                       <option value="BSAIT">BSAIT</option>
                     </select>
+                </div>
+                <div class="form-group col-lg-2">
+                    <label for="section" class="control-label">SECTION <span style="color:red">*</span></label>
+                    <select class="form-control" name="section" id="section" >
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                    <?php if(isset($_POST['student_id'])) {
+                        echo htmlentities ($_POST['student_id']); }?>
                 </div>
                 <div class="form-group col-lg-4">
                     <label for="contact number">CONTACT NUMBER <span style="color:red">*</span></label>

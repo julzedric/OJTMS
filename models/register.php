@@ -6,6 +6,7 @@ if($_POST) {
     $error = [];
     $student_id = $_POST['student_id'];
     $course = $_POST['course'];
+    $section = $_POST['section'];
     $contact_number = $_POST['contact_number'];
     $username = $_POST['username'];
     $password = $_POST['reg-pword'];
@@ -98,12 +99,12 @@ if($_POST) {
     $link = $ojtms .'/verify.php?'.'token='.$token;
     sendEmail($email, $username, $link);
     $sql = "INSERT INTO ojt_users(
-                student_id, course,contact_number, username, password, token,
+                student_id, course, section, contact_number, username, password, token,
                 lastname, firstname, middlename, suffix, email, 
                 birthdate, gender, street, barangay, city, province, 
                 created_at )
                 VALUES (
-                '".$student_id."', '".$course."', '".'63'.$contact_number."', '".$username."', '".$enc_password."','".$token."',
+                '".$student_id."', '".$course."', '".$section."', '".'63'.$contact_number."', '".$username."', '".$enc_password."','".$token."',
                 '".$lastname."', '".$firstname."', '".$middlename."', '".$suffix."', '".$email."', 
                 '".$birthdate."', '".$gender."', '".$street."',
                 '".$barangay."', '".$city."', '".$province."', '".$created_at."' 
