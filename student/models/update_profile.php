@@ -1,6 +1,8 @@
 <?php
 	require_once('../../connection.php');
-	if($_POST) {
+    include('../../models/functions.php');
+
+if($_POST) {
 
         $student = getStudentsByID($conn,$_SESSION['stud_id']);
 		$email = $_POST['email'];
