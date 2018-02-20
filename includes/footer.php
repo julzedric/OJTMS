@@ -47,6 +47,29 @@
         $("#suggesstion-box").hide();
     }
     $(function () {
+
+        var id = '<?php echo $_SESSION['stud_id']; ?>';
+
+        console.log("id",id);
+
+        $.ajax({
+            url: 'models/getAllPassedRequirements.php?id='+id,
+            type: 'GET',
+            success: function (data) {
+
+                    $(".requirement_id_hidden").each(function(){
+                        var req_id = $(this).val();
+                        console.log("req",req_id);
+                        $.each(JSON.parse(data),function(key,value){
+                            if(req_id === value.requirement_id){
+                                $("#input_file"+value.requirement_id).attr('disabled','');
+                                console.log("val",req_id,value.requirement_id)
+                            }
+                        });
+                    });
+            }
+        });
+
         $("#recipient").keyup(function(){
             $.ajax({
                 type: "POST",
@@ -93,6 +116,7 @@
   $("#pic_close").on("click",function(){
     $("#EditProfilePicture").hide();
   });
+
 </script>
 </body>
 </html>

@@ -73,3 +73,21 @@ function getRecommendationLetter($conn){
     }
     return $data;
 }
+
+function getRequirementsList($conn,$ctr){
+    $sql = " SELECT * FROM ojt_requirements_list WHERE step = '".$ctr."' ";
+    $result = $conn->query($sql);
+    $data = array();
+
+    if($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;
+        }
+        $items = array();
+        foreach ($data as $item){
+            $items[] =  $item;
+        }
+
+        return $items;
+    }
+}

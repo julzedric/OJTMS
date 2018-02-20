@@ -2,7 +2,7 @@
     $title = 'OJTMS';
     require_once('../connection.php');
     include('../includes/header.php');
-    if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '0'){
+if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '0'){
         header("location: ../index.php");
     }
 ?>
@@ -126,55 +126,58 @@
                               <div class="box-body">
                                 <!-- List -->
                                 <form action="models/submit_requirements.php" method="POST" enctype="multipart/form-data">
-                                  <?php
+                                    <table id="step1" class="table table-bordered table-hover">
+                                        <tbody>
+                                        <?php
+                                        $results = getRequirementsList($conn,$ctr);
+                                        if($results > 0)
+                                        {
+                                            $btn_disabled = "disabled";
+                                        }
+                                        else
+                                        {
+                                            $btn_disabled = "";
+                                        }
+                                        if($recommendation == 0 && $ctr == 2)
+                                        {
+                                            $collapse = "";
+                                            $color = "box-danger";
+                                            $disabled = "disabled";
+                                        }
+                                        foreach ($results as $result){
 
-                                  /*$sql= "SELECT
-                                              id AS req_id,
-                                              `name` AS `req_name`,
-                                              FILE AS req_file,
-                                              0 AS 'type'
-                                            FROM
-                                              ojt_requirements_list
-                                            UNION
-                                            SELECT
-                                              id AS stud_req_id,
-                                              `name` AS `stud_req_filename`,
-                                              stud_id AS stud_req_stud_id,
-                                              1 AS 'type'
-                                            FROM
-                                              ojt_student_requirements";*/
-                                          $sql = "SELECT * FROM ojt_requirements_list
-                                                               where step = '".$ctr."'";
-                                          $result = $conn->query($sql);
-                                          if($result->num_rows > 0) {
-                                              while($row = $result->fetch_assoc())
-                                              {
-                                                $rl_id=$row['id'];
-                                                echo'
-                                                  <input type="hidden" name="requirement_id'.$rl_id.'" value="'.$rl_id.'">
-                                                  <input type="hidden" name="step" value="'.$ctr.'">
-                                                  <ul>
-                                                    <li>'
-                                                      .$row['name'];
-                                                    if($row['is_online'] == 1){
-                                                      /*if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){*/
-                                                        echo '<input type="file" name="name'.$rl_id.'" class="pull-right" '.$disabled.'>';
-                                                      //}
-                                                    }
-                                                echo '</li>
-                                                  </ul>';
-                                              }
-                                              if($ctr == 1 && $step_tally == $completed_tally){
-                                                    echo '<br>
-                                                    <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_reco" '.$btn_disable.'>Request Recommendation Letter</button>';
-                                                    $recommendation = 0;
-                                              }    
-                                                    echo '<button type="submit" class="btn btn-primary btn-xs pull-right"'.$disabled.'>Submit</button>';
-                                            }
-                                          else{
-                                              echo "No records found.";
-                                            }
-                                     ?>
+                                        ?>
+
+                                            <tr>
+                                                <?php $rl_id = $result['id']; ?>
+                                                <input type="hidden" name="requirement_id<?php echo $rl_id; ?>" value="<?php echo $rl_id; ?>">
+                                                <input type="hidden" name="step" value="<?php echo $ctr; ?>">
+                                                <input type="hidden" class="requirement_id_hidden" value="<?php echo $rl_id; ?>">
+                                                <td>
+                                                    <?php echo $result['name']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php if($result['is_online']){ ?>
+                                                        <input type="file" name="name<?php echo $rl_id; ?>" id="input_file<?php echo $rl_id; ?>" class="pull-right">
+                                                    <?php } ?>
+                                                </td>
+                                            </tr>
+
+                                      <?php
+
+                                        } ?>
+
+                                        </tbody>
+
+                                    </table>
+                                    <?php
+                                    if($ctr == 1 && $step_completed == 1){
+                                        echo '<br>
+                                            <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_reco" '.$btn_disabled.'>Request Recommendation Letter</button>';
+                                        $recommendation = 0;
+                                    }
+                                    echo '<button type="submit" class="btn btn-primary btn-xs pull-right"'.$disabled.'>Submit</button>';
+                                    ?>
                                 </form>
                               </div>
                             </div>
@@ -343,17 +346,20 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <script>
-    function load_dataTable() 
-    {
-        $('#example2').DataTable({
-            'paging'      : true,
-            'lengthChange': true,
-            'searching'   : true,
-            'ordering'    : true,
-            'info'        : true,
-            'autoWidth'   : false
-        });
-    }
-  </script>
+
 <?php include('../includes/footer.php');?>
+    <script>
+        function load_dataTable()
+        {
+            $('#example2').DataTable({
+                'paging'      : true,
+                'lengthChange': true,
+                'searching'   : true,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            });
+        }
+
+
+    </script>
