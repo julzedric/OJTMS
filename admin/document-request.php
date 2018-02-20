@@ -57,13 +57,21 @@
                             <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                             <td><?php echo $result['name']; ?></td>
                             <td>
-                                <a href="<?php echo $file; ?>" target='_new'>
-                                <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
-                                </a>
-                                <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
-                                <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
-                                </a>
-                                <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button>
+                                <?php if ($result['status'] == 1) {?>
+                                    <a href="<?php echo $file; ?>" target='_new'>
+                                        <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
+                                    </a>
+                                    <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
+                                        <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
+                                    </a>
+                                    <a href="../models/declineDocument.php?id=<?php echo $result['id']; ?>">
+                                        <button class="btn btn-danger btn-xs" title="Decline"><i class="fa fa-thumbs-o-down"></i></button>
+                                    </a>
+                                <?php }elseif ($result['status'] == 2){?>
+                                    <span class="label label-success" style="display: block;">Approved</span>
+                                <?php }elseif($result['status'] == 3) {?>
+                                    <span class="label label-danger" style="display: block;">Rejected</span>
+                                <?php }?>
                             </td>
                         </tr>
                         <?php }
@@ -91,13 +99,21 @@
                                 <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                                 <td><?php echo $result['name']; ?></td>
                                 <td>
+                                    <?php if ($result['status'] == 1) {?>
                                     <a href="<?php echo $file; ?>" target='_new'>
                                     <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                     </a>
                                     <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                     <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
                                     </a>
-                                    <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button>
+                                    <a href="../models/declineDocument.php?id=<?php echo $result['id']; ?>">
+                                        <button class="btn btn-danger btn-xs" title="Decline"><i class="fa fa-thumbs-o-down"></i></button>
+                                    </a>
+                                    <?php }elseif ($result['status'] == 2){?>
+                                        <span class="label label-success" style="display: block;">Approved</span>
+                                    <?php }elseif($result['status'] == 3) {?>
+                                        <span class="label label-danger" style="display: block;">Rejected</span>
+                                    <?php } ?>
                                 </td>
                             </tr>
                         <?php }
@@ -128,13 +144,21 @@
                             <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                             <td><?php echo $result['name']; ?></td>
                             <td>
+                                <?php if ($result['status'] == 1) {?>
                                 <a href="<?php echo $file; ?>" target='_new'>
                                     <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                 </a>
                                 <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                 <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
                                 </a>
-                                <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button>
+                                <a href="../models/declineDocument.php?id=<?php echo $result['id']; ?>">
+                                    <button class="btn btn-danger btn-xs" title="Decline"><i class="fa fa-thumbs-o-down"></i></button>
+                                </a>
+                                <?php }elseif ($result['status'] == 2){?>
+                                    <span class="label label-success" style="display: block;">Approved</span>
+                                <?php }elseif($result['status'] == 3) {?>
+                                    <span class="label label-danger" style="display: block;">Rejected</span>
+                                <?php } ?>
                             </td>
                         </tr>
                         <?php }
@@ -163,13 +187,21 @@
                                     <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                                     <td><?php echo $result['name']; ?></td>
                                     <td>
+                                        <?php if ($result['status'] == 1) {?>
                                         <a href="<?php echo $file; ?>" target='_new'>
                                             <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                         </a>
                                         <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                         <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
                                         </a>
-                                       <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button></a>
+                                        <a href="../models/declineDocument.php?id=<?php echo $result['id']; ?>">
+                                            <button class="btn btn-danger btn-xs" title="Decline"><i class="fa fa-thumbs-o-down"></i></button>
+                                        </a>
+                                        <?php }elseif ($result['status'] == 2){?>
+                                            <span class="label label-success" style="display: block;">Approved</span>
+                                        <?php }elseif($result['status'] == 3) {?>
+                                            <span class="label label-danger" style="display: block;">Rejected</span>
+                                        <?php  } ?>
                                     </td>
                                 </tr>
                             <?php }
@@ -197,13 +229,21 @@
                                     <td><?php echo $result['firstname']. ' ' .$result['lastname']; ?></td>
                                     <td><?php echo $result['name']; ?></td>
                                     <td>
+                                        <?php if ($result['status'] == 1) {?>
                                         <a href="<?php echo $file; ?>" target='_new'>
                                             <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>
                                         </a>
                                         <a href="../models/approveDocument.php?id=<?php echo $result['id']; ?>">
                                         <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>
                                         </a>
-                                        <button class="btn btn-danger btn-xs" title="Reject" onclick="rejectDocument(<?php echo $result['id']; ?>)"><i class="fa fa-thumbs-o-down"></i></button></a>
+                                        <a href="../models/declineDocument.php?id=<?php echo $result['id']; ?>">
+                                            <button class="btn btn-danger btn-xs" title="Decline"><i class="fa fa-thumbs-o-down"></i></button>
+                                        </a>
+                                        <?php }elseif ($result['status'] == 2){?>
+                                            <span class="label label-success" style="display: block;">Approved</span>
+                                        <?php }elseif($result['status'] == 3) {?>
+                                            <span class="label label-danger" style="display: block;">Rejected</span>
+                                        <?php } ?>
                                     </td>
                                 </tr>
                             <?php }

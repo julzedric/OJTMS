@@ -25,7 +25,6 @@ function getDocumentRequest($conn){
             ON a.stud_id = b.student_id
             JOIN ojt_requirements_list as c 
             ON a.requirement_id = c.id
-            WHERE a.status = 1
             ";
     $result = $conn->query($sql);
     $data = array();
