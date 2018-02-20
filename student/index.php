@@ -143,10 +143,8 @@
                                               1 AS 'type'
                                             FROM
                                               ojt_student_requirements";*/
-                                          $sql = "SELECT a.*,b.requirement_id,b.stud_id FROM ojt_requirements_list as a 
-                                                               left join `ojt_student_requirements`as b 
-                                                               on a.id = b.requirement_id
-                                                               where a.step = '".$ctr."'";
+                                          $sql = "SELECT * FROM ojt_requirements_list
+                                                               where step = '".$ctr."'";
                                           $result = $conn->query($sql);
                                           if($result->num_rows > 0) {
                                               while($row = $result->fetch_assoc())
@@ -159,9 +157,9 @@
                                                     <li>'
                                                       .$row['name'];
                                                     if($row['is_online'] == 1){
-                                                      if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){
+                                                      /*if(is_null($row['stud_id']) || $row['stud_id'] != $_SESSION['stud_id']){*/
                                                         echo '<input type="file" name="name'.$rl_id.'" class="pull-right" '.$disabled.'>';
-                                                      }
+                                                      //}
                                                     }
                                                 echo '</li>
                                                   </ul>';
