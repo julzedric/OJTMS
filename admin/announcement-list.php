@@ -53,12 +53,12 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
+                    <div class="form-group" style="z-index: 1000!important;">
                         <div class="col-md-2">
                             <label>Date To:</label>
                         </div>
                         <div class="col-md-6">
-                            <div class="input-group date">
+                            <div class="input-group date" style="position: relative;">
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>

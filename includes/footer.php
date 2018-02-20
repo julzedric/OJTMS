@@ -67,7 +67,8 @@
 
         //Date picker
         $('.datepicker').datepicker({
-          autoclose: true
+          autoclose: true,
+          orientation: "bottom"
         });
 
         var value = $("#type").val();
