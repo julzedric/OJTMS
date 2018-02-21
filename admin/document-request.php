@@ -26,6 +26,34 @@
 
     <!-- Main content -->
     <div class="box-body">
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">Filter</h3>
+            </div>
+
+            <div class="box-body padding-20 filter">
+                <!-- <form action="" class="form-horizontal row-border" role="form" method="POST" id="ojtmsForm" enctype="multipart/form-data"> -->
+                <div class="col-md-12">
+                    <div class="col-md-8 col-md-offset-2">
+                        <form action="" id="filter_document">
+                            <div class="form-group">
+                                <div class="col-md-4">
+                                    <label for="">Date from:</label>
+                                    <input type="date" id="date_from" class="form-control" required>
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="">Date to:</label>
+                                    <input type="date" id="date_to" class="form-control" required>
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="submit" class="btn btn-success" style="margin-top: 24px;">Filter</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
       <div class="nav-tabs-custom">
             <ul class="nav nav-tabs">
                 <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Application Letter</a></li>
@@ -35,7 +63,7 @@
                 <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">Others</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-pane active" id="tab_1">
+                <div class="tab-panel active" id="tab_1">
                     <table id="step1" class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -80,7 +108,7 @@
                     </table>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_2">
+                <div class="tab-panel" id="tab_2">
                     <table id="step2" class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -124,7 +152,7 @@
                     </table>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_3">
+                <div class="tab-panel" id="tab_3">
                     <table id="step3" class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -167,7 +195,7 @@
                     </table>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-pane" id="tab_4">
+                <div class="tab-panel" id="tab_4">
                     <table id="step4" class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -209,7 +237,7 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class="tab-pane" id="tab_5">
+                <div class="tab-panel" id="tab_5">
                     <table id="step4" class="table table-bordered table-hover">
                         <thead>
                         <tr>

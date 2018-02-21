@@ -28,6 +28,17 @@
 <script src="../dist/js/demo.js"></script>
 
 <script>
+    $('#filter_document').on('submit', function () {
+        var date_from = $('#date_from').val();
+        var date_to = $('#date_to').val();
+        $.ajax({
+            url: 'filterDocument.php?from='+date_from+'?to='+date_to,
+            type: 'GET',
+            success: function (data) {
+                console.log(data);
+            }
+        });
+    });
     $('.notification').click(function () {
         var id = $(this).data('uid');
         console.log(id);

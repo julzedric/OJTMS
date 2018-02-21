@@ -14,7 +14,6 @@
 
       $data = $result->fetch_assoc();
 
-      $conn->close();
     }
 ?>
 <div class="wrapper">

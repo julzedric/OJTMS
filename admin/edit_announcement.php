@@ -15,7 +15,6 @@
 
       $data = $result->fetch_assoc();
 
-      $conn->close();
     }
 ?>
 
