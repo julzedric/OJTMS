@@ -28,16 +28,73 @@
 <script src="../dist/js/demo.js"></script>
 
 <script>
-    $('#filter_document').on('submit', function () {
+    $('#filter_document').on('submit', function (e) {
         var date_from = $('#date_from').val();
         var date_to = $('#date_to').val();
         $.ajax({
-            url: 'filterDocument.php?from='+date_from+'?to='+date_to,
+            url: '../models/filterDocument.php',
+            data: {
+              from: date_from,
+              to: date_to
+            },
             type: 'GET',
             success: function (data) {
-                console.log(data);
+               var table_id = '';
+               var type = '';
+               var table = $('.tab-content .tab-pane:visible').attr('id');
+               if(table == 'tab_1'){
+                    table_id = 'step1';
+                    type ='Application Letter'
+               }else if (table == 'tab_2'){
+                   table_id = 'step2';
+                   type ='Monthly Report'
+               }else if(table == 'tab_3'){
+                   table_id = 'step3';
+                   type ='DTR'
+               }else if(table == 'tab_4'){
+                   table_id = 'step4';
+                   type ='Final Evaluation'
+               }else if(table == 'tab_5'){
+                   table_id = 'step5';
+               }
+               var eto = $('table'+'#'+table_id).find('tbody');
+               eto.empty();
+               $.each(JSON.parse(data), function (index, value) {
+                   var file = "../assets/uploads/student_requirements/"+ value.name;
+                   var set1 = '<a href="'+file+'" target=\'_new\'>\n' +
+                       '               <button class="btn btn-primary btn-xs" title="Preview"><i class="fa fa-eye"></i></button>\n' +
+                       '               </a>\n' +
+                       '               <a href="../models/approveDocument.php?id='+value.id+'"\n'+
+                       '               <button class="btn btn-success btn-xs" title="Approve"><i class="fa fa-thumbs-o-up"></i></button>\n' +
+                       '               </a>\n' +
+                       '               <a href="../models/declineDocument.php?id='+value.id+'"\n' +
+                       '                   <button class="btn btn-danger btn-xs" title="Decline"><i class="fa fa-thumbs-o-down"></i></button>\n' +
+                       '               </a>';
+                    var set2 = '<span class="label label-success" style="display: block;">Approved</span>';
+                    var set3 = '<span class="label label-danger" style="display: block;">Rejected</span>';
+                    var set = '';
+                    if(value.status == 1){
+                        set = set1;
+                    }else if(value.status == 2){
+                        set = set2;
+                    }else if(value.status == 3){
+                        set = set3;
+                    }
+                   if(value.document_type == type){
+                       eto.append(
+                           '<tr role="row" class="odd">\n' +
+                           '                            <td class="sorting_1">'+value.firstname+' '+value.lastname+'</td>\n' +
+                           '                            <td>'+value.name+'</td>\n' +
+                           '                            <td>\n'+set+
+                           '                            </td>\n' +
+                           '                        </tr>'
+                       )
+                   }
+               })
             }
         });
+
+        e.preventDefault();
     });
     $('.notification').click(function () {
         var id = $(this).data('uid');

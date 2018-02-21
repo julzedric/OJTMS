@@ -63,7 +63,7 @@
                 <li class=""><a href="#tab_5" data-toggle="tab" aria-expanded="false">Others</a></li>
             </ul>
             <div class="tab-content">
-                <div class="tab-panel active" id="tab_1">
+                <div class="tab-pane active" id="tab_1">
                     <table id="step1" class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -108,7 +108,7 @@
                     </table>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-panel" id="tab_2">
+                <div class="tab-pane" id="tab_2">
                     <table id="step2" class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -152,7 +152,7 @@
                     </table>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-panel" id="tab_3">
+                <div class="tab-pane" id="tab_3">
                     <table id="step3" class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -195,7 +195,7 @@
                     </table>
                 </div>
                 <!-- /.tab-pane -->
-                <div class="tab-panel" id="tab_4">
+                <div class="tab-pane" id="tab_4">
                     <table id="step4" class="table table-bordered table-hover">
                         <thead>
                         <tr>
@@ -237,8 +237,8 @@
                         </tfoot>
                     </table>
                 </div>
-                <div class="tab-panel" id="tab_5">
-                    <table id="step4" class="table table-bordered table-hover">
+                <div class="tab-pane" id="tab_5">
+                    <table id="step5" class="table table-bordered table-hover">
                         <thead>
                         <tr>
                             <th>Name</th>
