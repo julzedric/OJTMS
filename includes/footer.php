@@ -73,8 +73,16 @@
                         console.log("req",req_id);
                         $.each(JSON.parse(data),function(key,value){
                             if(req_id === value.requirement_id){
-                                $("#input_file"+value.requirement_id).attr('disabled','');
-                                console.log("val",req_id,value.requirement_id)
+
+                                if(value.status != 3){
+                                    $("#input_file"+value.requirement_id).attr('disabled','');
+                                    console.log("val",req_id,value.requirement_id)
+                                }else{
+                                    $("#input_file"+value.requirement_id).prop("disabled", false);
+                                    console.log("ganda",req_id,value.requirement_id)
+                                }
+
+
                             }
                         });
                     });
