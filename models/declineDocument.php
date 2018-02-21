@@ -12,7 +12,8 @@ if($_GET) {
 
     $query = "
             UPDATE ojt_student_requirements
-            SET status = 3
+            SET status = 3,
+            is_completed = 0
             WHERE id = '".$id."'";
 
     if($conn->query($query) === TRUE) {
