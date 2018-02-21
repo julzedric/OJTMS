@@ -24,7 +24,7 @@ if($_POST) {
 			$sql = "UPDATE ojt_users SET email =  '".$email."', 
 					password = '".$password."',
 					contact_number = '".$contact_number."', street = '".$street."', barangay = '".$barangay."', city = '".$city."', province = '".$province."',
-					updated_at = '".$updated_at."' where student_id = '".$_SESSION['stud_id']."' ";
+					updated_at = '".$updated_at."' where student_id = '".$_POST['stud_id']."' ";
 				
 				if($conn->query($sql) === TRUE) {
 					echo "<script type='text/javascript'> 

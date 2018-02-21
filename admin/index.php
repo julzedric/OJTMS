@@ -85,6 +85,7 @@
                             <th>Course</th>
                             <th>Email Adress</th>
                             <th>Rendered Hours</th>
+                            <th>Status</th>
                             <th style='text-align: center;'>Action</th>
                         </tr>
                     </thead>
@@ -103,7 +104,7 @@
     <div class="modal-dialog modal-lg">
         
         <div class="modal-content">
-            <form action="models/add_user.php" role="form" method="POST" enctype="multipart/form-data">
+            <form action="models/update_student.php" role="form" method="POST" enctype="multipart/form-data">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                     <h4>Student Profile</h4>
@@ -119,68 +120,69 @@
                                 </div>
                                 <div class="col-lg-5">
                                     <img src="" id="profile_pic" style='width: 120px; height: 120px;'>
+                                    <input type="file" id="profile_pic" style='margin-top: 10px;' name="profile_pic">
                                 </div>
                             </div>
                             <div class="form-group col-lg-6">
                                 <label for="student_id" class="control-label">Student ID</label>
-                                <input type="text" class="form-control" name="student_id" id="student_id" disabled="">
+                                <input type="text" class="form-control" name="student_id" id="student_id" >
                             </div>
                             <div class="col-lg-12">
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="lastname" class="control-label">Last Name</label>
-                                <input type="text" class="form-control" name="lastname" id="lastname" disabled="">
+                                <input type="text" class="form-control" name="lastname" id="lastname" >
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="firstname" class="control-label">First Name</label>
-                                <input type="text" class="form-control" name="firstname" id="firstname" disabled="">
+                                <input type="text" class="form-control" name="firstname" id="firstname" >
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="middlename" class="control-label">Middle Name</label>
-                                <input type="text" class="form-control" name="middlename" id="middlename" disabled="">
+                                <input type="text" class="form-control" name="middlename" id="middlename" >
                             </div>
                             <div class="form-group col-lg-3">
                                 <label for="suffix" class="control-label">Suffix</label>
-                                <input type="text" class="form-control" name="suffix" id="suffix" disabled="">
+                                <input type="text" class="form-control" name="suffix" id="suffix" >
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="course" class="control-label">Course</label>
-                                <input type="text" class="form-control" name="course" id="course" disabled="">
+                                <input type="text" class="form-control" name="course" id="course" >
                             </div>
                             <div class="form-group col-lg-5">
                                 <label for="birthdate" class="control-label">BIRTH DATE</label>
-                                <input type="date" class="form-control" name="birthdate" id="birthdate" disabled="">
+                                <input type="date" class="form-control" name="birthdate" id="birthdate" >
                             </div>
                             <div class="form-group col-lg-3"> 
                                 <label for="gender" class="control-label">GENDER</label>
-                                <select class="form-control" name="gender" id="gender"  disabled="">
+                                <select class="form-control" name="gender" id="gender"  >
                                     <option value="MALE">MALE</option>
                                     <option value="FEMALE">FEMALE</option>
                                 </select>
                             </div>
                             <div class="form-group col-lg-5">
                                 <label for="contact_number" class="control-label">Contact No.</label>
-                                <input type="contact_number" class="form-control" name="contact_number" id="contact_number" disabled="">
+                                <input type="contact_number" class="form-control" name="contact_number" id="contact_number" >
                             </div>
                             <div class="form-group col-lg-5">
                                 <label for="email" class="control-label">EMAIL</label>
-                                <input type="email" class="form-control" name="email" id="email" disabled="">
+                                <input type="email" class="form-control" name="email" id="email" >
                             </div>
                             <div class="form-group col-lg-12">
                                 <label for="street" class="control-label">STREET</label>
-                                <input type="text" class="form-control" placeholder="Block No. / House No. / Street" name="street" id="street" disabled="">
+                                <input type="text" class="form-control" placeholder="Block No. / House No. / Street" name="street" id="street" >
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="barangay" class="control-label">BARANGAY</label>
-                                <input type="text" class="form-control" name="barangay" id="barangay" disabled="">
+                                <input type="text" class="form-control" name="barangay" id="barangay" >
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="city" class="control-label">CITY</label>
-                                <input type="text" class="form-control" name="city" id="city" disabled="">
+                                <input type="text" class="form-control" name="city" id="city" >
                             </div>
                             <div class="form-group col-lg-4">
                                 <label for="province" class="control-label">PROVINCE</label>
-                                <input type="text" class="form-control" name="province" id="province" disabled="">
+                                <input type="text" class="form-control" name="province" id="province" >
                             </div>
                         </div>
                   
@@ -189,7 +191,7 @@
                 <div class="modal-footer">
                       <div class="col-lg-12">
                         <div class="pull-right">
-                          <!-- <button type="submit" class="btn btn-primary">Register</button> -->
+                          <button type="submit" class="btn btn-primary">Edit</button>
                           <button class="btn btn-default" data-dismiss="modal">Close</button>
                         </div>
                       </div>
@@ -283,7 +285,7 @@
             "processing": true,
             "serverSide": false,
             "sAjaxSource": "models/load_student.php"+"?loadstudent=true",
-            "aoColumns" : [ { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "10%" }, { sWidth: "20%" }, { sWidth: "10%" }],
+            "aoColumns" : [ { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "15%" }, { sWidth: "10%" }, { sWidth: "15%" }, { sWidth: "10%" }, { sWidth: "10%" }],
             "deferLoading": 10,
             "fnInitComplete": function() {
                 $('[data-toggle="tooltip"]').tooltip();
