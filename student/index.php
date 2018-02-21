@@ -258,7 +258,7 @@ if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '0'){
                                                 echo '<span class="label label-warning" style="display: block;">Pending</span>';
                                             }else if($row['status'] == 2){
                                                 echo '<span class="label label-success" style="display: block;">Approved</span>';
-                                            }else{
+                                            }else if($row['status'] == 3){
                                                 echo '<span class="label label-danger" style="display: block;">Rejected</span>';
                                             }
                                             echo    '</td>
