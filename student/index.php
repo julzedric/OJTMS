@@ -55,7 +55,7 @@ if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '0'){
                                     //count of total number of passed requirements
                                     $sql2 = "SELECT count(*) completed_tally FROM ojt_student_requirements a inner join
                              ojt_requirements_list b on a.requirement_id = b.id where a.stud_id='".$_SESSION['stud_id']."' 
-                             and b.step = '".$ctr."' and is_completed = 1 ";
+                             and b.step = '".$ctr."' and is_completed = 1 and status = 2";
                                     $result2 = $conn->query($sql2);
                                     $completed_tally = $result2->fetch_assoc()['completed_tally'];
 
@@ -169,6 +169,9 @@ if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '0'){
                                                                 <input type="hidden" class="requirement_id_hidden" value="<?php echo $rl_id; ?>">
                                                                 <td>
                                                                     <?php echo $result['name']; ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php echo $result['description']; ?>
                                                                 </td>
                                                                 <td>
                                                                     <?php if($result['is_online']){ ?>

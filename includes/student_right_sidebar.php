@@ -12,7 +12,7 @@
                
                 $sql2 = "SELECT count(*) completed_tally FROM ojt_student_requirements a inner join
                         ojt_requirements_list b on a.requirement_id = b.id where a.stud_id='".$_SESSION['stud_id']."' 
-                        and b.step = '".$ctr."' and is_completed = 1 ";
+                        and b.step = '".$ctr."' and is_completed = 1  and status = 2";
                 $result2 = $conn->query($sql2);    
 
                 $completed_tally = $result2->fetch_assoc()['completed_tally'];
