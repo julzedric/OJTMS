@@ -268,7 +268,7 @@
     }
 
     function cancel() {
-        window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+        window.location.href = 'http://ojtms.x10host.com/admin/requirements.php';
     }
 
     // $(function () {

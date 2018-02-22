@@ -14,7 +14,7 @@ try {
     echo "<script type='text/javascript'> 
                     var conf= confirm(\"SMS Successfully Sent!\");
                     if(conf == true){
-                      window.location = \"http://localhost/ojtms/admin/sms.php\";
+                      window.location = \"http://ojtms.x10host.com/admin/sms.php\";
                     }
                     </script>";
     exit;

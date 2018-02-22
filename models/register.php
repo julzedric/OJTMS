@@ -94,7 +94,7 @@ if($_POST) {
     $token = md5(uniqid(rand(), true));
     /*******************VALIDATION ENDS****************************/
     $ojtmsURI = explode('/', $_SERVER['REQUEST_URI']);
-    $ojtms = 'localhost/'.$ojtmsURI[1];
+    $ojtms = $ojtmsURI[1];
     $link = $ojtms .'/verify.php?'.'token='.$token;
     sendEmail($email, $username, $link);
     $sql = "INSERT INTO ojt_users(

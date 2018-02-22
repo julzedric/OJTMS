@@ -171,7 +171,7 @@
     function delete_(id){
         var conf= confirm("Are you sure?");
         if(conf == true){
-            window.location.href = 'http://localhost/OJTMS/admin/models/remove-requirement.php?id='+id;
+            window.location.href = 'http://ojtms.x10host.com/admin/models/remove-requirement.php?id='+id;
         }
     } 
 </script>

@@ -27,7 +27,7 @@
 					echo "<script type='text/javascript'> 
 							var conf= confirm(\"Successfully Updated.\");
 							if(conf == true){
-								window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+								window.location.href = 'http://ojtms.x10host.com/admin/requirements.php';
 							}
 						</script>";
 				}
@@ -39,7 +39,7 @@
 			echo "<script type='text/javascript'> 
 					var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF files are allowed.\");
 					if(conf == true){
-						window.location.href = 'http://localhost/ojtms/admin/edit_requirement.php?id=".$id."';
+						window.location.href = 'http://ojtms.x10host.com/admin/edit_requirement.php?id=".$id."';
 					}
 				</script>";
 		    $uploadOk = 0;
@@ -56,14 +56,14 @@
 					echo "<script type='text/javascript'> 
 							var conf= confirm(\"Successfully Updated.\");
 							if(conf == true){
-								window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+								window.location.href = 'http://ojtms.x10host.com/admin/requirements.php';
 							}
 						</script>";
 				} else {
 					echo "<script type='text/javascript'> 
 							var conf= confirm(\"Error while updating, please try again.\");
 							if(conf == true){
-								window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+								window.location.href = 'http://ojtms.x10host.com/admin/requirements.php';
 							}
 						</script>";
 				}

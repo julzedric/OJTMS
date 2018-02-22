@@ -16,14 +16,14 @@
 				echo "<script type='text/javascript'> 
 	                    var conf= confirm(\"Successfully Created.\");
 	                    if(conf == true){
-	                        window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+	                        window.location.href = 'http://ojtms.x10host.com/admin/requirements.php';
 	                    }
 	                  </script>";
 			} else {
 	            echo "<script type='text/javascript'> 
 	                    var conf= confirm(\"Error. Please try again.\");
 	                    if(conf == true){
-	                        window.location.href = 'http://localhost/ojtms/admin/requirements.php';
+	                        window.location.href = 'http://ojtms.x10host.com/admin/requirements.php';
 	                    }
 	                  </script>";
 			}

@@ -28,7 +28,7 @@ require_once '../connection.php';
                     echo "<script type='text/javascript'> 
                     var conf= confirm(\"Please confirm your email to continue.\");
                     if(conf == true){
-                        window.location.href = 'http://localhost/ojtms/index.php';
+                        window.location.href = 'http://ojtms.x10host.com/index.php';
                     }
                   </script>";
                     exit;
@@ -45,7 +45,7 @@ require_once '../connection.php';
         echo "<script type='text/javascript'> 
                     var conf= confirm(\"Username or Password is incorrect please try again.\");
                     if(conf == true){
-                        window.location.href = 'http://localhost/ojtms/index.php';
+                        window.location.href = 'http://ojtms.x10host.com/index.php';
                     }
                   </script>";
     }
