@@ -59,7 +59,7 @@
               <div class="widget-user-header bg-aqua-active">
                 <h3 class="widget-user-username"><?php echo $result['firstname'] ." ".$result['middlename']." ".$result['lastname']; ?></h3>
                 <h5 class="widget-user-desc">
-                  <?php 
+                  <?php
                     if($result['course'] == "BSIM"){
                       echo "BSIM";
                     }else{
@@ -69,38 +69,31 @@
                 </h5>
               </div>
               <div class="widget-user-image" id="widget-user-image">
-                <?php 
+                <?php
                   if($result['profile_picture'] != ""){
                     $profile_pic = $result['profile_picture'];
                   }else{
                     $profile_pic = "default_img.png";
                   }
                 ?>
-                <img style="width:115px; margin-left:-10px; height: 115px;" class="img-circle" src="<?php echo "../assets/uploads/profile_picture/".$profile_pic; ?>" alt="User Avatar">  
+                <img style="width:115px; margin-left:-10px; height: 115px;" class="img-circle" src="<?php echo "../assets/uploads/profile_picture/".$profile_pic; ?>" alt="User Avatar">
               </div>
               <div class="widget-user-image update_profile text-center img-circle"  >
                 <span style="color:white;"> <i class="fa fa-camera"></i> Update Profile</span>
               </div>
               <div class="box-footer">
                 <div class="row">
-                  
-                      <?php
+                  <?php
                         $sql1 = "SELECT sum(hours_rendered) hours FROM ojt_hours_rendered A INNER JOIN 
                                 ojt_users B ON A.stud_id = B.student_id WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' and status = 1 ";
                         $result1 = $conn->query($sql1);
-                        
-                        
                           $hours = $result1->fetch_assoc()['hours'];
-                        
-
                          ?>
-                     
-                
                   <div class="col-sm-6 ">
                     <div class="description-block">
-                      <?php                       
-                        $sql = "SELECT a.id, a.total_hours FROM ojt_total_hours A 
-                                INNER JOIN ojt_users B ON A.course = B.course WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' ";
+                      <?php
+                        $sql = "SELECT a.id, a.total_hours FROM ojt_total_hours as a
+                                INNER JOIN ojt_users b ON a.course = b.course WHERE b.student_id ='".$_SESSION['stud_id']."' ";
                         $result = $conn->query($sql);
                         $total = $result->fetch_assoc()['total_hours'];
                         $total_id = $result->fetch_assoc()['id'];
@@ -111,14 +104,12 @@
                     </div>
                     <!-- /.description-block -->
                   </div>
-                  <!-- /.col -->
-                  
                   <div class="col-sm-6">
                     <div class="description-block">
                       <h5 class="description-header">
-                        <?php 
+                        <?php
                           if($result->num_rows > 0) {
-                          echo $total; 
+                          echo $total;
                         }
                         else
                         {
@@ -130,10 +121,7 @@
                     </div>
                     <!-- /.description-block -->
                   </div>
-                  <!-- /.col -->
                 </div>
-                <!-- /.row -->
-              
               </div>
            </div>
         </div>
@@ -184,8 +172,8 @@
                         <dd><?php echo $result['birthdate']; ?></dd>
                         <dt>Address</dt>
                         <dd><?php echo $result['street']." ".$result['barangay']." ".$result['city']." ".$result['province']; ?></dd>
-                        
-                      </div>                
+
+                      </div>
                     </dl>
                   </div>
 
@@ -212,8 +200,8 @@
                         <dd>January 01, 1997</dd>
                         <dt>Address</dt>
                         <dd>#123 Kawawati Street Taguig City</dd>
-                        
-                      </div>                
+
+                      </div>
                     </dl>
                   </div> -->
 
@@ -227,7 +215,7 @@
         <span class="info-box-icon"><i class="fa fa-files-o"></i></span>
         <?php
             $step_completed = 0;
-            for ($ctr=1; $ctr <= 4; $ctr++) { 
+            for ($ctr=1; $ctr <= 4; $ctr++) {
             $sql1 = "SELECT count(*) step_tally FROM ojt_requirements_list where step = '".$ctr."' ";
                 $result1 = $conn->query($sql1);
 
@@ -235,7 +223,7 @@
             $sql2 = "SELECT count(*) completed_tally FROM ojt_student_requirements a inner join
                      ojt_requirements_list b on a.requirement_id = b.id where a.stud_id='".$_SESSION['stud_id']."' 
                      and b.step = '".$ctr."' and is_completed = 1  and status = 2";
-                $result2 = $conn->query($sql2);    
+                $result2 = $conn->query($sql2);
                 $completed_tally = $result2->fetch_assoc()['completed_tally'];
                 if ($step_tally == 0 && $completed_tally == 0)
                 {
@@ -272,7 +260,7 @@
                         }
                     }
                 }
-            }    
+            }
 
             $step_percentage = ($step_completed / 4) * 100;
         ?>
@@ -290,14 +278,14 @@
         <!-- /.info-box-content -->
     </div>
 
-        
+
           <!-- small box -->
           <div class="small-box bg-aqua">
             <div class="inner">
               <h3>
-                <?php 
+                <?php
                         if($hours > 0) {
-                          echo $hours; 
+                          echo $hours;
                         }
                         else
                         {
@@ -312,14 +300,14 @@
               <i class="fa fa-clock-o"></i>
             </div>
             <a data-toggle="modal" href="#DTR" class="small-box-footer"><i class="fa fa-pencil"></i>
-              Update DTR 
+              Update DTR
             </a>
           </div>
-        
+
         </div>
       </div>
     </section>
-    
+
     <div class="modal fade in" id="DTR" style="padding-right: 17px;">
           <div class="modal-dialog">
             <div class="modal-content" style=" margin-top:90px;">
@@ -425,10 +413,10 @@
                                      <input type="radio" name="optradio" checked disabled>Female';
                               }else{
                               echo  '<input type="radio" name="optradio" checked disabled>Male
-                                     <input type="radio" name="optradio" disabled>Female';  
+                                     <input type="radio" name="optradio" disabled>Female';
                               }
                              ?>
-                            
+
                           </div>
                       </div>
                       <div style="margin-bottom: 15px; height:34px;">
@@ -503,10 +491,5 @@
           </div>
           <!-- /.modal-dialog -->
     </div>
-  </div>
-
-  </div>
-
-
 
 <?php include('../includes/footer.php'); ?>
