@@ -35,6 +35,7 @@
                     <div class="col-md-12">
                         <div class="col-md-8 col-md-offset-2">
                             <div class="form-group">
+                            <form method="post" action="../MPDF57/generatePDF.php">
                                 <div class="col-md-6">
                                     <select class="s_ form-control" id="f_course" name="f_course" onchange="filter_($(this).val())" style="width: 100%;">
                                         <option value="All">All Courses</option>
@@ -43,14 +44,18 @@
                                     </select>
                                 </div>
                                 <div class="col-md-3">
-                                    <select class="s_ form-control" id="f_course" name="f_course" style="width: 100%;">
-                                        <option value="0">All Section</option>
+                                    <select class="s_ form-control" id="f_section" name="f_section" style="width: 100%;">
+                                        <option value="All">All Section</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                     </select>
                                 </div>
+                                <div class="col-md-3">
+                                     <button type="submit" class="btn btn-success" id="btn_register">PRINT LIST</button>
+                                </div>
+                            </form>
                             </div>
                         </div>
                     </div>
@@ -92,7 +97,7 @@
                     <tbody>
 
                     </tbody>
-                </table>
+                </table> 
             </div>
         </div>
     </div>
@@ -399,6 +404,10 @@
                 "processing": true,
                 "serverSide": false,
                 "sAjaxSource": "models/load_student.php"+"?get_student=true&"+"course="+course,
+<<<<<<< HEAD
+                "aoColumns" : [ { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "15%" }, { sWidth: "10%" }, { sWidth: "15%" }, { sWidth: "10%" }, { sWidth: "10%" }],
+=======
+>>>>>>> 47e2d4bb8fecb0fab1ab44b6d05875842c5a4923
                 "deferLoading": 10,
                 "fnInitComplete": function() {
                     $('[data-toggle="tooltip"]').tooltip();
