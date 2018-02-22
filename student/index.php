@@ -158,42 +158,60 @@ if (!isset($_SESSION['username']) || $_SESSION['is_admin'] != '0'){
                                                             $color = "box-danger";
                                                             $disabled = "disabled";
                                                         }*/
-                                                        foreach ($results as $result){
+                                                        if(sizeof($results)  > 0) {
 
+
+                                                            foreach ($results as $result) {
+
+                                                                ?>
+
+                                                                <tr>
+                                                                    <?php $rl_id = $result['id']; ?>
+                                                                    <input type="hidden"
+                                                                           name="requirement_id<?php echo $rl_id; ?>"
+                                                                           value="<?php echo $rl_id; ?>">
+                                                                    <input type="hidden" name="step"
+                                                                           value="<?php echo $ctr; ?>">
+                                                                    <input type="hidden" class="requirement_id_hidden"
+                                                                           value="<?php echo $rl_id; ?>">
+                                                                    <td>
+                                                                        <?php echo $result['name']; ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php echo $result['description']; ?>
+                                                                    </td>
+                                                                    <td>
+                                                                        <?php if ($result['is_online']) { ?>
+                                                                            <input type="file"
+                                                                                   name="name<?php echo $rl_id; ?>"
+                                                                                   id="input_file<?php echo $rl_id; ?>"
+                                                                                   class="pull-right">
+                                                                        <?php } ?>
+                                                                    </td>
+                                                                </tr>
+
+                                                                <?php
+
+                                                            }
+                                                        }else{
                                                             ?>
-
-                                                            <tr>
-                                                                <?php $rl_id = $result['id']; ?>
-                                                                <input type="hidden" name="requirement_id<?php echo $rl_id; ?>" value="<?php echo $rl_id; ?>">
-                                                                <input type="hidden" name="step" value="<?php echo $ctr; ?>">
-                                                                <input type="hidden" class="requirement_id_hidden" value="<?php echo $rl_id; ?>">
-                                                                <td>
-                                                                    <?php echo $result['name']; ?>
-                                                                </td>
-                                                                <td>
-                                                                    <?php echo $result['description']; ?>
-                                                                </td>
-                                                                <td>
-                                                                    <?php if($result['is_online']){ ?>
-                                                                        <input type="file" name="name<?php echo $rl_id; ?>" id="input_file<?php echo $rl_id; ?>" class="pull-right">
-                                                                    <?php } ?>
-                                                                </td>
-                                                            </tr>
-
-                                                            <?php
-
-                                                        } ?>
+                                                            <tr><td>No Records Found.</td></tr>
+                                                        <?php
+                                                        }
+                                                        ?>
 
                                                         </tbody>
 
                                                     </table>
                                                     <?php
                                                     if($ctr == 1 && $step_tally == $completed_tally){
-
-                                                        $disabled = "disabled";
-                                                        echo '<br>
-                                                             <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_reco" '.$btn_disabled.'>Request Recommendation Letter</button>';
-                                                        $recommendation = 0;
+                                                        if($step_tally != 0) {
+                                                            echo $step_tally . "completed" . $completed_tally;
+                                                            $disabled = "disabled";
+                                                            echo '<br>
+                                                             <button type="button" class="btn btn-primary btn-xs" data-toggle="modal" data-target="#modal_reco" ' . $btn_disabled . '>Request Recommendation Letter</button>';
+                                                            $recommendation = 0;
+                                                        }
                                                     }
                                                     echo '<button type="submit" class="btn btn-primary btn-xs pull-right"'.$disabled.'>Submit</button>';
                                                     ?>

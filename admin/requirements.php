@@ -44,7 +44,7 @@
                             <label>Name:</label>
                         </div>
                         <div class="col-md-6">
-                             <select class="form-control" id="name" name="name">
+                             <select class="form-control" id="name" name="name" required="">
                                 <option value="">--Select--</option>
                                 <option value="Application Letter">Application Letter</option>
                                 <option value="DTR">DTR</option>
@@ -69,7 +69,7 @@
                             <label>Type:</label>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" id="type" name="type" onchange="show_step($(this).val())">
+                            <select class="form-control" id="type" name="type" onchange="show_step($(this).val())" required="">
                                 <option value="">--Select--</option>
                                 <option value="0">Downloadable</option>
                                 <option value="1">Steps Requirement</option>
@@ -142,7 +142,7 @@
                         </div>
                         <div class="col-md-6">
                             <div class="col-md-5">
-                                <select class="form-control" id="school_year_1" name="school_year_1">
+                                <select class="form-control" id="school_year_1" name="school_year_1" required="">
                                     <?php
                                         $currently_selected = date('Y');
                                         $earliest_year = 1950;
@@ -158,7 +158,7 @@
                                 <label>To</label>
                             </div>
                             <div class="col-md-5">
-                                <select class="form-control" id="school_year_2" name="school_year_2">
+                                <select class="form-control" id="school_year_2" name="school_year_2" required="">
                                     <?php
                                         $currently_selected = date('Y');
                                         $earliest_year = 1950;
@@ -177,7 +177,7 @@
                             <label>Semester:</label>
                         </div>
                         <div class="col-md-6">
-                            <select class="form-control" id="semester" name="semester">
+                            <select class="form-control" id="semester" name="semester" required="">
                                 <option value="">--Select--</option>
                                 <option value="1">First</option>
                                 <option value="2">Second</option>
@@ -189,7 +189,7 @@
                             <label>Course:</label>
                         </div>
                         <div class="col-md-6">  
-                            <select class="form-control" id="course" name="course">
+                            <select class="form-control" id="course" name="course" required="">
                                 <option value="">--Select--</option>
                                 <option value="BSIM">BSIM</option>
                                 <option value="BSAIT">BSAIT</option>
@@ -201,7 +201,7 @@
                             <label>Total Hours:</label>
                         </div>
                         <div class="col-md-6">  
-                            <input type="text" id="total_hours" name="total_hours" class="form-control">
+                            <input type="text" id="total_hours" name="total_hours" class="form-control" required="">
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">

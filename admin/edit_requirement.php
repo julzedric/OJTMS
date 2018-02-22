@@ -13,7 +13,6 @@
       $result = $conn->query($sql);
 
       $data = $result->fetch_assoc();
-
     }
 ?>
 <div class="wrapper">
@@ -137,6 +136,8 @@
                                     }
                                 ?>
                             </select>
+                            <br/>
+                            <input type="text" class="form-control" name ="others" id="others" placeholder="Other Requirement" style="display: none">
                         </div>
                     </div>
                     <div class="form-group">
@@ -158,7 +159,7 @@
                                 if($ext == 'jpg' || $ext == 'png' || $ext == 'jpeg'){
                                     echo "<img src='../assets/uploads/requirements/".$data['file']."?>' class='margin-bottom-5' style='width: 140px; height: 120px;' alt='File'>";
                                     echo "<input type='hidden' id='old_file' name='old_file' value='".$data['file']."'>";
-                                } elseif ($ext == 'pdf') {
+                                } elseif ($ext == 'pdf' || $ext == 'docx' || $ext == 'xlsx') {
                                     echo "<input type='text' id='old_file' name='old_file' value='".$data['file']."' class='form-control margin-bottom-5' disabled>";
                                 }
 
@@ -184,56 +185,67 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group" id="steps" style="display: none;">
-                        <div class="col-md-2">
-                            <label>Steps</label>
+                    <div id="steps" style="display: none;"> 
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label>Steps</label>
+                            </div>
+                            <div class="col-md-6">
+                                <select class="form-control" id="step" name="step">
+                                    <?php
+                                        if($data['step'] == 1){
+                                            echo "<option value=''>--Select--</option>
+                                                <option value='1' selected='true'>Step 1</option>
+                                                <option value='2'>Step 2</option>
+                                                <option value='3'>Step 3</option>
+                                                <option value='4'>Step 4</option>";
+                                        } elseif($data['step'] == 2) {
+                                            echo "<option value=''>--Select--</option>
+                                                <option value='1'>Step 1</option>
+                                                <option value='2' selected='true'>Step 2</option>
+                                                <option value='3'>Step 3</option>
+                                                <option value='4'>Step 4</option>";
+                                        } elseif($data['step'] == 3){
+                                            echo "<option value=''>--Select--</option>
+                                                <option value='1'>Step 1</option>
+                                                <option value='2'>Step 2</option>
+                                                <option value='3' selected='true'>Step 3</option>
+                                                <option value='4'>Step 4</option>";
+                                        } elseif($data['step'] == 4){
+                                            echo "<option value=''>--Select--</option>
+                                                <option value='1'>Step 1</option>
+                                                <option value='2'>Step 2</option>
+                                                <option value='3'>Step 3</option>
+                                                <option value='4' selected='true'>Step 4</option>";
+                                        } else {
+                                            echo "<option value=''>--Select--</option>
+                                                <option value='1'>Step 1</option>
+                                                <option value='2'>Step 2</option>
+                                                <option value='3'>Step 3</option>
+                                                <option value='4'>Step 4</option>";
+                                        }
+                                    ?>
+                                </select>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <select class="form-control" id="step" name="step">
+                        <div class="form-group">
+                            <div class="col-md-2">
+                                <label>Submission Mode:</label>
+                            </div>
+                            <div class="col-md-6">
                                 <?php
-                                    if($data['step'] == 1){
-                                        echo "<option value='>--Select--</option>
-                                            <option value='1' selected='true'>Step 1</option>
-                                            <option value='2'>Step 2</option>
-                                            <option value='3'>Step 3</option>
-                                            <option value='4'>Step 4</option>";
-                                    } elseif($data['step'] == 2) {
-                                        echo "<option value='>--Select--</option>
-                                            <option value='1'>Step 1</option>
-                                            <option value='2' selected='true'>Step 2</option>
-                                            <option value='3'>Step 3</option>
-                                            <option value='4'>Step 4</option>";
-                                    } elseif($data['step'] == 3){
-                                        echo "<option value='>--Select--</option>
-                                            <option value='1'>Step 1</option>
-                                            <option value='2'>Step 2</option>
-                                            <option value='3' selected='true'>Step 3</option>
-                                            <option value='4'>Step 4</option>";
-                                    } elseif($data['step'] == 4){
-                                        echo "<option value='>--Select--</option>
-                                            <option value='1'>Step 1</option>
-                                            <option value='2'>Step 2</option>
-                                            <option value='3'>Step 3</option>
-                                            <option value='4' selected='true'>Step 4</option>";
+                                    if($data['is_online'] == 0 && $data['is_online'] != '') {
+                                        echo "<input type='radio' name='mode' id='personal' value='0' checked='true'> Personal&emsp;
+                                        <input type='radio' name='mode' id='online' value='1'> Online";
+                                    } else if($data['is_online'] == 1) {
+                                        echo "<input type='radio' name='mode' id='personal' value='0'> Personal&emsp;
+                                        <input type='radio' name='mode' id='online' value='1' checked='true'> Online";
+                                    } else {
+                                        echo "<input type='radio' name='mode' id='personal' value='0'> Personal&emsp;
+                                        <input type='radio' name='mode' id='online' value='1'   > Online";
                                     }
                                 ?>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-2">
-                            <label>Submission Mode:</label>
-                        </div>
-                        <div class="col-md-6">
-                            <?php
-                                if($data['is_online'] == 0) {
-                                    echo "<input type='radio' name='mode' id='personal' value='0' checked='true'> Personal&emsp;
-                                    <input type='radio' name='mode' id='online' value='1'> Online";
-                                } else {
-                                     echo "<input type='radio' name='mode' id='personal' value='0'> Personal&emsp;
-                                    <input type='radio' name='mode' id='online' value='1' checked='true'> Online";
-                                }
-                            ?>
+                            </div>
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">
@@ -259,23 +271,12 @@
 <script>
     function show_step(value){
         if (value == 1) {
-            $("#steps").show();
+            $("#steps").slideDown();
         } else {
-            $("#steps").hide();
+            $("#steps").slideUp();
             $("#step").val('');
+            $("input:radio[name=mode]").prop('checked', false);
         }
     }
-
-    function cancel() {
-        window.location.href = 'http://localhost/ojtms/admin/requirements.php';
-    }
-
-    // $(function () {
-
-    //     var value = $("#type").val();
-    //     alert(value);
-    //     show_step(value);
-
-    // })
 </script>
 <?php include('../includes/footer.php')?>

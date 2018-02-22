@@ -6,14 +6,15 @@
         $name = $_POST['name'] == 'Others'? $_POST['others']: $_POST['name'];
         $description = $_POST['description'];
 		$type = $_POST['type'];
-		$step = $_POST['step'];
+		$step = isset($_POST['step'])? $_POST['step'] : '';
 		$is_online = isset($_POST['mode'])? $_POST['mode'] : '';
 		$updated_at = date('Y-m-d');
 
 		$target_dir = "../../assets/uploads/requirements/";
 		$file = $_FILES['file']['name'];
 
-		$imageFileType = pathinfo($filename,PATHINFO_EXTENSION);
+		$r = rand(0,50000);
+		$imageFileType = pathinfo($file,PATHINFO_EXTENSION);
 		$filename = str_replace(' ', '_', $name.'.'.$imageFileType);
 
 		$uploadOk = 1;
@@ -35,6 +36,7 @@
 				exit;
 		}
 		// Allow certain file formats
+		$imageFileType = strtolower($imageFileType);
 			if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "docx" && $imageFileType != "xlsx") {
 			echo "<script type='text/javascript'> 
 					var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF, DOCX, XLSX files are allowed.\");
