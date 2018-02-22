@@ -10,14 +10,14 @@
 				echo "<script type='text/javascript'> 
 						var conf= confirm(\"Successfully Remove.\");
 						if(conf == true){
-							window.location.href = 'http://localhost/ojtms/student/my-documents.php';
+							window.location.href = 'http://ojtms.x10host.com/student/my-documents.php';
 						}
 					</script>";
 			} else {
 				echo "<script type='text/javascript'> 
 						var conf= confirm(\"Error deleting record.\");
 						if(conf == true){
-							window.location.href = 'http://localhost/ojtms/student/my-documents.php';
+							window.location.href = 'http://ojtms.x10host.com/student/my-documents.php';
 						}
 					</script>";
 			}

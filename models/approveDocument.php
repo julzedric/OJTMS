@@ -19,7 +19,7 @@ if($_GET) {
         echo "<script type='text/javascript'> 
 							var conf= confirm(\"Success!\");
 							if(conf == true){
-								window.location.href = 'http://localhost/ojtms/admin/document-request.php';
+								window.location.href = 'http://ojtms.x10host.com/admin/document-request.php';
 							}
 						</script>";
     }

@@ -14,7 +14,7 @@
 			echo "<script type='text/javascript'> 
 	                var conf= confirm(\"Error, End Date is greater than Start Date.\");
 	                if(conf == true){
-	                    window.location.href = 'http://localhost/ojtms/admin/announcement-list.php';
+	                    window.location.href = 'http://ojtms.x10host.com/admin/announcement-list.php';
 	                }
 	              </script>";
 		}
@@ -26,14 +26,14 @@
 				echo "<script type='text/javascript'> 
 						var conf= confirm(\"Successfully Updated.\");
 						if(conf == true){
-							window.location.href = 'http://localhost/ojtms/admin/announcement-list.php';
+							window.location.href = 'http://ojtms.x10host.com/admin/announcement-list.php';
 						}
 					</script>";
 			} else {
 				echo "<script type='text/javascript'> 
 						var conf= confirm(\"Error while updating, please try again.\");
 						if(conf == true){
-							window.location.href = 'http://localhost/ojtms/admin/announcement-list.php';
+							window.location.href = 'http://ojtms.x10host.com/admin/announcement-list.php';
 						}
 					</script>";
 			}

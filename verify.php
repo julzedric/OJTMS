@@ -29,7 +29,7 @@ if (isset($results)){
             echo "<script type='text/javascript'> 
                     var conf= confirm(\"Success ! You may now Login to your Account..\");
                     if(conf == true){
-                        window.location.href = 'http://localhost/ojtms/index.php';
+                        window.location.href = 'http://ojtms.x10host.com/ojtms/index.php';
                     }
                     </script>";
             exit;
@@ -39,7 +39,7 @@ if (isset($results)){
     echo "<script type='text/javascript'> 
                     var conf= confirm(\"Error ! Email/Token Mismatch!\");
                     if(conf == true){
-                        window.location.href = 'http://localhost/ojtms/index.php';
+                        window.location.href = 'http://ojtms.x10host.com/ojtms/index.php';
                     }
                     </script>";
     exit;

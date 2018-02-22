@@ -33,7 +33,7 @@ if($_GET) {
         echo "<script type='text/javascript'> 
 							var conf= confirm(\"Success!\");
 							if(conf == true){
-								window.location.href = 'http://localhost/ojtms/admin/notifyStudent.php';
+								window.location.href = 'http://ojtms.x10host.com/admin/notifyStudent.php';
 							}
 						</script>";
         sendNotification($data['email'], $data['username']);

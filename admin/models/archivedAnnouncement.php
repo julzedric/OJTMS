@@ -21,7 +21,7 @@ if($_GET) {
         echo "<script type='text/javascript'> 
 							var conf= confirm(\"Success!\");
 							if(conf == true){
-								window.location.href = 'http://localhost/ojtms/admin/announcement-list.php';
+								window.location.href = 'http://ojtms.x10host.com/ojtms/admin/announcement-list.php';
 							}
 						</script>";
     }

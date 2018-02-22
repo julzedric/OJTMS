@@ -34,7 +34,7 @@ if (mysqli_num_rows($query) > 0){
         echo "<script type='text/javascript'> 
                     var conf= confirm(\"Success! Please check your email to continue.\");
                     if(conf == true){
-                        window.location.href = 'http://localhost/ojtms/index.php';
+                        window.location.href = 'http://ojtms.x10host.com/index.php';
                     }
                   </script>";
     }
@@ -43,7 +43,7 @@ if (mysqli_num_rows($query) > 0){
     echo "<script type='text/javascript'> 
                     var conf= confirm(\"Email address/Student ID is incorrect please try again.\");
                     if(conf == true){
-                        window.location.href = 'http://localhost/ojtms/index.php';
+                        window.location.href = 'http://ojtms.x10host.com/index.php';
                     }
                   </script>";
 }

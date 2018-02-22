@@ -28,7 +28,7 @@
 					    echo "<script type='text/javascript'> 
 								var conf= confirm(\"Sorry, only JPG, JPEG, PNG & PDF files are allowed.\");
 								if(conf == true){
-									window.location.href = 'http://localhost/ojtms/student/index.php';
+									window.location.href = 'http://ojtms.x10host.com/student/index.php';
 								}
 							</script>";
 					    $uploadOk = 0;
@@ -49,7 +49,7 @@
 								echo "<script type='text/javascript'> 
 										var conf= confirm(\"Successfully Created.\");
 										if(conf == true){
-											window.location.href = 'http://localhost/ojtms/student/index.php';
+											window.location.href = 'http://ojtms.x10host.com/student/index.php';
 										}
 									</script>";
 							}else 
@@ -57,7 +57,7 @@
 								echo "<script type='text/javascript'> 
 										var conf= confirm(\"Error. Please try again.\");
 										if(conf == true){
-											window.location.href = 'http://localhost/ojtms/student/index.php';
+											window.location.href = 'http://ojtms.x10host.com/student/index.php';
 										}
 									</script>";
 							}
