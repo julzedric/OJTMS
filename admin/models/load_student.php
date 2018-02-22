@@ -45,7 +45,7 @@
 	            $sql1 = "SELECT sum(hours_rendered) as hour FROM ojt_hours_rendered WHERE stud_id = '".$row['student_id']."'";
 	            $result1 = $conn->query($sql1);
 
-	            $sql2 = "SELECT a.id, a.total_hours FROM ojt_total_hours A  INNER JOIN ojt_users B ON A.course = B.course WHERE B.STUDENT_ID ='".$row['student_id']."' ";
+	            $sql2 = "SELECT a.id, a.total_hours FROM ojt_total_hours a  INNER JOIN ojt_users b ON a.course = b.course WHERE b.student_id ='".$row['student_id']."' ";
                         $result2 = $conn->query($sql2);
                         $total = $result2->fetch_assoc()['total_hours'];
 

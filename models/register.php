@@ -94,9 +94,7 @@ if($_POST) {
     $enc_password = sha1($password);
     $token = md5(uniqid(rand(), true));
     /*******************VALIDATION ENDS****************************/
-    $ojtmsURI = explode('/', $_SERVER['REQUEST_URI']);
-    $ojtms = 'localhost/'.$ojtmsURI[1];
-    $link = $ojtms .'/verify.php?'.'token='.$token;
+    $link = 'http://ojtms.x10host.com/verify.php?'.'token='.$token;
     sendEmail($email, $username, $link);
     $sql = "INSERT INTO ojt_users(
                 student_id, course, section, contact_number, username, password, token,

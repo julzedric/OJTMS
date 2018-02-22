@@ -7,13 +7,12 @@
  */
 
 
-$mail->isSMTP();                                   // Set mailer to use SMTP
-$mail->Host = 'smtp.gmail.com';                    // Specify main and backup SMTP servers
+$mail->isSendMail();                                   // Set mailer to use SMTP
+$mail->Host = 'mail.ojtms.x10host.com';                    // Specify main and backup SMTP servers
 $mail->SMTPAuth = true;                            // Enable SMTP authentication
-$mail->Username = 'crenshawdevelopmentteam@gmail.com';          // SMTP username
-$mail->Password = 'blcakwuilpmmhfnc'; // SMTP password
+$mail->Username = 'admin@ojtms.x10host.com';          // SMTP username
+$mail->Password = 'Magdal3na'; // SMTP password
 $mail->SMTPSecure = 'tls';                         // Enable TLS encryption, `ssl` also accepted
-$mail->Port = 587;                                 // TCP port to connect to
 
-$mail->setFrom('crenshawdevelopmentteam@gmail.com', 'Crenshaw Development Team');
-$mail->addReplyTo('crenshawdevelopmentteam@gmail.com', 'Crenshaw Development Team');
+$mail->setFrom('admin@ojtms.x10host.com', 'OJT Management System');
+$mail->addReplyTo('admin@ojtms.x10host.com', 'OJT Management System');
