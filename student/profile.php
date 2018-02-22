@@ -86,7 +86,7 @@
                   
                       <?php
                         $sql1 = "SELECT sum(hours_rendered) hours FROM ojt_hours_rendered A INNER JOIN 
-                                ojt_users B ON A.stud_id = B.student_id WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' and status = 1 ";
+                                ojt_users B ON A.stud_id = B.student_id WHERE B.student_id='".$_SESSION['stud_id']."' and status = 1 ";
                         $result1 = $conn->query($sql1);
                         
                         
@@ -100,7 +100,7 @@
                     <div class="description-block">
                       <?php                       
                         $sql = "SELECT a.id, a.total_hours FROM ojt_total_hours A 
-                                INNER JOIN ojt_users B ON A.course = B.course WHERE B.STUDENT_ID ='".$_SESSION['stud_id']."' ";
+                                INNER JOIN ojt_users B ON A.course = B.course WHERE B.student_id='".$_SESSION['stud_id']."' ";
                         $result = $conn->query($sql);
                         $total = $result->fetch_assoc()['total_hours'];
                         $total_id = $result->fetch_assoc()['id'];
