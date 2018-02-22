@@ -15,7 +15,9 @@
 		$r = rand(0,50000);
 		$imageFileType = pathinfo($file,PATHINFO_EXTENSION);
 		$filename = str_replace(' ', '_', $name.'_'.$r.'.'.$imageFileType);
+
 		// Allow certain file formats
+		$imageFileType = strtolower($imageFileType);
 		if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" && $imageFileType != "docx" && $imageFileType != "xlsx" && $imageFileType != "" ) {
 		    echo "<script type='text/javascript'> 
 					var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF, DOCX, XLSX files are allowed.\");

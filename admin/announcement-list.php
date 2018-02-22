@@ -49,7 +49,7 @@
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right datepicker" name="date_from" id="date_from">
+                              <input type="text" class="form-control pull-right datepicker" name="date_from" id="date_from" required="">
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                               <div class="input-group-addon">
                                 <i class="fa fa-calendar"></i>
                               </div>
-                              <input type="text" class="form-control pull-right datepicker" name="date_to" id="date_to">
+                              <input type="text" class="form-control pull-right datepicker" name="date_to" id="date_to" required="">
                             </div>
                         </div>
                     </div>
@@ -71,7 +71,7 @@
                             <label>Title:</label>
                         </div>
                         <div class="col-md-6">
-                            <textarea name="title" id="title" class="form-control" rows="3"></textarea>
+                            <textarea name="title" id="title" class="form-control" rows="3" required=""></textarea>
                         </div>
                     </div>
                     <div class="form-group">
@@ -79,7 +79,7 @@
                             <label>Announcement:</label>
                         </div>
                         <div class="col-md-6">
-                            <textarea name="announcement" id="announcement" class="form-control" rows="7"></textarea>
+                            <textarea name="announcement" id="announcement" class="form-control" rows="7" required=""></textarea>
                         </div>
                     </div>
                     <div class="form-group margin-bottom-0">
@@ -99,7 +99,7 @@
             </div>
         </div>
 
-        <div class="box box-body">
+        <!-- <div class="box box-body"> -->
             <!-- <div class="box-header with-border">
                 <h3 class="box-title">Announcement List</h3>
             </div> -->
@@ -229,8 +229,7 @@
                     </tbody>
                 </table>
             </div> -->
-        </div>
-      <!-- <button class="btn btn-primary">Add new Announcement</button> -->
+        <!-- </div> -->
     </div>
     <!-- /.content -->
   </div>
