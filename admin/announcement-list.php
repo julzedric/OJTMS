@@ -99,12 +99,98 @@
             </div>
         </div>
 
-        <div class="box box-primary">
-            <div class="box-header with-border">
+        <div class="box box-body">
+            <!-- <div class="box-header with-border">
                 <h3 class="box-title">Announcement List</h3>
-            </div>
+            </div> -->
+         <div class="nav-tabs-custom">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#tab_1" data-toggle="tab" aria-expanded="true">Current Announcement</a></li>
+                <li class=""><a href="#tab_2" data-toggle="tab" aria-expanded="false">Archived Announcement</a></li>
+            </ul>
 
-            <div class="box-body padding-20">
+            <div class="tab-content">
+                <div class="tab-pane active" id="tab_1">
+                    <table id="announcement-list" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                              <th>Start Date</th>
+                              <th>End Date</th>
+                              <th>Title</th>
+                              <th>Announcement</th>
+                              <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $unset_date = "0000-00-00";
+                                $sql = "SELECT * FROM ojt_announcements where deleted_at = '".$unset_date."'";
+                                $result = $conn->query($sql);
+
+                                if($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc())
+                                    {
+                                        echo "
+                                            <tr>
+                                                <td>".$row['start_date']."</td>
+                                                <td>".$row['end_date']."</td>
+                                                <td>".$row['title']."</td>
+                                                <td>".$row['announcements']."</td>
+                                                <td style='text-align: center;'>
+                                                <a href='edit_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-primary btn-sm' title='Edit'><i class='fa fa-pencil'></i></button></a>
+                                                <a href='models/archivedAnnouncement.php?id=".$row['id']."'><button type='button' class='btn btn-warning btn-sm' title='Archive'><i class='fa fa-archive'></i></button></a>
+                                                <button type='button' class='btn btn-danger btn-sm' onclick='remove_(".$row['id'].")' title='Remove'><i class='fa fa-trash'></i></button>
+                                                </td>
+                                            </tr>";
+                                    }
+
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="tab-pane" id="tab_2">
+                    <table id="announcement-list" class="table table-bordered table-striped">
+                        <thead>
+                            <tr>
+                              <th>Start Date</th>
+                              <th>End Date</th>
+                              <th>Title</th>
+                              <th>Announcement</th>
+                              <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                                $unset_date = "0000-00-00";
+                                $sql = "SELECT * FROM ojt_announcements where deleted_at != '".$unset_date."'";
+                                $result = $conn->query($sql);
+
+                                if($result->num_rows > 0) {
+                                    while($row = $result->fetch_assoc())
+                                    {
+                                        echo "
+                                            <tr>
+                                                <td>".$row['start_date']."</td>
+                                                <td>".$row['end_date']."</td>
+                                                <td>".$row['title']."</td>
+                                                <td>".$row['announcements']."</td>
+                                                <td style='text-align: center;'>
+                                                <a href='edit_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-primary btn-sm' title='Edit'><i class='fa fa-pencil'></i></button></a>
+                                                
+                                                <button type='button' class='btn btn-danger btn-sm' onclick='remove_(".$row['id'].")' title='Remove'><i class='fa fa-trash'></i></button>
+                                                </td>
+                                            </tr>";
+                                    }
+
+                                }
+                            ?>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+         </div>
+            <!-- <div class="box-body padding-20">
                 <table id="announcement-list" class="table table-bordered table-striped">
                     <thead>
                         <tr>
@@ -117,7 +203,8 @@
                     </thead>
                     <tbody>
                         <?php
-                            $sql = "SELECT * FROM ojt_announcements";
+                            $unset_date = "0000-00-00";
+                            $sql = "SELECT * FROM ojt_announcements where deleted_at = '".$unset_date."'";
                             $result = $conn->query($sql);
 
                             if($result->num_rows > 0) {
@@ -131,6 +218,7 @@
                                             <td>".$row['announcements']."</td>
                                             <td style='text-align: center;'>
                                             <a href='edit_announcement.php?id=".$row['id']."'><button type='button' class='btn btn-primary btn-sm' title='Edit'><i class='fa fa-pencil'></i></button></a>
+                                            <a href='models/archivedAnnouncement.php?id=".$row['id']."'><button type='button' class='btn btn-warning btn-sm' title='Archive'><i class='fa fa-archive'></i></button></a>
                                             <button type='button' class='btn btn-danger btn-sm' onclick='remove_(".$row['id'].")' title='Remove'><i class='fa fa-trash'></i></button>
                                             </td>
                                         </tr>";
@@ -140,7 +228,7 @@
                         ?>
                     </tbody>
                 </table>
-            </div>
+            </div> -->
         </div>
       <!-- <button class="btn btn-primary">Add new Announcement</button> -->
     </div>
