@@ -3,7 +3,8 @@ require('../textlocal.class.php');
 
 $recipient = $_POST['recipient'];
 $message = $_POST['sms_message'];
-$textlocal = new Textlocal('cronnelbrian@gmail.com', 'c32fe9bfa0ae22d193485390091ca3f41c5f043435a31c8eade649065acf30b7');
+$textlocal = new Textlocal('juliuscedricjomena@gmail.com', 'e44f775a14275a14b7ff92d8566832953814380b7b5fcb7d34a640a2e801c76f');
+//$textlocal = new Textlocal('cronnelbrian@gmail.com', 'c32fe9bfa0ae22d193485390091ca3f41c5f043435a31c8eade649065acf30b7');
 
 $numbers = array($recipient);
 $sender = 'OJTMS';
