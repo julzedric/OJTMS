@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.2
--- http://www.phpmyadmin.net
+-- version 4.6.4
+-- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 20, 2018 at 02:35 PM
--- Server version: 5.7.9
--- PHP Version: 5.6.16
+-- Generation Time: Feb 22, 2018 at 12:42 AM
+-- Server version: 5.7.14
+-- PHP Version: 7.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,16 +26,15 @@ SET time_zone = "+00:00";
 -- Table structure for table `ojt_announcements`
 --
 
-DROP TABLE IF EXISTS `ojt_announcements`;
-CREATE TABLE IF NOT EXISTS `ojt_announcements` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ojt_announcements` (
+  `id` int(11) NOT NULL,
   `title` varchar(100) NOT NULL,
   `announcements` varchar(500) NOT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
   `created_at` date NOT NULL,
   `updated_at` date NOT NULL,
-  PRIMARY KEY (`id`)
+  `deleted_at` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -44,18 +43,16 @@ CREATE TABLE IF NOT EXISTS `ojt_announcements` (
 -- Table structure for table `ojt_hours_rendered`
 --
 
-DROP TABLE IF EXISTS `ojt_hours_rendered`;
-CREATE TABLE IF NOT EXISTS `ojt_hours_rendered` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ojt_hours_rendered` (
+  `id` int(11) NOT NULL,
   `stud_id` varchar(50) NOT NULL,
   `total_hours_id` int(11) NOT NULL,
   `hours_rendered` int(11) NOT NULL,
   `dtr` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` date NOT NULL,
-  `updated_at` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_hours_rendered`
@@ -71,14 +68,12 @@ INSERT INTO `ojt_hours_rendered` (`id`, `stud_id`, `total_hours_id`, `hours_rend
 -- Table structure for table `ojt_monthly_report`
 --
 
-DROP TABLE IF EXISTS `ojt_monthly_report`;
-CREATE TABLE IF NOT EXISTS `ojt_monthly_report` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ojt_monthly_report` (
+  `id` int(11) NOT NULL,
   `stud_id` varchar(50) NOT NULL,
   `attachment` varchar(50) NOT NULL,
   `hours_completed` time NOT NULL,
-  `is_approve` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
+  `is_approve` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -87,9 +82,8 @@ CREATE TABLE IF NOT EXISTS `ojt_monthly_report` (
 -- Table structure for table `ojt_requirements_list`
 --
 
-DROP TABLE IF EXISTS `ojt_requirements_list`;
-CREATE TABLE IF NOT EXISTS `ojt_requirements_list` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ojt_requirements_list` (
+  `id` int(11) NOT NULL,
   `name` varchar(50) NOT NULL,
   `description` varchar(100) NOT NULL,
   `file` varchar(100) NOT NULL,
@@ -97,9 +91,8 @@ CREATE TABLE IF NOT EXISTS `ojt_requirements_list` (
   `updated_at` date NOT NULL,
   `type` int(11) NOT NULL,
   `step` int(11) DEFAULT NULL,
-  `is_online` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+  `is_online` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_requirements_list`
@@ -121,9 +114,8 @@ INSERT INTO `ojt_requirements_list` (`id`, `name`, `description`, `file`, `creat
 -- Table structure for table `ojt_student_recommendation`
 --
 
-DROP TABLE IF EXISTS `ojt_student_recommendation`;
-CREATE TABLE IF NOT EXISTS `ojt_student_recommendation` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ojt_student_recommendation` (
+  `id` int(11) NOT NULL,
   `stud_id` varchar(50) NOT NULL,
   `company_name` varchar(500) NOT NULL,
   `company_address` varchar(500) NOT NULL,
@@ -131,9 +123,8 @@ CREATE TABLE IF NOT EXISTS `ojt_student_recommendation` (
   `supervisor_position` varchar(500) NOT NULL,
   `supervisor_contact` varchar(500) NOT NULL,
   `status` int(11) NOT NULL,
-  `created_at` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `created_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -141,9 +132,8 @@ CREATE TABLE IF NOT EXISTS `ojt_student_recommendation` (
 -- Table structure for table `ojt_student_requirements`
 --
 
-DROP TABLE IF EXISTS `ojt_student_requirements`;
-CREATE TABLE IF NOT EXISTS `ojt_student_requirements` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ojt_student_requirements` (
+  `id` int(11) NOT NULL,
   `requirement_id` int(11) NOT NULL,
   `stud_id` varchar(50) NOT NULL,
   `name` varchar(50) DEFAULT NULL,
@@ -154,9 +144,8 @@ CREATE TABLE IF NOT EXISTS `ojt_student_requirements` (
   `updated_at` date NOT NULL,
   `is_online` int(11) NOT NULL,
   `is_completed` int(11) NOT NULL,
-  `flag` smallint(6) NOT NULL DEFAULT '0',
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
+  `flag` smallint(6) NOT NULL DEFAULT '0'
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_student_requirements`
@@ -173,17 +162,15 @@ INSERT INTO `ojt_student_requirements` (`id`, `requirement_id`, `stud_id`, `name
 -- Table structure for table `ojt_total_hours`
 --
 
-DROP TABLE IF EXISTS `ojt_total_hours`;
-CREATE TABLE IF NOT EXISTS `ojt_total_hours` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ojt_total_hours` (
+  `id` int(11) NOT NULL,
   `school_year` varchar(50) NOT NULL,
   `semester` int(11) NOT NULL,
   `course` varchar(50) NOT NULL,
   `total_hours` int(11) NOT NULL,
   `created_at` date NOT NULL,
-  `updated_at` date NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+  `updated_at` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_total_hours`
@@ -198,9 +185,8 @@ INSERT INTO `ojt_total_hours` (`id`, `school_year`, `semester`, `course`, `total
 -- Table structure for table `ojt_users`
 --
 
-DROP TABLE IF EXISTS `ojt_users`;
-CREATE TABLE IF NOT EXISTS `ojt_users` (
-  `user_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `ojt_users` (
+  `user_id` int(11) NOT NULL,
   `lastname` varchar(50) NOT NULL,
   `firstname` varchar(50) NOT NULL,
   `middlename` varchar(50) DEFAULT NULL,
@@ -223,9 +209,8 @@ CREATE TABLE IF NOT EXISTS `ojt_users` (
   `updated_at` date DEFAULT NULL,
   `is_validated` int(11) DEFAULT NULL,
   `is_admin` int(11) NOT NULL DEFAULT '0',
-  `token` varchar(100) NOT NULL,
-  PRIMARY KEY (`user_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+  `token` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `ojt_users`
@@ -238,6 +223,102 @@ INSERT INTO `ojt_users` (`user_id`, `lastname`, `firstname`, `middlename`, `suff
 (4, 'Penduco', 'Pedro', NULL, NULL, '2017-00440', 'BSIM', 3, 'pedro', '4410d99cefe57ec2c2cdbd3f1d5cf862bb4fb6f8', 'pedro@mail.com', '0', 'MALE', '2018-02-11', '', '', '', '', '', '2018-02-13', '0000-00-00', 0, 0, ''),
 (5, 'Jomena', 'Julius', '', '', '000000000', 'BSIM', 1, 'julzedric', '7c222fb2927d828af22f592134e8932480637c0d', '', '639169318734', 'MALE', '2018-02-16', '', '', '', '', NULL, '2018-02-16', NULL, NULL, 0, 'ff3cc643ce7de52d601033ef222b505a');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `ojt_announcements`
+--
+ALTER TABLE `ojt_announcements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ojt_hours_rendered`
+--
+ALTER TABLE `ojt_hours_rendered`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ojt_monthly_report`
+--
+ALTER TABLE `ojt_monthly_report`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ojt_requirements_list`
+--
+ALTER TABLE `ojt_requirements_list`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ojt_student_recommendation`
+--
+ALTER TABLE `ojt_student_recommendation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ojt_student_requirements`
+--
+ALTER TABLE `ojt_student_requirements`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ojt_total_hours`
+--
+ALTER TABLE `ojt_total_hours`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `ojt_users`
+--
+ALTER TABLE `ojt_users`
+  ADD PRIMARY KEY (`user_id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `ojt_announcements`
+--
+ALTER TABLE `ojt_announcements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ojt_hours_rendered`
+--
+ALTER TABLE `ojt_hours_rendered`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `ojt_monthly_report`
+--
+ALTER TABLE `ojt_monthly_report`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `ojt_requirements_list`
+--
+ALTER TABLE `ojt_requirements_list`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `ojt_student_recommendation`
+--
+ALTER TABLE `ojt_student_recommendation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `ojt_student_requirements`
+--
+ALTER TABLE `ojt_student_requirements`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+--
+-- AUTO_INCREMENT for table `ojt_total_hours`
+--
+ALTER TABLE `ojt_total_hours`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `ojt_users`
+--
+ALTER TABLE `ojt_users`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
