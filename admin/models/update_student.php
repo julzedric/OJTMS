@@ -21,12 +21,38 @@
 		$imageFileType = pathinfo($filename,PATHINFO_EXTENSION);
 		$uploadOk = 1;
 
+		if($file == '') {
+			$sql = "UPDATE ojt_users SET email =  '".$email."', 
+					password = '".$password."',
+					contact_number = '".$contact_number."', street = '".$street."', barangay = '".$barangay."', city = '".$city."', province = '".$province."',
+					updated_at = '".$updated_at."' where student_id = '".$student."' ";
+
+			if($conn->query($sql) === TRUE) 
+			{
+				echo "<script type='text/javascript'> 
+						var conf= confirm(\"Successfully Updated.\");
+						if(conf == true){
+							window.location.href = 'http://ojtms.x10host.com/admin/index.php';
+						}
+					</script>";
+			} 
+			else 
+			{
+				echo "<script type='text/javascript'> 
+						var conf= confirm(\"Error while updating, please try again.\");
+						if(conf == true){
+							window.location.href = 'http://ojtms.x10host.com/admin/index.php';
+						}
+					</script>";
+			}
+		}
+
 
 				// Allow certain file formats
-				if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" && $imageFileType != "pdf" ) 
+				if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg" ) 
 				{
 					echo "<script type='text/javascript'> 
-							var conf= confirm(\"Sorry, only JPG, JPEG, PNG, PDF files are allowed.\");
+							var conf= confirm(\"Sorry, only JPG, JPEG, PNG files are allowed.\");
 							if(conf == true){
 								window.location.href = 'http://ojtms.x10host.com/admin/index.php';
 							}
