@@ -99,7 +99,7 @@ mpdf-->
                 $result1 = $conn->query($sql1);
                 echo $row['student_id'];
 
-                $sql2 = "SELECT a.id, a.total_hours FROM ojt_total_hours A  INNER JOIN ojt_users B ON A.course = B.course WHERE B.student_id ='".$row['student_id']."' ";
+                $sql2 = "SELECT a.id, a.total_hours FROM ojt_total_hours a  INNER JOIN ojt_users b ON a.course = b.course WHERE b.student_id ='".$row['student_id']."' ";
                         $result2 = $conn->query($sql2);
                         $total = $result2->fetch_assoc()['total_hours'];
 

@@ -404,7 +404,6 @@
                 "processing": true,
                 "serverSide": false,
                 "sAjaxSource": "models/load_student.php"+"?get_student=true&"+"course="+course,
-                "aoColumns" : [ { sWidth: "20%" }, { sWidth: "20%" }, { sWidth: "15%" }, { sWidth: "10%" }, { sWidth: "15%" }, { sWidth: "10%" }, { sWidth: "10%" }],
                 "deferLoading": 10,
                 "fnInitComplete": function() {
                     $('[data-toggle="tooltip"]').tooltip();
