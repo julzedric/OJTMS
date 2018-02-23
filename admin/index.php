@@ -36,23 +36,26 @@
                         <div class="col-md-8 col-md-offset-2">
                             <div class="form-group">
                             <form method="post" action="../MPDF57/generatePDF.php">
-                                <div class="col-md-6">
-                                    <select class="s_ form-control" id="f_course" name="f_course" onchange="filter_($(this).val())" style="width: 100%;">
-                                        <option value="All">All Courses</option>
+                                <div class="col-md-4">
+                                    <select class="s_ form-control" id="f_course" name="f_course" style="width: 100%;">
+                                        <option value="">All Courses</option>
                                         <option value="BSIM">BSIM</option>
                                         <option value="BSAIT ">BSAIT</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <select class="s_ form-control" id="f_section" name="f_section" style="width: 100%;">
-                                        <option value="All">All Section</option>
+                                        <option value="">All Section</option>
                                         <option value="1">1</option>
                                         <option value="2">2</option>
                                         <option value="3">3</option>
                                         <option value="4">4</option>
                                     </select>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-2">
+                                    <button type="button" id="filter" onclick="filter_()" class="btn btn-primary">Filter</button>
+                                </div>
+                                <div class="col-md-2">
                                      <button type="submit" class="btn btn-success" id="btn_register">PRINT LIST</button>
                                 </div>
                             </form>
@@ -384,9 +387,10 @@
             swal.preventDefault
     }
 
-    function filter_(course){
-
-        if(course == 'All')
+    function filter_(){
+        var course = $("#f_course").val();
+        var section = $("#f_section").val();
+        if(course == '' && section == '')
         {
             load_dataTable();
         } else {
@@ -403,7 +407,7 @@
                 },
                 "processing": true,
                 "serverSide": false,
-                "sAjaxSource": "models/load_student.php"+"?get_student=true&"+"course="+course,
+                "sAjaxSource": "models/load_student.php"+"?get_student=true&"+"course="+course+"&section="+section,
                 "deferLoading": 10,
                 "fnInitComplete": function() {
                     $('[data-toggle="tooltip"]').tooltip();

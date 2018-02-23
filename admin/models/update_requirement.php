@@ -21,7 +21,7 @@
 
 		if ($file == '') {
 			$sql = "UPDATE ojt_requirements_list SET name =  '".$name."', 
-					description = '".$description."', type = '".$type."', is_online = '".$is_online."',
+					description = '".$description."', type = '".$type."', is_online = '".$is_online."', step = '".$step."',
 					updated_at = '".$updated_at."' where id = '".$id."' ";
 
 				if($conn->query($sql) === TRUE) {
@@ -51,7 +51,7 @@
 			if(move_uploaded_file($_FILES['file']['tmp_name'], $target_dir.$filename)) {
 				
 					$sql = "UPDATE ojt_requirements_list SET name =  '".$name."', 
-					description = '".$description."', file = '".$filename."', type = '".$type."', is_online = '".$is_online."',
+					description = '".$description."', file = '".$filename."', type = '".$type."', is_online = '".$is_online."', step = '".$step."',
 					updated_at = '".$updated_at."' where id = '".$id."' ";
 
 				if($conn->query($sql) === TRUE) {

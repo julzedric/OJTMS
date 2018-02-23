@@ -51,85 +51,40 @@
                         <div class="col-md-6">
                             <select class="form-control" id="name" name="name">
                                 <?php
-                                    if($data['name'] == 'Acceptance Letter'){
+                                    if($data['name'] == 'Application Letter'){
                                         echo '<option value="">--Select--</option>
-                                            <option value="Acceptance Letter" selected="">Acceptance Letter</option>
-                                            <option value="Application Letter">Application Letter</option>
-                                            <option value="DTR">DTR</option>
-                                            <option value="Final Evaluation">Final Evaluation</option>
-                                            <option value="Monthly Report">Monthly Report</option>
-                                            <option value="OJT Certificate">OJT Certificate</option>
-                                            <option value="Recommendation Request">Recommendation Request</option>
-                                            <option value="Others">Others</option>';
-                                    } else if($data['name'] == 'Application Letter'){
-                                         echo '<option value="">--Select--</option>
-                                            <option value="Acceptance Letter">Acceptance Letter</option>
                                             <option value="Application Letter" selected="">Application Letter</option>
                                             <option value="DTR">DTR</option>
                                             <option value="Final Evaluation">Final Evaluation</option>
                                             <option value="Monthly Report">Monthly Report</option>
-                                            <option value="OJT Certificate">OJT Certificate</option>
-                                            <option value="Recommendation Request">Recommendation Request</option>
                                             <option value="Others">Others</option>';
-                                    } else if($data['name'] == 'DTR') {
-                                        echo '<option value="">--Select--</option>
-                                            <option value="Acceptance Letter">Acceptance Letter</option>
+                                    } else if($data['name'] == 'DTR'){
+                                         echo '<option value="">--Select--</option>
                                             <option value="Application Letter">Application Letter</option>
                                             <option value="DTR" selected="">DTR</option>
                                             <option value="Final Evaluation">Final Evaluation</option>
                                             <option value="Monthly Report">Monthly Report</option>
-                                            <option value="OJT Certificate">OJT Certificate</option>
-                                            <option value="Recommendation Request">Recommendation Request</option>
                                             <option value="Others">Others</option>';
                                     } else if($data['name'] == 'Final Evaluation') {
                                         echo '<option value="">--Select--</option>
-                                            <option value="Acceptance Letter">Acceptance Letter</option>
                                             <option value="Application Letter">Application Letter</option>
                                             <option value="DTR">DTR</option>
                                             <option value="Final Evaluation" selected="">Final Evaluation</option>
                                             <option value="Monthly Report">Monthly Report</option>
-                                            <option value="OJT Certificate">OJT Certificate</option>
-                                            <option value="Recommendation Request">Recommendation Request</option>
                                             <option value="Others">Others</option>';
                                     } else if($data['name'] == 'Monthly Report') {
                                         echo '<option value="">--Select--</option>
-                                            <option value="Acceptance Letter">Acceptance Letter</option>
                                             <option value="Application Letter">Application Letter</option>
                                             <option value="DTR">DTR</option>
                                             <option value="Final Evaluation">Final Evaluation</option>
                                             <option value="Monthly Report" selected="">Monthly Report</option>
-                                            <option value="OJT Certificate">OJT Certificate</option>
-                                            <option value="Recommendation Request">Recommendation Request</option>
-                                            <option value="Others">Others</option>';
-                                    } else if($data['name'] == 'OJT Certificate') {
-                                        echo '<option value="">--Select--</option>
-                                            <option value="Acceptance Letter">Acceptance Letter</option>
-                                            <option value="Application Letter">Application Letter</option>
-                                            <option value="DTR">DTR</option>
-                                            <option value="Final Evaluation">Final Evaluation</option>
-                                            <option value="Monthly Report">Monthly Report</option>
-                                            <option value="OJT Certificate" selected="">OJT Certificate</option>
-                                            <option value="Recommendation Request">Recommendation Request</option>
-                                            <option value="Others">Others</option>';
-                                    } else if($data['name'] == 'Recommendation Request') {
-                                        echo '<option value="">--Select--</option>
-                                            <option value="Acceptance Letter">Acceptance Letter</option>
-                                            <option value="Application Letter">Application Letter</option>
-                                            <option value="DTR">DTR</option>
-                                            <option value="Final Evaluation">Final Evaluation</option>
-                                            <option value="Monthly Report">Monthly Report</option>
-                                            <option value="OJT Certificate">OJT Certificate</option>
-                                            <option value="Recommendation Request" selected="">Recommendation Request</option>
                                             <option value="Others">Others</option>';
                                     }else {
                                         echo '<option value="">--Select--</option>
-                                            <option value="Acceptance Letter">Acceptance Letter</option>
                                             <option value="Application Letter">Application Letter</option>
                                             <option value="DTR">DTR</option>
                                             <option value="Final Evaluation">Final Evaluation</option>
-                                            <option value="Monthly Report">Monthly Report</option>
-                                            <option value="OJT Certificate">OJT Certificate</option>
-                                            <option value="Recommendation Request">Recommendation Request</option>
+                                            <option value="Monthly Report" selected="">Monthly Report</option>
                                             <option value="Others" selected="">Others</option><br/>
                                             <input type="text" class="form-control" name ="others" id="others" placeholder="Other Requirement" value="'.$data['name'].'">
                                             ';

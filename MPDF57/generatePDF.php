@@ -6,12 +6,12 @@ include('mpdf.php');
     $course = $_POST['f_course'];
     $section = $_POST['f_section'];
 
-    if($_POST['f_course']=="All")
+    if($_POST['f_course']=="")
     {
         $course = "%";
     }
 
-    if($_POST['f_section']=="All")
+    if($_POST['f_section']=="")
     {
         $section = "%";
     }
